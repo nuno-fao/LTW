@@ -1,0 +1,29 @@
+body{
+    background-color: #046dd5;
+}
+
+header{
+    background-color: white;
+    padding: .8em;
+
+    display: flex;
+    flex-direction: row;
+}
+
+header .login{
+    margin: auto 2em auto auto;
+}
+header #title {
+    font-family: "Ubuntu Thin", sans-serif;
+    margin: auto 0.3em ;
+    font-size: 3em;
+}
+header #user{
+    display: none;
+    visibility: hidden;
+}
+
+aside {
+    background-color: white;
+    padding: 1em;
+}

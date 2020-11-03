@@ -1,0 +1,13 @@
+body{
+    width: 60em;
+    margin: 0 auto;
+}
+
+header{
+    display: flex;
+    flex-direction: row;
+}
+
+aside {
+    max-width: 7em;
+}

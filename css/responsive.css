@@ -1,0 +1,26 @@
+@media (max-width: 60em) {
+    body{
+        width: 100%;
+    }
+    header{
+        display: flex;
+        flex-direction: column;
+    }
+    header #title{
+        margin: 0 auto;
+    }
+    header .login{
+        margin: 1em auto 0em;
+    }
+}
+
+@media (max-width: 31em) {
+    header #title{
+        font-size: 2em;
+    }
+}
+@media (max-width: 25em) {
+    header #title{
+        font-size: 1.5em;
+    }
+}

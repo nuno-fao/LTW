@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<?php
+  include('templates/tpl_common.php');
+  include('templates/tpl_main.php');
 
-</body>
-</html>
+  draw_head();
+  draw_header();
+  draw_aside();
+  draw_animal_profiles();
+  draw_footer();
+?>
