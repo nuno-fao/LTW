@@ -1,13 +1,13 @@
-body{
-    width: 60em;
+body {
+    width: 80em;
     margin: 0 auto;
 }
 
-header{
+header {
     display: flex;
     flex-direction: row;
 }
 
 aside {
-    max-width: 7em;
+    max-width: 12em;
 }

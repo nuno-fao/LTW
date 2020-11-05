@@ -5,7 +5,7 @@ function draw_head(){
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Pets For Adoption</title>
+	<title>Projeto Black Dog</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/responsive.css">
@@ -17,9 +17,9 @@ function draw_head(){
 function draw_header(){
     ?>
     <header>
-        <label id="title">Pets for Adoption</label>
+        <a id="title" href="/">Projeto Black Dog</a>
         <section class="login">
-            <label id="login_register">Login / Register</label>
+            <label id="login_register">Login  |  Register</label>
             <label id="user">Name</label>
         </section>
     </header>
