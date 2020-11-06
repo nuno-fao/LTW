@@ -1,7 +1,9 @@
-answers(<ins>answersId</ins>,answersTxt,questionId->Questions)  
+answers(<ins>answersId</ins>,answersTxt,questionId->Questions,userId->Users,date)  
 FavouriteLists(<ins>listId</ins>,userId->Users,petId->Pets)  
-Pets(<ins>petId</ins>,name,species,size,color,location,postState,userId->user)  
+Pets(<ins>petId</ins>,name,specieId->Species,size,color,location,postState,userId->user)  
 Photos(<ins>photoId</ins>,path,petId->Pet)  
 Proposals(<ins>proposalId</ins>,userId->Users,petId->Pets,state)  
-Questions(<ins>questionId</ins>,questionTxt,petId->Pets)  
+Questions(<ins>questionId</ins>,questionTxt,petId->Pets,date)  
 Users(<ins>petId</ins>,Name.EmailAddress,userName,salt,passwordHash)  
+Query(queryId,userId->Users,name,specie,size,color,location,state);  
+Species(specieId,specie);
