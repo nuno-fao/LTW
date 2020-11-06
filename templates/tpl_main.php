@@ -42,7 +42,7 @@ function draw_aside(){?>
                             <br>
                         </label>
                         <label >
-                            <input type='radio' id="all" name="gender" value="all">
+                            <input type='radio' id="all" name="gender" value="all"checked="checked">
                             <span></span>
                             All
                             <br>

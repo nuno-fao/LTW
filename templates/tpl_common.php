@@ -4,7 +4,8 @@ function draw_head(){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
 	<title>Projeto Black Dog</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/layout.css">
