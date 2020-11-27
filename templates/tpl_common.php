@@ -4,8 +4,9 @@ function draw_head(){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<title>Pets For Adoption</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+	<title>Projeto Black Dog</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="css/layout.css">
 	<link rel="stylesheet" href="css/responsive.css">
@@ -17,9 +18,10 @@ function draw_head(){
 function draw_header(){
     ?>
     <header>
-        <label id="title">Pets for Adoption</label>
-        <section class="login">
-            <label id="login_register">Login / Register</label>
+        <a id="title" href="/">Projeto Black Dog</a>
+        <section class="login_register">
+                <div id="register" class="button" ><a href="login_register.php" class="button-text">Register</a></div>
+                <div id="login" class="button"><a href="login_register.php" class="button-text">Login</a></div>
             <label id="user">Name</label>
         </section>
     </header>
