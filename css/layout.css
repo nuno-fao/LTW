@@ -16,3 +16,24 @@ header .login_register {
 aside {
     max-width: 12em;
 }
+
+.login_form {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_form label{
+    margin: auto;
+}
+
+.login_form #buttons-section {
+    display: flex;
+    flex-direction: row;
+    padding: 5% 0;
+}
+
+#login_register_outer_box{
+    width: 30%;
+    margin: 10% auto;
+}

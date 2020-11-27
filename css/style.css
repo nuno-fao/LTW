@@ -128,3 +128,54 @@ div.radioSelector {
     background-clip: border-box;
     border-radius: inherit;
 }
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #e6e6e6;
+}
+
+.login_form button {
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+}
+
+.login_form span{
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+    text-align: center;
+}
+
+#buttons-section button:first-child{
+    margin-right: 0.5em;
+}
+
+#login_register_outer_box {
+    background-color: #ffffff;
+    padding: 1em;
+}
+
+#login_title{
+    font-size: 3rem;
+    color: #323232;
+    margin:  10% auto 15% auto;
+    text-align: center;
+}
+
+.no_link_style{
+    text-decoration: none;
+    background-color: inherit;
+}
+
+.no_link_style:hover{
+    cursor: default;
+}
