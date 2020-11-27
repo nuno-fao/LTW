@@ -4,7 +4,7 @@ include_once "database/db_user.php";
 function login_register_action($POST){
     $NAME = $POST['name'];
     $PASSWORD = $POST['pass'];
-    if (!isset($NAME) || !isset($POST['action'])) {
+    if (!isset($NAME)) {
         header('Location: ' . $_COOKIE['lastPage']);
     }
     if ($POST['action'] === "login") {

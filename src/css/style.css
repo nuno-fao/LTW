@@ -1,0 +1,181 @@
+body {
+    background-color: #bebebe;
+}
+
+header {
+    background-color: #252531;
+    padding: .8em;
+    display: flex;
+    flex-direction: row;
+    color: white;
+}
+
+header .login_register {
+    display: inline;
+    margin: auto 2em auto auto;
+}
+
+header .button {
+    padding: 1em;
+    margin-left: 1em;
+    border-radius: 10px;
+}
+
+header .button-text {
+    margin: auto;
+    width: 7em;
+    text-align: center;
+    display: inline-block;
+}
+
+header #login {
+    border: #8bc7b5 solid 4px;
+    color: #8bc7b5;
+    border-radius: 10px;
+    background-color: #fdfefe;
+}
+
+header #register {
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+}
+
+header #title {
+    font-family: "Ubuntu Thin", sans-serif;
+    font-size: 3em;
+    margin: auto 0.3em;
+}
+
+header #user {
+    display: none;
+    visibility: hidden;
+}
+
+aside {
+    background-color: white;
+}
+
+a {
+    all: unset;
+    text-decoration: none;
+}
+
+ul.no_bullet li {
+    list-style-type: none;
+}
+
+#filterElement {
+    padding: 0;
+    margin: 0;
+}
+
+.multipleSelector,
+.radioSelector {
+    padding: 1em;
+    margin: 0;
+    border-bottom: black;
+}
+
+#filterTag {
+    background-color: #232323;
+    color: #ffffdc;
+    padding: 1em;
+}
+
+div.multipleSelector,
+div.radioSelector {
+    border-bottom: 2px solid black;
+}
+
+.multipleSelector label input,
+.radioSelector label input {
+    display: none;
+}
+
+.radioSelector span {
+    border-radius: 50%;
+}
+
+.multipleSelector label span,
+.radioSelector label span {
+    height: 20px;
+    width: 20px;
+    top: 5px;
+    border: 1px solid grey;
+    display: inline-block;
+    position: relative;
+}
+
+.multipleSelector input[type="checkbox"]:checked+span::after,
+.radioSelector input[type="radio"]:checked+span::after {
+    content: "";
+    height: 10px;
+    width: 10px;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border: 1px solid grey;
+    background: #f5b027;
+    background-color: rgb(245, 176, 39);
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-image: none;
+    background-size: auto;
+    background-origin: padding-box;
+    background-clip: border-box;
+    border-radius: inherit;
+}
+
+input[type=text], input[type=password] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #e6e6e6;
+}
+
+.login_register_form button {
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+}
+
+.login_register_form span{
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+    text-align: center;
+}
+
+#buttons-section button:first-child{
+    margin-right: 0.5em;
+}
+
+#login_register_outer_box {
+    background-color: #ffffff;
+    padding: 1em;
+}
+
+#login_register_title{
+    font-size: 3rem;
+    color: #323232;
+    margin:  10% auto 15% auto;
+    text-align: center;
+}
+
+.no_link_style{
+    text-decoration: none;
+    background-color: inherit;
+}
+
+.no_link_style:hover{
+    cursor: default;
+}

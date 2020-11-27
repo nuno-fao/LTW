@@ -1,0 +1,39 @@
+body {
+    width: 80em;
+    margin: 0 auto;
+}
+
+header {
+    display: flex;
+    flex-direction: row;
+}
+
+header .login_register {
+    display: flex;
+    flex-direction: row;
+}
+
+aside {
+    max-width: 12em;
+}
+
+.login_register_form {
+    margin: 1em;
+    display: flex;
+    flex-direction: column;
+}
+
+.login_register_form label{
+    margin: auto;
+}
+
+.login_register_form #buttons-section {
+    display: flex;
+    flex-direction: row;
+    padding: 5% 0;
+}
+
+#login_register_outer_box{
+    width: 30%;
+    margin: 10% auto;
+}
