@@ -19,8 +19,9 @@ function draw_header(){
     ?>
     <header>
         <a id="title" href="/">Projeto Black Dog</a>
-        <section class="login">
-            <label id="login_register">Login  |  Register</label>
+        <section class="login_register">
+                <div id="register" class="button" ><a href="login_register.php" class="button-text">Register</a></div>
+                <div id="login" class="button"><a href="login_register.php" class="button-text">Login</a></div>
             <label id="user">Name</label>
         </section>
     </header>

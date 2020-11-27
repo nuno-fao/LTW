@@ -8,6 +8,11 @@ header {
     flex-direction: row;
 }
 
+header .login_register {
+    display: flex;
+    flex-direction: row;
+}
+
 aside {
     max-width: 12em;
 }
