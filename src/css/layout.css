@@ -1,11 +1,20 @@
 body {
     width: 80em;
     margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+    'header header header header header header'
+    'filter animals animals animals animals animals'
+}
+
+.animal_main_page{
+    grid-area: animals;
 }
 
 header {
     display: flex;
     flex-direction: row;
+    grid-area: header;
 }
 
 header .login_register {
@@ -15,6 +24,7 @@ header .login_register {
 
 aside {
     max-width: 12em;
+    grid-area: filter;
 }
 
 .login_register_form {

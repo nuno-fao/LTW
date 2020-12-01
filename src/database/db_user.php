@@ -2,7 +2,6 @@
 include_once('database/connection.php');
 
 function checkUser($user) {
-    print_r($user);
     global $dbh;
 
     $stmt = $dbh->prepare('SELECT * FROM Users WHERE userName = ?');
@@ -23,5 +22,5 @@ function addUser($user,$password){
     global $dbh;
     $password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $dbh->prepare('INSERT INTO Users(userName, password,Name, EmailAddress) VALUES(?,?,?,?)');
-    $stmt->execute(array($user,$password,"Besta Quadrada","email@email.com"));
+    $stmt->execute(array($user,$password,$user,$user));
 }
