@@ -1,5 +1,5 @@
 <?php
-include_once('database/databaseQueries.php');
+include_once('database/animal_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
@@ -8,23 +8,20 @@ function draw_aside(){?>
             <div class="multipleSelector">
                 Species
                 <div>
-                    <label>
-                        <input type="checkbox" id="Dog" name="Dog">
-                        <span></span>
-                        Dog
-                        <br>
-                    </label>
-                    <label >
-                        <input type='checkbox' id="Snake" name="Snake">
-                        <span></span>
-                        Cat
-                        <br>
-                    </label>
-                    <label>
-                        <input type='checkbox' id="Snake" name="Snake">
-                        <span></span>
-                        Snake
-                    </label>
+                    <?php
+                    $species = get_species();
+                    foreach ($species as $specie){
+                        $specie = $specie["specie"];
+                        ?>
+                        <label>
+                            <input type="checkbox" id="<?=$specie?>" name="<?=$specie?>">
+                            <span></span>
+                            <?=$specie?>
+                            <br>
+                        </label>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <div class="radioSelector">
@@ -68,24 +65,24 @@ function draw_animal_profiles(){?>
 
 function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
     ?>
-        <div id="animal_main_page">
-            <label>
-                <?=$name?>
-            </label>
-            <label>
-                <?=$size?>
-            </label>
-            <label>
-                <?=$color?>
-            </label>
-            <label>
-                <?=$location?>
-            </label>
-            <label>
-                <?=$user?>
-            </label>
-            <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
-        </div>
-        </div>
+    <div id="animal_main_page">
+        <label>
+            <?=$name?>
+        </label>
+        <label>
+            <?=$size?>
+        </label>
+        <label>
+            <?=$color?>
+        </label>
+        <label>
+            <?=$location?>
+        </label>
+        <label>
+            <?=$user?>
+        </label>
+        <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
+    </div>
+    </div>
     <?php
 }

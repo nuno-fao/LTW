@@ -36,3 +36,10 @@ function get_animal_photo($petId){
     $stmt->execute(array($petId));
     return $stmt->fetchAll()[0]["path"];
 }
+
+function get_species(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT specie from Species ');
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
