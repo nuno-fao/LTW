@@ -52,14 +52,13 @@ function draw_aside(){?>
             </div>
         </div>
     </aside>
-
 <?php } ?>
 
 <?php
 function draw_animal_profiles(){?>
     <section id="animal_profiles">
         <?php
-        $animals_array = getAnimals(null,null,null,null,null,null,null);
+        $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
         foreach ($animals_array as $animal){
             draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
         }
@@ -69,23 +68,24 @@ function draw_animal_profiles(){?>
 
 function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
     ?>
-    <div id="animal_main_page">
-        <label>
-            <?=$name?>
-        </label>
-        <label>
-            <?=$size?>
-        </label>
-        <label>
-            <?=$color?>
-        </label>
-        <label>
-            <?=$location?>
-        </label>
-        <label>
-            <?=$user?>
-        </label>
-        <img src=<?=get_animal_photo($pet_id)?> width="200" height="200">
-    </div>
+        <div id="animal_main_page">
+            <label>
+                <?=$name?>
+            </label>
+            <label>
+                <?=$size?>
+            </label>
+            <label>
+                <?=$color?>
+            </label>
+            <label>
+                <?=$location?>
+            </label>
+            <label>
+                <?=$user?>
+            </label>
+            <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
+        </div>
+        </div>
     <?php
 }
