@@ -16,33 +16,35 @@ function draw_head(){
 
 <?php
 function draw_header(){
-    $Bar_code = '';
-    if(isset($_SESSION['name'])){
-        $Bar_code = '
+$Bar_code = '';
+if(isset($_SESSION['name'])){
+    $Bar_code = '
     <section class="login_register">
         <div id="register" class="button" ><a href="logout_action.php" class="button-text">Logout</a></div>
         <label id="user">Name</label>
     </section>
     ';
-    }
-    else{
-        $Bar_code = '
+}
+else{
+    $Bar_code = '
     <section class="login_register">
         <div id="register" class="button" ><a href="register.php" class="button-text">Register</a></div>
         <div id="login" class="button"><a href="login.php" class="button-text">Login</a></div>
         <label id="user">Name</label>
     </section>
     ';
-    }
-    ?>
-    <header>
-        <a id="title" href="index.php" class="no_link_style">Projeto Black Dog</a>
-        <?=$Bar_code;?>
-    </header>
-<?php } ?>
+}
+?>
+<header>
+    <a id="title" href="index.php" class="no_link_style">Projeto Black Dog</a>
+    <?=$Bar_code;?>
+</header>
+<div class="body">
+    <?php } ?>
 
-<?php
-function draw_footer(){?>
+    <?php
+    function draw_footer(){?>
+</div>
 <footer>
 </footer>
 </body>

@@ -53,14 +53,14 @@ function draw_aside(){?>
 
 <?php
 function draw_animal_profiles(){?>
-    <section id="animal_profiles">
+    <div id="animal_profiles">
         <?php
         $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
         foreach ($animals_array as $animal){
             draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
         }
         ?>
-    </section>
+    </div>
 <?php }
 
 function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
@@ -82,7 +82,6 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <?=$user?>
         </label>
         <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
-    </div>
     </div>
     <?php
 }
