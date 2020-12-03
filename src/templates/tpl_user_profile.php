@@ -3,7 +3,7 @@
     function draw_user_aside($user){
         $user_info =  getUser($user);
         ?>
-        <aside id="profile">
+        <aside id="user_profile">
             <img src = "<?=getPicturePath($user)?>" width="200" height="200"/>
             <label>
                 <?=$user?>

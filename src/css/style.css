@@ -180,3 +180,7 @@ input[type=text], input[type=password] {
 .no_link_style:hover{
     cursor: default;
 }
+
+#animal_main_page{
+    border: black solid 2px;
+}

@@ -4,7 +4,7 @@ include_once('database/connection.php');
 function getName(){
     if(isset($_SESSION['user'])){
         global $dbh;
-        $stmt = $dbh->prepare('SELECT userID, Name, EmailAddress from Users Where userName=?');
+        $stmt = $dbh->prepare('SELECT userId, Name, EmailAddress from Users Where userName=?');
         $stmt->execute(array($_SESSION['user']));
         $user = $stmt->fetchAll()[0];
         $_COOKIE['name']=$user['Name'];
@@ -15,7 +15,7 @@ function getName(){
 
 function getUser($user){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT userID, Name, EmailAddress from Users Where userName=?');
+    $stmt = $dbh->prepare('SELECT userId, Name, EmailAddress from Users Where userName=?');
     $stmt->execute(array($user));
     $user = $stmt->fetchAll()[0];
     return array($user['Name'],$user['EmailAddress'],$user['userId']);
@@ -33,4 +33,12 @@ function getUserAnimals($userId){
     $stmt = $dbh->prepare('SELECT petId,name,size,color,location from Pets WHERE user=?');
     $stmt->execute(array($userId));
     return $stmt->fetchAll();
+}
+
+
+function get_user_by_ID($userId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Users Where userId=?');
+    $stmt->execute(array($userId));
+    return $stmt->fetchAll()[0];
 }
