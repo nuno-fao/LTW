@@ -1,18 +1,29 @@
 <?php
-    function draw_user_aside(){ ?>
-        
+    include_once 'templates/tpl_main.php';
+    function draw_user_aside($user){
+        $user_info =  getUser($user);
+        ?>
         <aside id="profile">
-            <img src = "<?=getPicturePath()?>" width="200" height="200"/>
+            <img src = "<?=getPicturePath($user)?>" width="200" height="200"/>
             <label>
-                <?=$_SESSION['user']?>
+                <?=$user?>
             </label>
             <label>
-                <?=$_COOKIE['name']?>
+                <?=$user_info[0]?>
             </label>
             <label>
-                <?=$_COOKIE['email']?>
+                <?=$user_info[1]?>
             </label>
         </aside>
+
+        <section id="user_animals">
+            <?php
+            $animals = getUserAnimals($user_info[2]);
+            foreach ($animals as $animal){
+                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user_info[2]);
+            }
+            ?>
+        </section>
 
 
 

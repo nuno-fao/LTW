@@ -17,11 +17,12 @@ function draw_head(){
 
 <?php
 function draw_header(){
+getName();
 $Bar_code = '';
 if(isset($_SESSION['user'])){
     $Bar_code = '
     <section class="login_register">
-        <a id="user" href="user.php"> '.$_COOKIE['name'].'</a>
+        <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
         <div id="register" class="button" ><a href="logout_action.php" class="button-text">Logout</a></div>
     </section>
     ';

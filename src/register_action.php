@@ -12,9 +12,7 @@ if (!isset($NAME) || !isset($PASSWORD)) {
 else if (!checkUser($NAME)) {
     addUser($NAME, $PASSWORD);
     $_SESSION['user'] = $_POST['name'];
-    getName();
-    header('Location: ' . 'index.php'); 
-    
+    header('Location: ' . 'index.php');
 }
 else {
     header('Location: ' . 'register.php');

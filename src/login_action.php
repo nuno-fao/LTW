@@ -17,6 +17,5 @@ if (!checkPassword($_POST['name'], $_POST['pass'])) {
 }
 else {
     $_SESSION['user'] = $_POST['name'];
-    getName(); 
-    // header('Location: ' . 'index.php');
+    header('Location: ' . 'index.php');
 }
