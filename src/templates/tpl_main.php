@@ -1,63 +1,87 @@
 <?php
+include_once('database/animal_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
         <div id="filterTag">Filter</div>
         <div class="no_bullet" id="filterElement">
-            <div class="multipleSelector"> 
-                    Species 
-                    <div> 
+            <div class="multipleSelector">
+                Species
+                <div>
+                    <?php
+                    $species = get_species();
+                    foreach ($species as $specie){
+                        $specie = $specie["specie"];
+                        ?>
                         <label>
-                            <input type="checkbox" id="Dog" name="Dog">
+                            <input type="checkbox" id="<?=$specie?>" name="<?=$specie?>">
                             <span></span>
-                            Dog
+                            <?=$specie?>
                             <br>
                         </label>
-                        <label >
-                            <input type='checkbox' id="Snake" name="Snake">
-                            <span></span>
-                            Cat
-                            <br>
-                        </label>
-                        <label>
-                            <input type='checkbox' id="Snake" name="Snake">
-                            <span></span>
-                            Snake
-                        </label>
-                    </div>
-            </div>   
-            <div class="radioSelector"> 
-                    Gender 
-                    <div> 
-                        <label>
-                            <input type="radio" id="male" name="gender" value="male">
-                            <span></span>
-                            Male
-                            <br>
-                        </label>
-                        <label >
-                            <input type='radio' id="female" name="gender" value="female">
-                            <span></span>
-                            Female
-                            <br>
-                        </label>
-                        <label >
-                            <input type='radio' id="all" name="gender" value="all"checked="checked">
-                            <span></span>
-                            All
-                            <br>
-                        </label>
-                    </div>
-            </div>  
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="radioSelector">
+                Gender
+                <div>
+                    <label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <span></span>
+                        Male
+                        <br>
+                    </label>
+                    <label >
+                        <input type='radio' id="female" name="gender" value="female">
+                        <span></span>
+                        Female
+                        <br>
+                    </label>
+                    <label >
+                        <input type='radio' id="all" name="gender" value="all"checked="checked">
+                        <span></span>
+                        All
+                        <br>
+                    </label>
+                </div>
+            </div>
         </div>
     </aside>
-
 <?php } ?>
 
 <?php
 function draw_animal_profiles(){?>
+    <div id="animal_profiles">
+        <?php
+        $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
+        foreach ($animals_array as $animal){
+            draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+        }
+        ?>
+    </div>
+<?php }
 
-    <section id="animal_profiles">
-
-    </section>
-<?php } ?>
+function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
+    ?>
+    <div id="animal_main_page">
+        <label>
+            <?=$name?>
+        </label>
+        <label>
+            <?=$size?>
+        </label>
+        <label>
+            <?=$color?>
+        </label>
+        <label>
+            <?=$location?>
+        </label>
+        <label>
+            <?=$user?>
+        </label>
+        <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
+    </div>
+    <?php
+}

@@ -13,8 +13,13 @@ header .login_register {
     flex-direction: row;
 }
 
+.body{
+    display: flex;
+    flex-direction: row;
+}
+
 aside {
-    max-width: 12em;
+    width: 12em;
 }
 
 .login_register_form {
@@ -36,4 +41,23 @@ aside {
 #login_register_outer_box{
     width: 30%;
     margin: 10% auto;
+}
+
+#animal_profiles{
+    margin: auto;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+#animal_main_page{
+    display: flex;
+    padding: 1em;
+    flex-direction: column;
+    margin: auto;
+}
+
+#animal_main_page > label{
+    text-align: center;
 }
