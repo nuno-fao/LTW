@@ -17,17 +17,17 @@ aside {
     max-width: 12em;
 }
 
-.login_form {
+.login_register_form {
     margin: 1em;
     display: flex;
     flex-direction: column;
 }
 
-.login_form label{
+.login_register_form label{
     margin: auto;
 }
 
-.login_form #buttons-section {
+.login_register_form #buttons-section {
     display: flex;
     flex-direction: row;
     padding: 5% 0;

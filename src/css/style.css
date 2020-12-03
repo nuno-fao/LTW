@@ -138,7 +138,7 @@ input[type=text], input[type=password] {
     background-color: #e6e6e6;
 }
 
-.login_form button {
+.login_register_form button {
     font-size: 1.2rem;
     flex: 1;
     border: #ed3a58 solid 4px;
@@ -146,7 +146,7 @@ input[type=text], input[type=password] {
     background-color: #ed3a58;
 }
 
-.login_form span{
+.login_register_form span{
     font-size: 1.2rem;
     flex: 1;
     border: #ed3a58 solid 4px;
@@ -164,7 +164,7 @@ input[type=text], input[type=password] {
     padding: 1em;
 }
 
-#login_title{
+#login_register_title{
     font-size: 3rem;
     color: #323232;
     margin:  10% auto 15% auto;
