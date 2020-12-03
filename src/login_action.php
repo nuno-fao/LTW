@@ -1,4 +1,5 @@
 <?php
+include_once('database/user_queries.php');
 
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
@@ -15,6 +16,7 @@ if (!checkPassword($_POST['name'], $_POST['pass'])) {
     header('Location: ' . 'login.php');
 }
 else {
-    $_SESSION['name'] = $_POST['name'];
-    header('Location: ' . 'index.php');
+    $_SESSION['user'] = $_POST['name'];
+    getName(); 
+    // header('Location: ' . 'index.php');
 }

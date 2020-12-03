@@ -1,6 +1,6 @@
 <?php
-  include('templates/tpl_common.php');
-  include('templates/tpl_main.php');
+  include_once('templates/tpl_common.php');
+  include_once('templates/tpl_main.php');
 
   session_start();
 

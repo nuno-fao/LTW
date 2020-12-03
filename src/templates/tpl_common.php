@@ -1,4 +1,5 @@
 <?php
+include_once('database/user_queries.php');
 function draw_head(){
 ?>
     <!DOCTYPE html>
@@ -17,11 +18,11 @@ function draw_head(){
 <?php
 function draw_header(){
 $Bar_code = '';
-if(isset($_SESSION['name'])){
+if(isset($_SESSION['user'])){
     $Bar_code = '
     <section class="login_register">
+        <a id="user" href="user.php"> '.$_COOKIE['name'].'</a>
         <div id="register" class="button" ><a href="logout_action.php" class="button-text">Logout</a></div>
-        <label id="user">Name</label>
     </section>
     ';
 }
@@ -30,7 +31,6 @@ else{
     <section class="login_register">
         <div id="register" class="button" ><a href="register.php" class="button-text">Register</a></div>
         <div id="login" class="button"><a href="login.php" class="button-text">Login</a></div>
-        <label id="user">Name</label>
     </section>
     ';
 }

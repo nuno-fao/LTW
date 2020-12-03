@@ -47,10 +47,10 @@ header #title {
     margin: auto 0.3em;
 }
 
-header #user {
+/* header #user {
     display: none;
     visibility: hidden;
-}
+} */
 
 aside {
     background-color: white;
