@@ -65,7 +65,7 @@ function draw_animal_profiles(){?>
 
 function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
     ?>
-    <div id="animal_main_page">
+    <a id="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
         <label>
             <?=$name?>
         </label>
@@ -82,6 +82,6 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <?=$user?>
         </label>
         <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
-    </div>
+    </a>
     <?php
 }

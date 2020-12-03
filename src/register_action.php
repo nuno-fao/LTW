@@ -1,5 +1,6 @@
 <?php
 include_once "database/db_user.php";
+include_once('database/user_queries.php');
 
 session_start();
 
@@ -10,7 +11,7 @@ if (!isset($NAME) || !isset($PASSWORD)) {
 }
 else if (!checkUser($NAME)) {
     addUser($NAME, $PASSWORD);
-    $_SESSION['name'] = $_POST['name'];
+    $_SESSION['user'] = $_POST['name'];
     header('Location: ' . 'index.php');
 }
 else {
