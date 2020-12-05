@@ -180,7 +180,24 @@ input[type=text], input[type=password] {
 .no_link_style:hover{
     cursor: default;
 }
-
 #animal_main_page{
     border: black solid 2px;
+}
+[type="date"] {
+    background:#fff url(https://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/calendar_2.png)  97% 50% no-repeat ;
+}
+input[type="date"]{
+    display: none;
+}
+[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0;
+}
+
+input[type="date"], input[type="number"]{
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    background-color: #e6e6e6;
 }
