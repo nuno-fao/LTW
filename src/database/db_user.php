@@ -18,9 +18,9 @@ function checkPassword($user,$password) {
     return password_verify($password,$result[0]['password']);
 }
 
-function addUser($user,$password){
+function addUser($user,$password,$email,$name){
     global $dbh;
     $password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $dbh->prepare('INSERT INTO Users(userName, password,Name, EmailAddress) VALUES(?,?,?,?)');
-    $stmt->execute(array($user,$password,$user,$user));
+    $stmt->execute(array($user,$password,$name,$email));
 }

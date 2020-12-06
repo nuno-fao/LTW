@@ -15,10 +15,9 @@ function getName(){
 
 function getUser($user){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT userId, Name, EmailAddress from Users Where userName=?');
+    $stmt = $dbh->prepare('SELECT * from Users Where userName=?');
     $stmt->execute(array($user));
-    $user = $stmt->fetchAll()[0];
-    return array($user['Name'],$user['EmailAddress'],$user['userId']);
+    return  $stmt->fetchAll()[0];
 }
 
 function getPicturePath($user){
