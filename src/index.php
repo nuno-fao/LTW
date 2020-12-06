@@ -4,7 +4,7 @@
 
   session_start();
 
-  draw_head();
+  draw_head("Main Page");
   draw_header();
   draw_aside();
   draw_animal_profiles();

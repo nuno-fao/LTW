@@ -97,7 +97,7 @@ function get_pet($name){
     return $stmt->fetchAll();
 }
 
-function add_photo($photo_path,$pet){
+function add_animal_photo_to_db($photo_path,$pet){
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Photos(path,pet) VALUES(?,?)');
     $stmt->execute(array($photo_path,$pet));
@@ -121,4 +121,13 @@ function change_pet_photo_id($petId, $photo_id){
     echo '<br>';
     $stmt = $dbh->prepare('UPDATE Pets SET profilePic = ? WHERE petId = ?;');
     return $stmt->execute(array($photo_id,$petId));
+}
+
+function check_pet($user) {
+    global $dbh;
+
+    $stmt = $dbh->prepare('SELECT * FROM Users WHERE userName = ?');
+    $stmt->execute(array($user));
+    $length = count($stmt->fetchAll());
+    return $length>0;
 }

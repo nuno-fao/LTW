@@ -5,7 +5,7 @@ include_once('templates/tpl_register.php');
 session_start();
 
 if(!isset($_SESSION['user'])){
-    draw_head();
+    draw_head("Register");
     draw_header();
     draw_register();
     draw_footer();

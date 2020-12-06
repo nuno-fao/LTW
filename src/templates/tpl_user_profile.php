@@ -9,10 +9,10 @@
                 <?=$user?>
             </label>
             <label>
-                <?=$user_info[0]?>
+                <?=$user_info['Name']?>
             </label>
             <label>
-                <?=$user_info[1]?>
+                <?=$user_info['EmailAddress']?>
             </label>
         </aside>
 

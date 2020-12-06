@@ -5,7 +5,7 @@ include_once('templates/tpl_login.php');
 session_start();
 
 if(!isset($_SESSION['user'])){
-    draw_head();
+    draw_head("Login");
     draw_header();
     draw_login();
     draw_footer();

@@ -4,7 +4,7 @@
     
     function draw_animal_aside($animal){
         $animal_data = get_animal_data($animal);
-        $user_name = get_user_by_ID($animal_data['user'])['Name'];
+        $user_name = get_user_by_ID($animal_data['user'])['userName'];
         $photos = get_animal_photos($animal);
         $state = get_state_description($animal_data['state']);
         ?>
