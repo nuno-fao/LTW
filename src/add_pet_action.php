@@ -50,7 +50,7 @@ if(isset($_POST['submit']) && isset($_SESSION['user'])) {
 function add_animal_photo($pet_id,$picture,$is_main){
     $check = getimagesize($picture["tmp_name"]);
     if ($check !== false) {
-        $file_name = "img/pet_main_pic" . $pet_id;
+        $file_name = "img/pet_pic" . $pet_id.uniqid();
         if (move_uploaded_file($picture["tmp_name"], $file_name)) {
             $photo_id = add_animal_photo_to_db($file_name, $pet_id);
             if($is_main) {
