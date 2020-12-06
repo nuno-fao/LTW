@@ -65,23 +65,16 @@ function draw_animal_profiles(){?>
 
 function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
     ?>
-    <a id="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
-        <label>
-            <?=$name?>
-        </label>
-        <label>
-            <?=$size?>
-        </label>
-        <label>
-            <?=$color?>
-        </label>
-        <label>
-            <?=$location?>
-        </label>
-        <label>
-            <?=$user?>
-        </label>
-        <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
+    <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
+        <div class="animal_img_box">
+            <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
+            <div class="animal_text_box">
+                <label>
+                    <?=$name?>
+                </label>
+            </div>
+        </div>
+        
     </a>
     <?php
 }

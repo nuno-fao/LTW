@@ -5,7 +5,9 @@ body {
 header {
     background-color: #252531;
     padding: .8em;
+    width: 100%;
     display: flex;
+    margin: 0 auto;
     flex-direction: row;
     color: white;
 }
@@ -28,6 +30,7 @@ header .button-text {
     display: inline-block;
 }
 
+
 header #login {
     border: #8bc7b5 solid 4px;
     color: #8bc7b5;
@@ -47,10 +50,7 @@ header #title {
     margin: auto 0.3em;
 }
 
-/* header #user {
-    display: none;
-    visibility: hidden;
-} */
+
 
 aside {
     background-color: white;
@@ -181,6 +181,30 @@ input[type=text], input[type=password] {
     cursor: default;
 }
 
-#animal_main_page{
+.animal_main_page{
     border: black solid 2px;
+    margin-right: 2px;
+}
+
+.animal_text_box{
+    border-top: black;
+    border-radius: 1px;
+
+}
+
+
+div.animal_text_box label{
+    height: 20px;
+
+    display: block;
+    text-align: center;
+    background-color: white;
+    
+}
+
+
+
+/*
+.animal_img_box{
+
 }
