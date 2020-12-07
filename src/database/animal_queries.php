@@ -159,3 +159,19 @@ function remove_pet_favourite($user,$pet){
     $stmt = $dbh->prepare('DELETE FROM Favourites WHERE user = ? AND pet = ?;');
     $stmt->execute(array($user,$pet));
 }
+
+
+function get_animal_questions($animal){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT userName, date, questionTxt FROM Questions JOIN Users ON Questions.user = Users.userId WHERE pet = ?');
+    $stmt->execute(array($animal));
+
+    return $stmt->fetchAll();
+}
+
+
+function add_question($petId,$userId,$comment_text,$date){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Questions (questionTxt,pet,date,user) VALUES (?,?,?,?)');
+    $stmt->execute(array($comment_text,$petId,$date,$userId));
+}

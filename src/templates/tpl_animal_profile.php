@@ -38,6 +38,7 @@ function draw_animal_aside($animal){
 
 function draw_animal_profile($animal){
     $photos = get_animal_photos($animal);
+    $questions = get_animal_questions($animal);
     ?>
     <section id="burrrrrrrp">
 
@@ -79,7 +80,34 @@ function draw_animal_profile($animal){
             }
             ?>
         </section>
+    <?php
+    }?>
 
-        <?php
-    }
+    <section id="questions">
+            <?php foreach ($questions as $question){ ?>
+                <article class="question">
+                    <span class="user"><?=$question['userName']?> asked:</span>
+                    <span class="date"><?=date('Y-m-d H:i:s', $question['date']);?></span>
+                    <p><?=$question['questionTxt']?></p>
+                </article>
+            <?php } ?>
+        
+        <?php if(isset($_SESSION['user'])){ 
+                $userID = getUser($_SESSION['user'])['userId'];
+            ?>
+                <script src="js/comments.js" defer></script>
+                <form id="ask_question">
+                    <p>Ask a question...</p>
+                    <textarea name="comment_text"></textarea>
+                    <input type="hidden" name="petId" value="<?=$animal?>">
+                    <input type="hidden" name="userId" value="<?=$userID?>">
+                    <input type="submit" value="submit">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                </form>
+                <span id="comment_submit_message"></span>
+    <?php } ?>
+
+    </section>
+
+    <?php
 }
