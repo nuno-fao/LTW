@@ -43,6 +43,25 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
+function get_specie_id($specie){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
+    $stmt->execute(array($specie));
+    return $stmt->fetchAll()[0]['specieId'];
+}
+function get_color_id($color){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT color from Colors where color=?');
+    $stmt->execute(array($color));
+    return $stmt->fetchAll()[0]['color'];
+}
+
+function get_colors(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT color from Colors ');
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
 
 function get_animal_data($animal){
     global $dbh;
@@ -63,4 +82,82 @@ function get_state_description($state){
     $stmt = $dbh->prepare('SELECT state from PetState where petStetId=?');
     $stmt->execute(array($state));
     return $stmt->fetchAll()[0];
+}
+
+function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic) VALUES(?,?,?,?,?,?,?,?)');
+    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic));
+}
+
+function get_pet($name){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Pets where name=?');
+    $stmt->execute(array($name));
+    return $stmt->fetchAll();
+}
+
+function add_animal_photo_to_db($photo_path,$pet){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Photos(path,pet) VALUES(?,?)');
+    $stmt->execute(array($photo_path,$pet));
+
+    $stmt = $dbh->prepare('SELECT photoid from Photos where path=?');
+    $stmt->execute(array($photo_path));
+    return $stmt->fetchAll()[0]['photoId'];
+}
+
+function change_photo_petid($petId, $photo_id){
+    global $dbh;
+    print_r('UPDATE Photos SET pet = '.$petId.' WHERE photoId = '.$photo_id.';');
+    echo '<br>';
+    $stmt = $dbh->prepare('UPDATE Photos SET pet = ? WHERE photoId = ?;');
+    return $stmt->execute(array($petId,$photo_id));
+}
+
+function change_pet_photo_id($petId, $photo_id){
+    global $dbh;
+    print_r('UPDATE Pets SET profilePic = '.$photo_id.' WHERE petId = '.$petId.';');
+    echo '<br>';
+    $stmt = $dbh->prepare('UPDATE Pets SET profilePic = ? WHERE petId = ?;');
+    return $stmt->execute(array($photo_id,$petId));
+}
+
+function check_pet($pet) {
+    global $dbh;
+
+    $stmt = $dbh->prepare('SELECT * FROM Pets WHERE petId = ?');
+    $stmt->execute(array($pet));
+    $length = count($stmt->fetchAll());
+    return $length>0;
+}
+
+function check_pet_user_association($user,$pet) {
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * FROM Favourites WHERE user = ? AND pet = ?');
+    $stmt->execute(array($user,$pet));
+    $length = count($stmt->fetchAll());
+    return $length>0;
+}
+
+function add_pet_favourite($user,$pet){
+
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+
+    global $dbh;
+    $stmt = $dbh->prepare('Insert into Favourites(user,pet) values (?,?);');
+    $stmt->execute(array($user,$pet));
+}
+
+function remove_pet_favourite($user,$pet){
+
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+
+    global $dbh;
+    $stmt = $dbh->prepare('DELETE FROM Favourites WHERE user = ? AND pet = ?;');
+    $stmt->execute(array($user,$pet));
 }

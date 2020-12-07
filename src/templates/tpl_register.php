@@ -7,9 +7,13 @@ function draw_register(){
                 Register
             </div>
             <div class="login_register_form">
-                <input type="text" placeholder="Username" name="name" required>
+                <input type="text" placeholder="Username" name="user" required>
 
                 <input type="password" placeholder="Password" name="pass" required>
+
+                <input type="email" placeholder="Email Address" name="e_address" required>
+
+                <input type="text" placeholder="Full Name" name="name" required>
 
                 <div id="buttons-section">
                     <button type="submit">Register</button>

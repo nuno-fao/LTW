@@ -13,12 +13,17 @@ function getName(){
     }
 }
 
-function getUser($user){
+function getUser($username){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT userId, Name, EmailAddress from Users Where userName=?');
-    $stmt->execute(array($user));
-    $user = $stmt->fetchAll()[0];
-    return array($user['Name'],$user['EmailAddress'],$user['userId']);
+    $stmt = $dbh->prepare('SELECT * from Users Where userName=?');
+    $stmt->execute(array($username));
+    return  $stmt->fetchAll()[0];
+}
+function getUserByID($userid){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Users Where userId=?');
+    $stmt->execute(array($userid));
+    return  $stmt->fetchAll()[0];
 }
 
 function getPicturePath($user){
@@ -32,6 +37,13 @@ function getUserAnimals($userId){
     global $dbh;
     $stmt = $dbh->prepare('SELECT petId,name,size,color,location from Pets WHERE user=?');
     $stmt->execute(array($userId));
+    return $stmt->fetchAll();
+}
+
+function getUserFavouriteAnimals($username){
+    global $dbh;
+    $stmt = $dbh->prepare('select name,species,size,color,location,state,profilePic,pet,userName,user from Pets inner join (select user as f_user, pet from Favourites where user = ?) on pet = petId inner join (select userName,userId from Users) on userId = user;');
+    $stmt->execute(array($username));
     return $stmt->fetchAll();
 }
 

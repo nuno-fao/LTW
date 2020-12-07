@@ -9,24 +9,38 @@
                 <?=$user?>
             </label>
             <label>
-                <?=$user_info[0]?>
+                <?=$user_info['Name']?>
             </label>
             <label>
-                <?=$user_info[1]?>
+                <?=$user_info['EmailAddress']?>
             </label>
         </aside>
 
+        <div>
+            <label>User Animals</label>
+        </div>
         <section id="user_animals">
             <?php
-            $animals = getUserAnimals($user_info[2]);
+            $animals = getUserAnimals($user_info['userId']);
             foreach ($animals as $animal){
-                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user_info[2]);
+                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user);
             }
             ?>
         </section>
 
+        <br>
+        <div>
+            <label>Favourites</label>
+        </div>
 
-
+        <section id="user_favourite_animals">
+            <?php
+            $animals = getUserFavouriteAnimals($user_info['userName']);
+            foreach ($animals as $animal){
+                draw_animal($animal["pet"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal['userName']);
+            }
+            ?>
+        </section>
         <?php
             
         
