@@ -3,7 +3,6 @@ include_once "database/animal_queries.php";
 include_once "database/user_queries.php";
 session_start();
 
-
 class add_pet_error
 {
     public $safety_error = false;
@@ -54,30 +53,31 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                 $specie = get_specie_id($_POST['species']);
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
-                $name_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['name']);
-                $location_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['location']);
-                $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
-                if(!is_numeric($size_stripped)){
-                    $error->size = true;
+
+                if (!preg_match ("/^[a-zA-Z\s]+$/", $_POST['name'])) {
+                    $error->name = true;
                 }
-                else{
-                    $error_on_query = add_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped, 1, $user, "nill".$user);
+                else {
+                    $name_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['name']);
+                    $location_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['location']);
+                    $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
 
-                    $pet_id = get_last_pet_id($user,$name_stripped);
-                    if($pet_id == -1)
-                    {
-                        print_r("oooo");
-                        $error->query = true;
-                    }
+                    if (!is_numeric($size_stripped)) {
+                        $error->size = true;
+                    } else {
+                        $error_on_query = add_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped, 1, $user, "nill" . $user);
 
-                    else if(!add_animal_photo($pet_id,$main_pic,true)){
-                        $error->main_pic = false;
-                    }
-                    else {
-                        foreach ($_FILES as $file) {
-                            if (add_animal_photo($pet_id, $file, false)) {
-                                $error->other_pics = true;
-                                break;
+                        $pet_id = get_last_pet_id($user, $name_stripped);
+                        if ($pet_id == -1) {
+                            $error->query = true;
+                        } else if (!add_animal_photo($pet_id, $main_pic, true)) {
+                            $error->main_pic = false;
+                        } else {
+                            foreach ($_FILES as $file) {
+                                if (add_animal_photo($pet_id, $file, false)) {
+                                    $error->other_pics = true;
+                                    break;
+                                }
                             }
                         }
                     }
