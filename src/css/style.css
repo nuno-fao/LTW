@@ -2,6 +2,8 @@ body {
     background-color: #bebebe;
 }
 
+/* HEADER */
+
 header {
     background-color: #252531;
     padding: .8em;
@@ -50,6 +52,53 @@ header #title {
     margin: auto 0.3em;
 }
 
+/* HEADER BUTTONS */
+
+.login_register_form button {
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+}
+
+.login_register_form span{
+    font-size: 1.2rem;
+    flex: 1;
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+    text-align: center;
+}
+
+#buttons-section button:first-child{
+    margin-right: 0.5em;
+}
+
+#login_register_outer_box {
+    background-color: #ffffff;
+    padding: 1em;
+}
+
+#login_register_title{
+    font-size: 3rem;
+    color: #323232;
+    margin:  10% auto 15% auto;
+    text-align: center;
+}
+
+.no_link_style{
+    text-decoration: none;
+    background-color: inherit;
+}
+
+.no_link_style:hover{
+    cursor: default;
+}
+
+
+
+/* PET SELECTOR */
 
 
 aside {
@@ -139,46 +188,12 @@ input[type=text], input[type=password] {
     background-color: #e6e6e6;
 }
 
-.login_register_form button {
-    font-size: 1.2rem;
-    flex: 1;
-    border: #ed3a58 solid 4px;
-    border-radius: 10px;
-    background-color: #ed3a58;
-}
+/* PET DISPLAY */
 
-.login_register_form span{
-    font-size: 1.2rem;
-    flex: 1;
-    border: #ed3a58 solid 4px;
-    border-radius: 10px;
-    background-color: #ed3a58;
-    text-align: center;
-}
 
-#buttons-section button:first-child{
-    margin-right: 0.5em;
-}
+.pets_display{
+    width: 100%;
 
-#login_register_outer_box {
-    background-color: #ffffff;
-    padding: 1em;
-}
-
-#login_register_title{
-    font-size: 3rem;
-    color: #323232;
-    margin:  10% auto 15% auto;
-    text-align: center;
-}
-
-.no_link_style{
-    text-decoration: none;
-    background-color: inherit;
-}
-
-.no_link_style:hover{
-    cursor: default;
 }
 
 .animal_main_page{
@@ -192,19 +207,26 @@ input[type=text], input[type=password] {
 
 }
 
+img.animal_image_box{
+    border: 5px solid white;
+    border-radius: 3px;
+}
 
-div.animal_text_box label{
-    height: 20px;
 
+.animal_text_box{
+    font-size: 2em;
+    font-weight: 300;
+    height: 40px;
     display: block;
     text-align: center;
     background-color: white;
     
 }
 
-
-
-/*
-.animal_img_box{
-
+.title_pets_display{
+    color: purple;
+    display: block;
+    text-align: center;
+    font-size: 3em;
+    width: 100%;
 }
