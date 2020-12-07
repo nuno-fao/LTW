@@ -34,7 +34,17 @@ $error = new register_error();
 
 $error->get_error(!isset($USER) || strlen($USER) == 0 , !isset($PASSWORD) || strlen($PASSWORD) < 8 , !isset($EMAIL) || strlen($EMAIL) == 0 , !isset($NAME) || strlen($NAME) == 0);
 
-if ($_SESSION['csrf'] !== $_POST['csrf']) {
+
+if ( !preg_match ("/^[a-zA-Z\s]+$/", $USER)) {
+    $error->user = "invalid_user";
+}
+else if ( !preg_match ("/^[a-zA-Z\s]+$/", $EMAIL)) {
+    $error->email = "invalid_email";
+}
+else if ( !preg_match ("/^[a-zA-Z\s]+$/", $NAME)) {
+    $error->name = "invalid_name";
+}
+else if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error->safety_error = true;
 }
 else if ($error->has_error()) {
@@ -45,7 +55,7 @@ else if (!checkUser($USER)) {
     $_SESSION['user'] = $_POST['user'];
 }
 else {
-    $error->user = true;
+    $error->user = "user_in_use";
 }
 
 echo json_encode($error);
