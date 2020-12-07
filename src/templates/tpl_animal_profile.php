@@ -61,17 +61,19 @@ function draw_animal_profile($animal){
             <?php
             if(!check_pet_user_association($_SESSION['user'],$animal)){
                 ?>
-                <form action="./favourite_action.php" method="POST">
+                <form action="favourite_action.php" method="POST">
                     <input type="hidden" name="petId" value="<?=$animal?>">
                     <input type="submit" value="Add to Favourites">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 </form>
                 <?php
             }
             else{
                 ?>
-                <form action="./favourite_action.php" method="POST">
+                <form action="favourite_action.php" method="POST">
                     <input type="hidden" name="petId" value="<?=$animal?>">
                     <input type="submit" value="Remove from Favourites">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 </form>
                 <?php
             }

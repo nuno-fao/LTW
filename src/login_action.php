@@ -7,15 +7,32 @@ error_reporting(-1);
 
 session_start();
 
+class login_error{
+    public $safety_error = false;
+    public $pass=false;
+    public $user=false;
+}
+
+$error = new login_error();
 include_once "database/db_user.php";
 
-if (!isset($_POST['name']) || !isset($_POST['pass'])) {
-    header('Location: ' . 'login.php');
+if ($_SESSION['csrf'] !== $_POST['csrf']) {
+    $error->safety_error = true;
 }
-if (!checkPassword($_POST['name'], $_POST['pass'])) {
-    header('Location: ' . 'login.php');
+
+else if (!isset($_POST['name'])) {
+    $error->user = true;
+}
+else if(!isset($_POST['pass'])){
+    $error->pass = true;
+}
+else if(!checkUser($_POST['name'])){
+    $error->user = true;
+}
+else if (!checkPassword($_POST['name'], $_POST['pass'])) {
+    $error->pass = true;
 }
 else {
     $_SESSION['user'] = $_POST['name'];
-    header('Location: ' . 'index.php');
 }
+echo json_encode($error);
