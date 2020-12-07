@@ -39,7 +39,7 @@ return String(string).replace(/[&<>"'/]/g, function (s) {
 
 function receiveComments(evt){
     if(this.responseText == 'true'){
-        document.getElementById("comment_submit_message").innerHTML="Error Adding Comment!";
+        document.getElementById("comment_submit_message").innerHTML="Error Adding Question!";
         return false;
     }
     let scoob = JSON.parse(this.responseText);
@@ -70,6 +70,7 @@ function receiveComments(evt){
     parent.insertBefore(newArticle,after);
 
     document.getElementById("comment_submit_message").innerHTML="";
+    document.querySelector("textarea[name='comment_text']").value="";
 
 }
 
