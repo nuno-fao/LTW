@@ -123,11 +123,41 @@ function change_pet_photo_id($petId, $photo_id){
     return $stmt->execute(array($photo_id,$petId));
 }
 
-function check_pet($user) {
+function check_pet($pet) {
     global $dbh;
 
-    $stmt = $dbh->prepare('SELECT * FROM Users WHERE userName = ?');
-    $stmt->execute(array($user));
+    $stmt = $dbh->prepare('SELECT * FROM Pets WHERE petId = ?');
+    $stmt->execute(array($pet));
     $length = count($stmt->fetchAll());
     return $length>0;
+}
+
+function check_pet_user_association($user,$pet) {
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * FROM Favourites WHERE user = ? AND pet = ?');
+    $stmt->execute(array($user,$pet));
+    $length = count($stmt->fetchAll());
+    return $length>0;
+}
+
+function add_pet_favourite($user,$pet){
+
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+
+    global $dbh;
+    $stmt = $dbh->prepare('Insert into Favourites(user,pet) values (?,?);');
+    $stmt->execute(array($user,$pet));
+}
+
+function remove_pet_favourite($user,$pet){
+
+    ini_set('display_startup_errors', 1);
+    ini_set('display_errors', 1);
+    error_reporting(-1);
+
+    global $dbh;
+    $stmt = $dbh->prepare('DELETE FROM Favourites WHERE user = ? AND pet = ?;');
+    $stmt->execute(array($user,$pet));
 }

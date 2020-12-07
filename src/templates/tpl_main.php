@@ -1,5 +1,6 @@
 <?php
 include_once('database/animal_queries.php');
+include_once('database/user_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
@@ -57,7 +58,8 @@ function draw_animal_profiles(){?>
         <?php
         $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
         foreach ($animals_array as $animal){
-            draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+            $user = get_user_by_ID($animal['user']);
+            draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user['userName']);
         }
         ?>
     </div>
@@ -79,6 +81,7 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <?=$location?>
         </label>
         <label>
+            <!--<a href="user.php?user=<?=$user?>"><?=$user?></a>-->
             <?=$user?>
         </label>
         <img src="<?=get_animal_photo($pet_id)?>" width="200" height="200">

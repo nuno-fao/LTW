@@ -9,6 +9,10 @@ if(!isset($_SESSION['user'])){
     draw_header();
     draw_login();
     draw_footer();
+    ?>
+    login: nunation<br>
+    password: 12345678<br>
+    <?php
 }
 else{
     header('Location: ' . 'user.php?user='.$_SESSION['user']);
