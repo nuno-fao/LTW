@@ -46,6 +46,7 @@ function draw_add_pet(){
                 <input type="file" name="picture" id="picture">
                 <input type="hidden" name="submit" value="submit">
                 <input type="submit" value="Add Pet">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             </form>
         </section>
 

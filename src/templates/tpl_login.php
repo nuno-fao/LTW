@@ -16,6 +16,7 @@ function draw_login(){
                     <span><a href="" class="no_link_style">Register</a></span>
                 </div>
             </div>
+            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
         </form>
     </div>
     <?php
