@@ -2,8 +2,6 @@
 include_once('database/animal_queries.php');
 include_once('database/user_queries.php');
 
-session_start();
-
 function draw_animal_aside($animal){
     $animal_data = get_animal_data($animal);
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
