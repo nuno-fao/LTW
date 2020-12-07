@@ -1,5 +1,6 @@
 <?php
 include_once('database/animal_queries.php');
+include_once('database/user_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
@@ -56,15 +57,15 @@ function draw_animal_profiles(){?>
     <div class=pets_display>
         <p class="title_pets_display">Pets available for adoption</p>
         <div id="animal_profiles">
-        <?php
-        $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
-        foreach ($animals_array as $animal){
-            draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
-        }
-        ?>
+            <?php
+            $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
+            foreach ($animals_array as $animal){
+                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+            }
+            ?>
         </div>
     </div>
-    
+
 <?php }
 
 
