@@ -1,5 +1,5 @@
 <?php
-include_once('database/connection.php');
+include_once('../database/connection.php');
 
 function checkUser($user) {
     global $dbh;

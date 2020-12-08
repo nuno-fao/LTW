@@ -1,6 +1,6 @@
 <?php
-include_once "database/animal_queries.php";
-include_once "database/user_queries.php";
+include_once "../database/animal_queries.php";
+include_once "../database/user_queries.php";
 
 session_start();
 
@@ -31,7 +31,7 @@ else if(isset($_SESSION['user']) && isset($_POST['petId']) && isset($_POST['user
         $strip_comment = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['comment_text']);
         add_question($strip_petId,$strip_userId,$strip_comment,$date);
         
-        $name = getUserByID($strip_userId)['userName'];
+        $name = get_user_by_ID($strip_userId)['userName'];
         $error = new comment();
         $error->create_dic($strip_petId,$name,$strip_comment,$date);
     }

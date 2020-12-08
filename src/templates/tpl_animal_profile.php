@@ -1,6 +1,6 @@
 <?php
-include_once('database/animal_queries.php');
-include_once('database/user_queries.php');
+include_once('../database/animal_queries.php');
+include_once('../database/user_queries.php');
 
 function draw_animal_aside($animal){
     $animal_data = get_animal_data($animal);
@@ -58,22 +58,22 @@ function draw_animal_profile($animal){
     <?php
     if(isset($_SESSION['user'])){
         ?>
-        <section id = "favourites">
+        <section  id = "favourites">
             <?php
             if(!check_pet_user_association($_SESSION['user'],$animal)){
                 ?>
-                <form action="favourite_action.php" method="POST">
+                <form action="../actions/favourite_action.php" method="POST"  id = "favourite_form">
                     <input type="hidden" name="petId" value="<?=$animal?>">
-                    <input type="submit" value="Add to Favourites">
+                    <input type="submit" id="fav_button" value="Add to Favourites">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 </form>
                 <?php
             }
             else{
                 ?>
-                <form action="favourite_action.php" method="POST">
+                <form action="../actions/favourite_action.php" method="POST"  id = "favourite_form">
                     <input type="hidden" name="petId" value="<?=$animal?>">
-                    <input type="submit" value="Remove from Favourites">
+                    <input type="submit" id="fav_button" value="Remove from Favourites">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 </form>
                 <?php
@@ -95,7 +95,7 @@ function draw_animal_profile($animal){
         <?php if(isset($_SESSION['user'])){ 
                 $userID = getUser($_SESSION['user'])['userId'];
             ?>
-                <script src="js/comments.js" defer></script>
+                <script src="../js/comments.js" defer></script>
                 <form id="ask_question">
                     <p>Ask a question...</p>
                     <textarea name="comment_text"></textarea>

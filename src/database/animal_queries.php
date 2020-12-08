@@ -1,5 +1,5 @@
 <?php
-include_once('database/connection.php');
+include_once('../database/connection.php');
 
 function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_elem,$length){
     error_reporting(E_ALL);
@@ -43,7 +43,7 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
-function get_specie_id($specie){
+function get_specie_by_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
     $stmt->execute(array($specie));

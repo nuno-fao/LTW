@@ -1,6 +1,6 @@
 <?php
-include_once('database/animal_queries.php');
-include_once('database/user_queries.php');
+include_once('../database/animal_queries.php');
+include_once('../database/user_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
