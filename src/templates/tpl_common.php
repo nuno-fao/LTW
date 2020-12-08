@@ -11,6 +11,7 @@ function draw_head($page_name){
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
 <?php } ?>
@@ -30,14 +31,18 @@ if(isset($_SESSION['user'])){
 else{
     $Bar_code = '
     <section class="login_register">
-        <div id="register" class="button" ><a href="register.php" class="button-text">Register</a></div>
-        <div id="login" class="button"><a href="login.php" class="button-text">Login</a></div>
+        <div id="register" class="button" >
+            <a href="register.php" class="button-text">Sign Up</a>
+        </div>
+        <div id="login" class="button">
+            <a href="login.php" class="button-text">Log In</a>
+        </div>
     </section>
     ';
 }
 ?>
 <header>
-    <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
+    <a id="title" href="../index.php">Projeto Black Dog</a>
     <?=$Bar_code;?>
 </header>
 <div class="body">
