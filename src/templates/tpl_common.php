@@ -21,6 +21,9 @@ function draw_header(){
 getName();
 if(isset($_SESSION['user'])){
     $Bar_code = '
+    <div id= "username">
+        <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
+    </div>
     <section class="login_register">
         <div id="add_pet" class="button" >
             <a href="add_pet.php" class="button-text">Add Pet</a>
@@ -28,6 +31,7 @@ if(isset($_SESSION['user'])){
         <div id="logout" class="button" >
             <a href="../actions/logout_action.php" class="button-text">Logout</a>
         </div>
+        
     </section>
     ';
 }

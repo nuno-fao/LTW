@@ -9,7 +9,7 @@ header {
     flex-direction: row;
     color: white;
     display: grid;
-    grid-template-columns: 1.5fr 1fr;
+    grid-template-columns: 1.5fr 0.5fr 1fr;
 }
 
 header .login_register {
@@ -50,7 +50,7 @@ header #logout {
     color: #EBEBEB;
     border-radius: 10px;
     background-color: #A909AC;
-    width: 42%;
+    width: 45%;
 }
 
 header #register {
@@ -67,6 +67,11 @@ header #add_pet{
     margin: 0;
     border-radius: 10px;
     background-color:  #EBEBEB;
-    margin-left: 12rem;
+    margin-left: 6rem;
+}
+
+header #user{
+    float: right;
+    float: center;
 }
 
