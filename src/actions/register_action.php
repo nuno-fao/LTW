@@ -35,13 +35,13 @@ $error = new register_error();
 $error->get_error(!isset($USER) || strlen($USER) == 0 , !isset($PASSWORD) || strlen($PASSWORD) < 8 , !isset($EMAIL) || strlen($EMAIL) == 0 , !isset($NAME) || strlen($NAME) == 0);
 
 
-if ( !preg_match ("/^[a-zA-Z0-9\s]+$/", $USER)) {
+if ( !preg_match ("/^[a-zA-Z0-9_\s-]+$/", $USER)) {
     $error->user = "invalid_user";
 }
-else if ( !preg_match ("/^[a-zA-Z@.0-9\s]+$/", $EMAIL)) {
+else if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $EMAIL)) {
     $error->email = true;
 }
-else if ( !preg_match ("/^[a-zA-Z\s]+$/", $NAME)) {
+else if ( !preg_match ("/^[a-zA-Z\s-]+$/", $NAME)) {
     $error->name = true;
 }
 else if ($_SESSION['csrf'] !== $_POST['csrf']) {

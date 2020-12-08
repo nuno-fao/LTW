@@ -5,22 +5,24 @@ function draw_user_aside($user){
     ?>
     <aside id="user_profile">
         <img src = "<?=getPicturePath($user)?>" width="200" height="200"/>
-        <label>
+        <label id="user">
             <?=$user?>
         </label>
-        <label>
+        <label id="name">
             <?=$user_info['Name']?>
         </label>
-        <label>
+        <label id="email">
             <?=$user_info['EmailAddress']?>
         </label>
         <?php
         if($_SESSION['user']==$user){
             ?>
+            <script src="../js/user_editing.js" defer></script>
             <button id="edit_user_profile">Edit Profile</button>
             <?php
         }
         ?>
+
     </aside>
 
     <div>

@@ -48,3 +48,10 @@ function get_user_by_ID($userId){
     $stmt->execute(array($userId));
     return $stmt->fetchAll()[0];
 }
+
+function edit_user($user,$name,$email){
+    global $dbh;
+    echo '<br>';
+    $stmt = $dbh->prepare('UPDATE Users SET Name = ?,EmailAddress = ?,userName = ? WHERE userName = ?;');
+    return $stmt->execute(array($name,$email,$user,$_SESSION['user']));
+}

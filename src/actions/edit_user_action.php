@@ -7,15 +7,12 @@ if (!isset($_SESSION['csrf'])) {
     $_SESSION['csrf'] = generate_random_token();
 }
 
-$USER = $_POST['user'];
-$EMAIL = $_POST['e_address'];
-$NAME = $_POST['name'];
-
 class register_error{
     public $user = false;
     public $email = false;
     public $name = false;
     public $safety_error = false;
+    public $c ;
 
     function get_error($user,$email,$name){
         $this->user = $user;
@@ -29,16 +26,19 @@ class register_error{
 
 $error = new register_error();
 
-$error->get_error(!isset($USER) || strlen($USER) == 0 , !isset($PASSWORD) || strlen($PASSWORD) < 8 , !isset($EMAIL) || strlen($EMAIL) == 0 , !isset($NAME) || strlen($NAME) == 0);
+$error->get_error(!isset($_POST['user']) || strlen($_POST['user']) == 0  , !isset($_POST['e_address']) || strlen($_POST['e_address']) == 0 , !isset($_POST['name']) || strlen($_POST['name']) == 0);
 
-
-if ( !preg_match ("/^[a-zA-Z0-9]+$/", $USER)) {
-    $error->user = "invalid_user";
+if(!isset($_SESSION['user'])){
+    $error = true;
 }
-else if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $EMAIL)) {
+else if ( !preg_match ("/^[a-zA-Z0-9_\s-]+$/", $_POST['user'])) {
+    $error->c = $_POST['user'];
+    $error->user = true;
+}
+else if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $_POST['e_address'])) {
     $error->email = true;
 }
-else if ( !preg_match ("/^[a-zA-Z\s-]+$/", $NAME)) {
+else if ( !preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
     $error->name = true;
 }
 else if ($_SESSION['csrf'] !== $_POST['csrf']) {
@@ -47,12 +47,12 @@ else if ($_SESSION['csrf'] !== $_POST['csrf']) {
 else if ($error->has_error()) {
 
 }
-else if (!checkUser($USER)) {
-    edit_user($USER,$EMAIL,$NAME);
+else if (($_POST['user'] == $_SESSION['user'])    ||    ($_POST['user'] != $_SESSION['user'] && checkUser($_POST['user']))) {
+    edit_user($_POST['user'],$_POST['e_address'],$_POST['name']);
     $_SESSION['user'] = $_POST['user'];
 }
 else {
-    $error->user = "user_in_use";
+    $error->user = true;
 }
 
 echo json_encode($error);
