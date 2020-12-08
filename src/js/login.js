@@ -1,7 +1,7 @@
 let form_login = document.querySelector("form[id='login_form']");
-form_login.addEventListener('submit',submitComment);
+form_login.addEventListener('submit',loginRequest);
 
-function submitComment(evt){
+function loginRequest(evt){
     evt.preventDefault();
 
     let _name = escapeHtml(document.querySelector("input[name='name']").value);

@@ -1,7 +1,7 @@
 let form_f = document.querySelector("form[id='favourite_form']");
-form_f.addEventListener('submit',submitComment);
+form_f.addEventListener('submit',toogleFavourite);
 
-function submitComment(evt){
+function toogleFavourite(evt){
     evt.preventDefault();
 
     let _petId = escapeHtml(document.querySelector("input[name='petId']").value);

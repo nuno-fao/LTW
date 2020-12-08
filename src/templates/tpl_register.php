@@ -2,7 +2,7 @@
 function draw_register(){
     ?>
     <div id="login_register_outer_box">
-        <form action="../actions/register_action.php" method="post">
+        <form action="../actions/register_action.php" method="post" id="register_form">
             <div id="login_register_title">
                 Register
             </div>

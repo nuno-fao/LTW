@@ -18,7 +18,7 @@ if(isset($_GET['pet_id']) && check_pet($_GET['pet_id'])) {
     draw_footer();
 }
 else{
-    header('Location: ' . 'index.php');
+    header('Location: ' . '../index.php');
 }
 
 ?>

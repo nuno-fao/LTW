@@ -1,22 +1,24 @@
-let form_login = document.querySelector("form[id='login_form']");
-form_login.addEventListener('submit',submitComment);
+let form_login = document.querySelector("form[id='register_form']");
+form_login.addEventListener('submit',requestRegistry);
 
-function submitComment(evt){
+function requestRegistry(evt){
     evt.preventDefault();
 
+    let _user = escapeHtml(document.querySelector("input[name='user']").value);
+    let _email = escapeHtml(document.querySelector("input[name='e_address']").value);
     let _name = escapeHtml(document.querySelector("input[name='name']").value);
     let _pass = escapeHtml(document.querySelector("input[name='pass']").value);
-    let _csrf = escapeHtml(document.querySelector("input[name='csrf']").value)
+    let _csrf = escapeHtml(document.querySelector("input[name='csrf']").value);
 
     let request = new XMLHttpRequest();
-    request.addEventListener("load",receiveLogin)
-    request.open("post","../actions/login_action.php",true);
+    request.addEventListener("load",receiveRegistry);
+    request.open("post","../actions/register_action.php",true);
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
-    request.send(encodeForAjax({name: _name, pass: _pass, csrf: _csrf}));
+    request.send(encodeForAjax({name: _name, pass: _pass, csrf: _csrf, user: _user, e_address: _email}));
 
 }
 
-function receiveLogin(evt){
+function receiveRegistry(evt){
     if(this.responseText === 'true'){
         return false;
     }
@@ -31,11 +33,29 @@ function receiveLogin(evt){
         document.querySelector("input[name='pass']").placeholder = "Password incorrect";
     }
 
-    if(answer['user']==true){
+    if(answer['user']=="invalid_user"){
+        error = true;
+        document.querySelector("input[name='user']").value = "";
+        document.querySelector("input[name='pass']").value = "";
+        document.querySelector("input[name='user']").placeholder = "User not Valid";
+    }
+    else if(answer['user']=="user_in_use"){
+        error = true;
+        document.querySelector("input[name='user']").value = "";
+        document.querySelector("input[name='pass']").value = "";
+        document.querySelector("input[name='user']").placeholder = "User Name already Registered";
+
+    }
+    if(answer['email']==true){
+        error = true;
+        document.querySelector("input[name='email']").value = "";
+        document.querySelector("input[name='email']").placeholder = "Email not valid";
+    }
+
+    if(answer['name']==true){
         error = true;
         document.querySelector("input[name='name']").value = "";
-        document.querySelector("input[name='pass']").value = "";
-        document.querySelector("input[name='name']").placeholder = "User Incorrect";
+        document.querySelector("input[name='name']").placeholder = "Name Not Valid";
     }
 
     if(answer['safety_error']==true){
