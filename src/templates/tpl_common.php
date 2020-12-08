@@ -12,6 +12,7 @@ function draw_head($page_name){
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/responsive.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/animal.css">
 </head>
 <body>
 <?php } ?>
@@ -21,6 +22,8 @@ function draw_header(){
 getName();
 if(isset($_SESSION['user'])){
     $Bar_code = '
+    <header class="logged_in">
+    <a id="title" href="../index.php">Projeto Black Dog</a>
     <div id= "username">
         <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
     </div>
@@ -33,11 +36,14 @@ if(isset($_SESSION['user'])){
         </div>
         
     </section>
+    </header>
     ';
 }
 else{
     $Bar_code = '
-    <section class="login_register">
+    <header>
+    <a id="title" href="../index.php">Projeto Black Dog</a>
+    <section class="not_logged">
         <div id="register" class="button" >
             <a href="register.php" class="button-text">Sign Up</a>
         </div>
@@ -45,13 +51,11 @@ else{
             <a href="login.php" class="button-text">Log In</a>
         </div>
     </section>
+    </header>
     ';
 }
 ?>
-<header>
-    <a id="title" href="../index.php">Projeto Black Dog</a>
-    <?=$Bar_code;?>
-</header>
+<?=$Bar_code;?>
 <div class="body">
     <?php } ?>
 

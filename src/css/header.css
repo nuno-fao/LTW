@@ -9,6 +9,18 @@ header {
     flex-direction: row;
     color: white;
     display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.logged_in{
+    background-color: #19142C;
+    width: 100%;
+    padding: 1.5em 0;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    color: white;
+    display: grid;
     grid-template-columns: 1.5fr 0.5fr 1fr;
 }
 
@@ -16,6 +28,12 @@ header .login_register {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+
+header .not_logged {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 
 header .button {
     padding: 1em;
