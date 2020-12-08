@@ -17,3 +17,7 @@ function encodeForAjax(data) {
         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
     }).join('&')
 }
+
+function format_time(s) {
+    return new Date(s * 1e3).toISOString().slice(0,-5).replace('T',' ');
+}

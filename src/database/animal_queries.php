@@ -179,8 +179,14 @@ function add_question($petId,$userId,$comment_text,$date){
 
 function show_question_reply($questionId){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT answerId, userName, Questions.date, answerTxt FROM ((Answers JOIN Users ON Answers.author = Users.userId) JOIN Questions ON Questions.questionId = Answers.question) WHERE Questions.questionId = ?');
+    $stmt = $dbh->prepare('SELECT answerId, userName, Questions.date, answerTxt, Answers.question FROM ((Answers JOIN Users ON Answers.author = Users.userId) JOIN Questions ON Questions.questionId = Answers.question) WHERE Questions.questionId = ?');
     $stmt->execute(array($questionId));
 
     return $stmt->fetchAll();
+}
+
+function add_question_reply($answerTxt,$question,$date,$author){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Answers (answerTxt,question,date,author) VALUES (?,?,?,?)');
+    $stmt->execute(array($answerTxt,$question,$date,$author));
 }
