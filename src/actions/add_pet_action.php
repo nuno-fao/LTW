@@ -1,6 +1,6 @@
 <?php
-include_once "database/animal_queries.php";
-include_once "database/user_queries.php";
+include_once "../database/animal_queries.php";
+include_once "../database/user_queries.php";
 session_start();
 
 class add_pet_error
@@ -50,16 +50,16 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
         else{
             $error_on_query = true;
             try {
-                $specie = get_specie_id($_POST['species']);
+                $specie = get_specie_by_id($_POST['species']);
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 
-                if (!preg_match ("/^[a-zA-Z\s]+$/", $_POST['name'])) {
+                if (!preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
                     $error->name = true;
                 }
                 else {
-                    $name_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['name']);
-                    $location_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['location']);
+                    $name_stripped = preg_replace ("/[^a-zA-Z\s-]/", '', $_POST['name']);
+                    $location_stripped = preg_replace ("/[^a-zA-Z\s()-]/", '', $_POST['location']);
                     $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
 
                     if (!is_numeric($size_stripped)) {
@@ -97,7 +97,7 @@ echo json_encode($error);
 function add_animal_photo($pet_id,$picture,$is_main){
     $check = getimagesize($picture["tmp_name"]);
     if ($check !== false) {
-        $file_name = "img/pet_pic" . $pet_id.uniqid();
+        $file_name = "../img/pet_pic" . $pet_id.uniqid();
         if (move_uploaded_file($picture["tmp_name"], $file_name)) {
             $photo_id = add_animal_photo_to_db($file_name, $pet_id);
             if($is_main) {

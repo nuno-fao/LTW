@@ -1,5 +1,5 @@
 <?php
-include_once('database/connection.php');
+include_once('../database/connection.php');
 
 function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_elem,$length){
     error_reporting(E_ALL);
@@ -43,7 +43,7 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
-function get_specie_id($specie){
+function get_specie_by_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
     $stmt->execute(array($specie));
@@ -163,7 +163,7 @@ function remove_pet_favourite($user,$pet){
 
 function get_animal_questions($animal){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT userName, date, questionTxt FROM Questions JOIN Users ON Questions.user = Users.userId WHERE pet = ?');
+    $stmt = $dbh->prepare('SELECT questionId, userName, date, questionTxt FROM Questions JOIN Users ON Questions.user = Users.userId WHERE pet = ?');
     $stmt->execute(array($animal));
 
     return $stmt->fetchAll();
@@ -174,4 +174,19 @@ function add_question($petId,$userId,$comment_text,$date){
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Questions (questionTxt,pet,date,user) VALUES (?,?,?,?)');
     $stmt->execute(array($comment_text,$petId,$date,$userId));
+}
+
+
+function show_question_reply($questionId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT answerId, userName, Questions.date, answerTxt, Answers.question FROM ((Answers JOIN Users ON Answers.author = Users.userId) JOIN Questions ON Questions.questionId = Answers.question) WHERE Questions.questionId = ?');
+    $stmt->execute(array($questionId));
+
+    return $stmt->fetchAll();
+}
+
+function add_question_reply($answerTxt,$question,$date,$author){
+    global $dbh;
+    $stmt = $dbh->prepare('INSERT INTO Answers (answerTxt,question,date,author) VALUES (?,?,?,?)');
+    $stmt->execute(array($answerTxt,$question,$date,$author));
 }

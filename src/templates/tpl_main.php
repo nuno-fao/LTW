@@ -1,6 +1,6 @@
 <?php
-include_once('database/animal_queries.php');
-include_once('database/user_queries.php');
+include_once('../database/animal_queries.php');
+include_once('../database/user_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
@@ -77,6 +77,21 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <img class= "animal_image_box" src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
             <label class="animal_text_box">
                 <?=$name?>
+            </label>
+            <label>
+                <?=$species?>
+            </label>
+            <label>
+                <?=$size?>
+            </label>
+            <label>
+                <?=$color?>
+            </label>
+            <label>
+                <?=$location?>
+            </label>
+            <label>
+                <?=$user?>
             </label>
         </div>
     </a>

@@ -1,5 +1,5 @@
 <?php
-include_once('database/user_queries.php');
+include_once('../database/user_queries.php');
 
 ini_set('display_startup_errors', 1);
 ini_set('display_errors', 1);
@@ -14,9 +14,9 @@ class login_error{
 }
 
 $error = new login_error();
-include_once "database/db_user.php";
+include_once "../database/db_user.php";
 
-if ($_SESSION['csrf'] !== $_POST['csrf']) {
+if (!isset($_POST['csrf']) || $_SESSION['csrf'] !== $_POST['csrf']) {
     $error->safety_error = true;
 }
 

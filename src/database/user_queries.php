@@ -1,5 +1,5 @@
 <?php
-include_once('database/connection.php');
+include_once('../database/connection.php');
 
 function getName(){
     if(isset($_SESSION['user'])){
@@ -17,12 +17,6 @@ function getUser($username){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Users Where userName=?');
     $stmt->execute(array($username));
-    return  $stmt->fetchAll()[0];
-}
-function getUserByID($userid){
-    global $dbh;
-    $stmt = $dbh->prepare('SELECT * from Users Where userId=?');
-    $stmt->execute(array($userid));
     return  $stmt->fetchAll()[0];
 }
 

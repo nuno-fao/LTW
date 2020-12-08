@@ -1,9 +1,9 @@
-let form = document.querySelector("form[id='ask_question']");
-form.addEventListener('submit',submitComment);
+let form_c = document.querySelector("form[id='ask_question']");
+form_c.addEventListener('submit',submitComment);
 
 function submitComment(evt){
     evt.preventDefault();
-    
+
     let _petId = escapeHtml(document.querySelector("input[name='petId']").value);
     let _userId = escapeHtml(document.querySelector("input[name='userId']").value);
     let _comment_text = escapeHtml(document.querySelector("textarea[name='comment_text']").value);
@@ -11,30 +11,10 @@ function submitComment(evt){
 
     let request = new XMLHttpRequest();
     request.addEventListener("load",receiveComments)
-    request.open("post","add_comment_action.php",true);
+    request.open("post","../actions/add_comment_action.php",true);
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     request.send(encodeForAjax({petId: _petId, userId: _userId, comment_text: _comment_text, csrf: _csrf}));
 
-}
-
-function encodeForAjax(data) {
-    return Object.keys(data).map(function(k){
-      return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-    }).join('&')
-}
-
-let entityMap = {
-"&": "&amp;",
-"<": "&lt;",
-">": "&gt;",
-'"': '&quot;',
-"'": '&#39;',
-"/": '&#x2F;'
-};
-function escapeHtml(string) {
-return String(string).replace(/[&<>"'/]/g, function (s) {
-    return entityMap[s];
-});
 }
 
 function receiveComments(evt){
@@ -73,7 +53,3 @@ function receiveComments(evt){
     document.querySelector("textarea[name='comment_text']").value="";
 
 }
-
-function format_time(s) {
-    return new Date(s * 1e3).toISOString().slice(0,-5).replace('T',' ');
-  }

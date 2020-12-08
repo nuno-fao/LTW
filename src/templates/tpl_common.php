@@ -1,5 +1,5 @@
 <?php
-include_once('database/user_queries.php');
+include_once('../database/user_queries.php');
 function draw_head($page_name){
 ?>
     <!DOCTYPE html>
@@ -8,9 +8,9 @@ function draw_head($page_name){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Black Dog- <?=$page_name?></title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/responsive.css">
 </head>
 <body>
 <?php } ?>
@@ -22,7 +22,7 @@ if(isset($_SESSION['user'])){
     $Bar_code = '
     <section class="login_register">
         <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
-        <div id="register" class="button" ><a href="logout_action.php" class="button-text">Logout</a></div>
+        <div id="register" class="button" ><a href="../actions/logout_action.php" class="button-text">Logout</a></div>
         <div id="add_pet" class="button" ><a href="add_pet.php" class="button-text">Add Pet</a></div>
     </section>
     ';
@@ -37,7 +37,7 @@ else{
 }
 ?>
 <header>
-    <a id="title" href="index.php" class="no_link_style">Projeto Black Dog</a>
+    <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
     <?=$Bar_code;?>
 </header>
 <div class="body">

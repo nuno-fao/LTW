@@ -1,16 +1,16 @@
 <?php
-include_once "database/animal_queries.php";
+include_once "../database/animal_queries.php";
 function draw_add_pet(){
     ?>
     <section>
         <section id="pet_main_photo">
-            <img src="img/default_animal_pic.gif"/>
+            <img src="../img/default_animal_pic.gif"/>
             <div id="add_photo">
 
             </div>
         </section>
         <section id="pet_info">
-            <form action="add_pet_action.php"  method="post" enctype="multipart/form-data">
+            <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data">
                 <label>Pet Name:</label><input type="text" name="name">
                 <label for="length">Animal Length(1 to 200 cm):</label>
                 <input type="number" id="size" name="size" min="1" max="200" value="50"> <?//substituir por algo decente com js, css e divs?>
