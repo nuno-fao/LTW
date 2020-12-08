@@ -53,7 +53,3 @@ function receiveComments(evt){
     document.querySelector("textarea[name='comment_text']").value="";
 
 }
-
-function format_time(s) {
-    return new Date(s * 1e3).toISOString().slice(0,-5).replace('T',' ');
-}
