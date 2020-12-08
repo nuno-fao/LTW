@@ -46,6 +46,13 @@ header #login {
     width: 42%;
 }
 
+header #logout {
+    color: #EBEBEB;
+    border-radius: 10px;
+    background-color: #A909AC;
+    width: 42%;
+}
+
 header #register {
     color: #A909AC;
     margin: 0;
@@ -53,5 +60,13 @@ header #register {
     background-color:  #EBEBEB;
     margin-left: 12rem;
     
+}
+
+header #add_pet{
+    color: #A909AC;
+    margin: 0;
+    border-radius: 10px;
+    background-color:  #EBEBEB;
+    margin-left: 12rem;
 }
 

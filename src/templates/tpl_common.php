@@ -22,9 +22,12 @@ getName();
 if(isset($_SESSION['user'])){
     $Bar_code = '
     <section class="login_register">
-        <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
-        <div id="register" class="button" ><a href="../actions/logout_action.php" class="button-text">Logout</a></div>
-        <div id="add_pet" class="button" ><a href="add_pet.php" class="button-text">Add Pet</a></div>
+        <div id="add_pet" class="button" >
+            <a href="add_pet.php" class="button-text">Add Pet</a>
+        </div>
+        <div id="logout" class="button" >
+            <a href="../actions/logout_action.php" class="button-text">Logout</a>
+        </div>
     </section>
     ';
 }
