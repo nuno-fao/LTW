@@ -1,6 +1,10 @@
 <?php
 include_once('../database/connection.php');
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 function getName(){
     if(isset($_SESSION['user'])){
         global $dbh;
@@ -51,7 +55,6 @@ function get_user_by_ID($userId){
 
 function edit_user($user,$name,$email){
     global $dbh;
-    echo '<br>';
     $stmt = $dbh->prepare('UPDATE Users SET Name = ?,EmailAddress = ?,userName = ? WHERE userName = ?;');
-    return $stmt->execute(array($name,$email,$user,$_SESSION['user']));
+    $stmt->execute(array($name,$email,$user,$_SESSION['user']));
 }

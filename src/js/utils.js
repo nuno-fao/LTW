@@ -12,6 +12,12 @@ function escapeHtml(string) {
     });
 }
 
+function remove_spaces(string) {
+    return String(string).replace(/[\s]/g, function (s) {
+        return '';
+    });
+}
+
 function encodeForAjax(data) {
     return Object.keys(data).map(function(k){
         return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])

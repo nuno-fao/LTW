@@ -1,7 +1,7 @@
 <?php
 include_once "../database/db_user.php";
 include_once('../database/user_queries.php');
-include_once("security_functions.php");
+include_once("../pages/security_functions.php");
 session_start();
 if (!isset($_SESSION['csrf'])) {
     $_SESSION['csrf'] = generate_random_token();
@@ -12,7 +12,6 @@ class register_error{
     public $email = false;
     public $name = false;
     public $safety_error = false;
-    public $c ;
 
     function get_error($user,$email,$name){
         $this->user = $user;
@@ -31,24 +30,25 @@ $error->get_error(!isset($_POST['user']) || strlen($_POST['user']) == 0  , !isse
 if(!isset($_SESSION['user'])){
     $error = true;
 }
-else if ( !preg_match ("/^[a-zA-Z0-9_\s-]+$/", $_POST['user'])) {
+if ( !preg_match ("/^[a-zA-Z0-9_-]+$/", $_POST['user'])) {
     $error->c = $_POST['user'];
     $error->user = true;
 }
-else if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $_POST['e_address'])) {
+if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $_POST['e_address'])) {
     $error->email = true;
 }
-else if ( !preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
+if ( !preg_match("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
     $error->name = true;
 }
-else if ($_SESSION['csrf'] !== $_POST['csrf']) {
+if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error->safety_error = true;
+    die(json_encode($error));
 }
-else if ($error->has_error()) {
+if ($error->has_error()) {
 
 }
-else if (($_POST['user'] == $_SESSION['user'])    ||    ($_POST['user'] != $_SESSION['user'] && checkUser($_POST['user']))) {
-    edit_user($_POST['user'],$_POST['e_address'],$_POST['name']);
+else if (($_POST['user'] == $_SESSION['user'])    ||    ($_POST['user'] != $_SESSION['user'] && !checkUser($_POST['user']))) {
+    edit_user($_POST['user'],$_POST['name'],$_POST['e_address']);
     $_SESSION['user'] = $_POST['user'];
 }
 else {

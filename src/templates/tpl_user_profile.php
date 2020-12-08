@@ -15,7 +15,7 @@ function draw_user_aside($user){
             <?=$user_info['EmailAddress']?>
         </label>
         <?php
-        if($_SESSION['user']==$user){
+        if(isset($_SESSION['user']) && $_SESSION['user']==$user){
             ?>
             <script src="../js/user_editing.js" defer></script>
             <button id="edit_user_profile">Edit Profile</button>

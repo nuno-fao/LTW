@@ -59,8 +59,8 @@ function make_change_user_request(evt){
             {
                 name: escapeHtml(new_name.value).trim(),
                 csrf: document.querySelector('input[id="csrf"]').value,
-                user: escapeHtml(new_user.value).trim(),
-                e_address: escapeHtml(new_email.value).trim()
+                user: remove_spaces(escapeHtml(new_user.value).trim()),
+                e_address: remove_spaces(escapeHtml(new_email.value).trim())
             }
         )
     );
@@ -69,7 +69,7 @@ function make_change_user_request(evt){
 
 
 function receive_edition(evt){
-    let answer;
+    let answer = this.responseText;
     if(answer == true){
         alert("Not Logged In");
         return false;
@@ -86,19 +86,49 @@ function receive_edition(evt){
         new_user.style = "color: red";
         error = true;
     }
+    else {
+        new_user.style = "color: black";
+    }
     if(answer['email']==true){
         on_error_animate(new_email);
-        new_user.style = "color: red";
+        new_email.style = "color: red";
         error = true;
+    }
+    else {
+        new_email.style = "color: black";
     }
     if(answer['name']==true){
         on_error_animate(new_name);
-        new_user.style = "color: red";
+        new_name.style = "color: red";
         error = true;
     }
+    else {
+        new_name.style = "color: black";
+    }
     if(!error){
+        if(new_user.value!=remove_spaces(_user.innerHTML)){
+            window.location.replace("user.php?user="+escapeHtml(new_user.value));
+        }
+        else reset_user_info();
 
     }
+}
+
+function reset_user_info(){
+    user_info.removeChild(new_user);
+    user_info.removeChild(new_name);
+    user_info.removeChild(new_email);
+    user_info.removeChild(discard_changes_button);
+    user_info.removeChild(make_changes_button);
+
+    _user.innerHTML=escapeHtml(new_user.value).trim()+" ";
+    _name.innerHTML=escapeHtml(new_name.value).trim()+" ";
+    _email.innerHTML=escapeHtml(new_email.value).trim()+" ";
+    user_info.appendChild(_user);
+    user_info.appendChild(_name);
+    user_info.appendChild(_email);
+    user_info.appendChild(user_edit_button);
+
 }
 
 function discard_changes(evt){
