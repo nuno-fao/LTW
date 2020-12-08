@@ -59,7 +59,7 @@ function draw_animal_profiles(){?>
             <?php
             $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
             foreach ($animals_array as $animal){
-                draw_animal_big($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+                draw_animal_small($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
             }
             ?>
         </div>
