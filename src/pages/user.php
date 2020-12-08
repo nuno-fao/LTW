@@ -10,6 +10,8 @@ if (!isset($_SESSION['csrf'])) {
 }
 
 if(isset($_GET['user']) && checkUser($_GET['user']) ) {
+    echo '<script src="../js/utils.js" defer></script>';
+    echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
     draw_head($_GET['user']." Page");
     draw_header();
     draw_user_aside($_GET['user']);

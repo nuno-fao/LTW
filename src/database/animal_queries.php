@@ -1,6 +1,10 @@
 <?php
 include_once('../database/connection.php');
 
+ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
+error_reporting(-1);
+
 function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_elem,$length){
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
