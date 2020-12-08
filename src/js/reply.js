@@ -99,7 +99,7 @@ function submitReply(evt){
 
 function receiveNewReply(evt){
     try{
-        let scoob = JSON.parse(this.responseText);
+        var scoob = JSON.parse(this.responseText);
     }
     catch(expcetion){
         return;
