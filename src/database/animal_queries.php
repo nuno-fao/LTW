@@ -163,7 +163,7 @@ function remove_pet_favourite($user,$pet){
 
 function get_animal_questions($animal){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT userName, date, questionTxt FROM Questions JOIN Users ON Questions.user = Users.userId WHERE pet = ?');
+    $stmt = $dbh->prepare('SELECT questionId, userName, date, questionTxt FROM Questions JOIN Users ON Questions.user = Users.userId WHERE pet = ?');
     $stmt->execute(array($animal));
 
     return $stmt->fetchAll();
@@ -174,4 +174,13 @@ function add_question($petId,$userId,$comment_text,$date){
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Questions (questionTxt,pet,date,user) VALUES (?,?,?,?)');
     $stmt->execute(array($comment_text,$petId,$date,$userId));
+}
+
+
+function show_question_reply($questionId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT answerId, userName, Questions.date, answerTxt FROM ((Answers JOIN Users ON Answers.author = Users.userId) JOIN Questions ON Questions.questionId = Answers.question) WHERE Questions.questionId = ?');
+    $stmt->execute(array($questionId));
+
+    return $stmt->fetchAll();
 }

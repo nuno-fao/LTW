@@ -78,6 +78,21 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <label class="animal_text_box">
                 <?=$name?>
             </label>
+            <label>
+                <?=$species?>
+            </label>
+            <label>
+                <?=$size?>
+            </label>
+            <label>
+                <?=$color?>
+            </label>
+            <label>
+                <?=$location?>
+            </label>
+            <label>
+                <?=$user?>
+            </label>
         </div>
     </a>
     <?php
