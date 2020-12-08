@@ -28,7 +28,7 @@ else if(isset($_SESSION['user']) && isset($_POST['petId']) && isset($_POST['user
         $date = time();
         $strip_petId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['petId']);
         $strip_userId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['userId']);
-        $strip_comment = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['comment_text']);
+        $strip_comment = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['comment_text']);
         add_question($strip_petId,$strip_userId,$strip_comment,$date);
         
         $name = get_user_by_ID($strip_userId)['userName'];

@@ -54,12 +54,12 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 
-                if (!preg_match ("/^[a-zA-Z\s]+$/", $_POST['name'])) {
+                if (!preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
                     $error->name = true;
                 }
                 else {
-                    $name_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['name']);
-                    $location_stripped = preg_replace ("/[^a-zA-Z\s]/", '', $_POST['location']);
+                    $name_stripped = preg_replace ("/[^a-zA-Z\s-]/", '', $_POST['name']);
+                    $location_stripped = preg_replace ("/[^a-zA-Z\s()-]/", '', $_POST['location']);
                     $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
 
                     if (!is_numeric($size_stripped)) {
