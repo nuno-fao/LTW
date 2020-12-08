@@ -10,10 +10,10 @@ class reply{
 }
 $error=false;
 if(isset($_POST['questionId']) && strlen($_POST['questionId']>=1)){
-    $replies = show_question_reply($_POST['questionId']);
-
+    $strip_Id = preg_replace("/[^0-9]/", '', $_POST['questionId']);
+    $replies = show_question_reply($strip_Id);
     $error = new reply();
-    $error->create_dic($replies,$_POST['questionId']);
+    $error->create_dic($replies,$strip_Id);
 }
 else{
     $error=true;

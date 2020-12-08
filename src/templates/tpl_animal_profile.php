@@ -85,14 +85,13 @@ function draw_animal_profile($animal){
 
     <section id="questions">
             <?php foreach ($questions as $question){ ?>
-                <article class="question" id="<?=$question['questionId']?>">
+                <article class="question" id="question_id_<?=$question['questionId']?>">
                     <!-- <span class="question_id"><?=$question['questionId']?></span> -->
                     <span class="user"><?=$question['userName']?> asked:</span>
                     <span class="date"><?=date('Y-m-d H:i:s', $question['date']);?></span>
                     <p><?=$question['questionTxt']?></p>
-                    <button id="show_reply_button" onclick="show_reply(<?=$question['questionId']?>)">Show Replies...</button>
+                    <button id="show_reply_button" onclick="show_reply(<?=$question['questionId']?>)">Replies...</button>
                 </article>
-                <script src="../js/reply.js" defer></script>
             <?php } ?>
         
         <?php if(isset($_SESSION['user'])){ 
