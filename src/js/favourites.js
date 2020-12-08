@@ -1,5 +1,7 @@
 let form_f = document.querySelector("form[id='favourite_form']");
-form_f.addEventListener('submit',toogleFavourite);
+if(form_f!==null){
+    form_f.addEventListener('submit',toogleFavourite);
+}
 
 function toogleFavourite(evt){
     evt.preventDefault();
