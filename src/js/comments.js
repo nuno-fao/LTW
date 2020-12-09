@@ -22,7 +22,7 @@ function receiveComments(evt){
         document.getElementById("comment_submit_message").innerHTML="Error Adding Question!";
         return false;
     }
-    let scoob = JSON.parse(this.responseText);
+    let parsed_response = JSON.parse(this.responseText);
     let newArticle = document.createElement("article");
     newArticle.className="question";
 
@@ -30,18 +30,18 @@ function receiveComments(evt){
 
     newspan = document.createElement("span");
     newspan.className="user";
-    newCont = document.createTextNode(escapeHtml(scoob['userName'] + ' asked: '));
+    newCont = document.createTextNode(escapeHtml(parsed_response['userName'] + ' asked: '));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 
     newspan = document.createElement("span");
     newspan.className="date";
-    newCont = document.createTextNode(escapeHtml(format_time(scoob['date'])));
+    newCont = document.createTextNode(escapeHtml(format_time(parsed_response['date'])));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 
     newspan = document.createElement("p");
-    newCont = document.createTextNode(escapeHtml(scoob['comment_txt']));
+    newCont = document.createTextNode(escapeHtml(parsed_response['comment_txt']));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 

@@ -15,14 +15,16 @@ class add_pet_error
     public $color = false;
     public $location = false;
     public $query = false;
+    public $gender = false;
 
-    function add_error($name,$size,$date,$species,$color,$location){
+    function add_error($name,$size,$date,$species,$color,$location,$gender){
         $this->name = !$name;
         $this->size = !$size;
         $this->date = !$date;
         $this->species = !$species;
         $this->color = !$color;
         $this->location = !$location;
+        $this->gender = !$gender;
     }
     function has_error(){
         return $this->name || $this->size || $this->date || $this->species || $this->color || $this->location;
@@ -34,15 +36,13 @@ $error = new add_pet_error();
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error->safety_error = true;
 }
-
 else if(count($_FILES)==0){
     $error->main_pic = true;
 }
 else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
     $user = 0;
-    $error->add_error(strlen($_POST['name'])>0,strlen($_POST['size'] ) > 0 ,strlen($_POST['dateofbirth']) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0);
+    $error->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['dateofbirth']) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
     if(!$error->has_error()){
-        print_r($error->size);
         $main_pic = get_animal_profile_pic();
         if($main_pic['name'] == null){
             $error->main_pic = true;
@@ -54,18 +54,29 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 
-                if (!preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
+                if (strlen($_POST['name'])>0 && !preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
                     $error->name = true;
                 }
                 else {
                     $name_stripped = preg_replace ("/[^a-zA-Z\s-]/", '', $_POST['name']);
                     $location_stripped = preg_replace ("/[^a-zA-Z\s()-]/", '', $_POST['location']);
                     $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
+                    $gender = null;
+                    if($_POST['gender']=='female'){
+                        $gender = 'f';
+                    }
+                    elseif ($_POST['gender'] == male){
+                        $gender = 'm';
+                    }
+                    else{
+                        echo json_encode($error);
+                        die();
+                    }
 
                     if (!is_numeric($size_stripped)) {
                         $error->size = true;
                     } else {
-                        $error_on_query = add_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped, 1, $user, "nill" . $user);
+                        $error_on_query = add_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped, 1, $user, "nill" . $user,$gender);
 
                         $pet_id = get_last_pet_id($user, $name_stripped);
                         if ($pet_id == -1) {
@@ -87,9 +98,6 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                 $error->query = true;
             }
         }
-    }
-    else{
-        $error->main_pic = true;
     }
 }
 echo json_encode($error);
@@ -113,7 +121,6 @@ function add_animal_photo($pet_id,$picture,$is_main){
 
 function get_last_pet_id($user,$pet){
     $pets = get_pet($pet);
-    print_r($pets);
     foreach ($pets as $Pet) {
         echo '<br>';
         if ($Pet['user'] == $user && $Pet['profilePic'] == "nill".$user) {

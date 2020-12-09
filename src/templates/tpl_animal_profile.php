@@ -40,8 +40,7 @@ function draw_animal_profile($animal){
     $photos = get_animal_photos($animal);
     $questions = get_animal_questions($animal);
     ?>
-    <section id="burrrrrrrp">
-
+    <section id="animal_main_section">
         <section id="gallery">
             <?php
             foreach($photos as $photo){

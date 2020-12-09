@@ -88,10 +88,10 @@ function get_state_description($state){
     return $stmt->fetchAll()[0];
 }
 
-function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic){
+function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic,$gender){
     global $dbh;
-    $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic) VALUES(?,?,?,?,?,?,?,?)');
-    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic));
+    $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic,gender) VALUES(?,?,?,?,?,?,?,?,?)');
+    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic,$gender));
 }
 
 function get_pet($name){

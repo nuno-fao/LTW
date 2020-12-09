@@ -11,10 +11,10 @@ function receive_reply(evt){
         //document.getElementById("comment_submit_message").innerHTML="Error Adding Question!";
         return false;
     }
-    let scoob = JSON.parse(this.responseText);
-    let question = document.getElementById("question_id_"+scoob['questionId']);
+    let parsed_response = JSON.parse(this.responseText);
+    let question = document.getElementById("question_id_"+parsed_response['questionId']);
     question.removeChild(question.lastElementChild);
-    if(scoob['replies'].length <= 0){
+    if(parsed_response['replies'].length <= 0){
         //there are no replies
         let newp, newCont;
         newp = document.createElement("p");
@@ -24,26 +24,26 @@ function receive_reply(evt){
     }
     else{
         
-        let scoobAux=scoob['replies'];
-        //console.log(scoobAux);
-        for(let reply in scoobAux){
+        let replies_aux=parsed_response['replies'];
+        //console.log(replies_aux);
+        for(let reply in replies_aux){
             let newspan, newCont;
 
             newspan = document.createElement("span");
             newspan.className="reply_user";
-            newCont = document.createTextNode(escapeHtml(scoobAux[reply]['userName'] + ' replied: '));
+            newCont = document.createTextNode(escapeHtml(replies_aux[reply]['userName'] + ' replied: '));
             newspan.appendChild(newCont);
             question.appendChild(newspan);
 
             newspan = document.createElement("span");
             newspan.className="reply_date";
-            newCont = document.createTextNode(escapeHtml(format_time(scoobAux[reply]['date'])));
+            newCont = document.createTextNode(escapeHtml(format_time(replies_aux[reply]['date'])));
             newspan.appendChild(newCont);
             question.appendChild(newspan);
 
             newspan = document.createElement("p");
             newspan.className="reply_text";
-            newCont = document.createTextNode(escapeHtml(scoobAux[reply]['answerTxt']));
+            newCont = document.createTextNode(escapeHtml(replies_aux[reply]['answerTxt']));
             newspan.appendChild(newCont);
             question.appendChild(newspan);
         }
@@ -51,7 +51,7 @@ function receive_reply(evt){
 
     let newform = document.createElement("form");
     newform.class="replyform";
-    newform.id=scoob['questionId'];
+    newform.id=parsed_response['questionId'];
 
     let newChild = document.createElement("p");
     let newCont = document.createTextNode("Send A Reply");
@@ -65,7 +65,7 @@ function receive_reply(evt){
     newChild = document.createElement("input");
     newChild.type="hidden";
     newChild.name="questionId";
-    newChild.value=""+scoob['questionId']+"";
+    newChild.value=""+parsed_response['questionId']+"";
     newform.appendChild(newChild);
 
     newChild = document.createElement("input");
@@ -78,7 +78,7 @@ function receive_reply(evt){
     question.appendChild(newform);
 
 
-    let form_r = document.querySelector("form[id='"+scoob['questionId']+"']");
+    let form_r = document.querySelector("form[id='"+parsed_response['questionId']+"']");
     form_r.addEventListener('submit',submitReply);
 
 }
@@ -98,42 +98,43 @@ function submitReply(evt){
 }
 
 function receiveNewReply(evt){
+    let parsed_reply;
     try{
-        var scoob = JSON.parse(this.responseText);
+        parsed_reply = JSON.parse(this.responseText);
     }
     catch(expcetion){
         return;
     }
 
-    let textarea = document.querySelector("form[id='"+scoob['questionId']+"'] textarea[name='reply_text']");
+    let textarea = document.querySelector("form[id='"+parsed_reply['questionId']+"'] textarea[name='reply_text']");
     textarea.value="";
 
-    if(scoob['error'] == true){
+    if(parsed_reply['error'] == true){
         textarea.placeholder="You must be logged in...";
         return false;
     }
 
     
-    let question = document.getElementById("question_id_"+scoob['questionId']);
-    let form_r = document.querySelector("form[id='"+scoob['questionId']+"']");
+    let question = document.getElementById("question_id_"+parsed_reply['questionId']);
+    let form_r = document.querySelector("form[id='"+parsed_reply['questionId']+"']");
 
     let newspan, newCont;
 
     newspan = document.createElement("span");
     newspan.className="reply_user";
-    newCont = document.createTextNode(escapeHtml(scoob['userName'] + ' replied: '));
+    newCont = document.createTextNode(escapeHtml(parsed_reply['userName'] + ' replied: '));
     newspan.appendChild(newCont);
     question.insertBefore(newspan,form_r);
 
     newspan = document.createElement("span");
     newspan.className="reply_date";
-    newCont = document.createTextNode(escapeHtml(format_time(scoob['date'])));
+    newCont = document.createTextNode(escapeHtml(format_time(parsed_reply['date'])));
     newspan.appendChild(newCont);
     question.insertBefore(newspan,form_r);
 
     newspan = document.createElement("p");
     newspan.className="reply_text";
-    newCont = document.createTextNode(escapeHtml(scoob['reply_txt']));
+    newCont = document.createTextNode(escapeHtml(parsed_reply['reply_txt']));
     newspan.appendChild(newCont);
     question.insertBefore(newspan,form_r);
 
