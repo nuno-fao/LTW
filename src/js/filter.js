@@ -87,6 +87,7 @@ function filter_results(evt){
 }
 
 function add_pet_profile(parent,petId,name,species,size,color,location,user,path){
+    
     let newa=create_element("a",null,"animal_main_page",null,null);
     newa.href="animal_profile.php?pet_id="+petId;
 
@@ -118,6 +119,8 @@ function add_pet_profile(parent,petId,name,species,size,color,location,user,path
 
     newa.appendChild(newdiv);
 
+    newdiv.rel="stylesheet"
+    newdiv.hred="../css/style.css";
     parent.appendChild(newa);
 
 }

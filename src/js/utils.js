@@ -33,7 +33,7 @@ function create_element(h_tag,h_id,h_class,h_value,h_innerHtml){
     if(h_id != null)
         doc.id = h_id;
     if(h_class != null)
-        doc.class = h_class;
+        doc.className = h_class;
     if(h_value != null)
         doc.value = h_value;
     if(h_innerHtml != null)
