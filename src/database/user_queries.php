@@ -58,3 +58,17 @@ function edit_user($user,$name,$email){
     $stmt = $dbh->prepare('UPDATE Users SET Name = ?,EmailAddress = ?,userName = ? WHERE userName = ?;');
     $stmt->execute(array($name,$email,$user,$_SESSION['user']));
 }
+
+function get_proposals($userId, $petId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Proposals Where user=? and pet=?');
+    $stmt->execute(array($userId,$petId));
+    return $stmt->fetchAll()[0];
+}
+
+function get_proposals_for_pet($petId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Proposals Where pet=?');
+    $stmt->execute(array($petId));
+    return $stmt->fetchAll()[0];
+}

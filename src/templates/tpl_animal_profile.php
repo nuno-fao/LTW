@@ -38,7 +38,6 @@ function draw_animal_aside($animal){
 
 function draw_animal_profile($animal){
     $photos = get_animal_photos($animal);
-    $questions = get_animal_questions($animal);
     ?>
     <section id="animal_main_section">
         <section id="gallery">
@@ -79,36 +78,49 @@ function draw_animal_profile($animal){
             }
             ?>
         </section>
-    <?php
-    }?>
+        <?php
+    }
+}
 
+function draw_animal_comments($animal){
+    $questions = get_animal_questions($animal);
+    ?>
     <section id="questions">
-            <?php foreach ($questions as $question){ ?>
-                <article class="question" id="question_id_<?=$question['questionId']?>">
-                    <!-- <span class="question_id"><?=$question['questionId']?></span> -->
-                    <span class="user"><?=$question['userName']?> asked:</span>
-                    <span class="date"><?=date('Y-m-d H:i:s', $question['date']);?></span>
-                    <p><?=$question['questionTxt']?></p>
-                    <button id="show_reply_button" onclick="show_reply(<?=$question['questionId']?>)">Replies...</button>
-                </article>
-            <?php } ?>
-        
-        <?php if(isset($_SESSION['user'])){ 
-                $userID = getUser($_SESSION['user'])['userId'];
+        <?php foreach ($questions as $question){ ?>
+            <article class="question" id="question_id_<?=$question['questionId']?>">
+                <!-- <span class="question_id"><?=$question['questionId']?></span> -->
+                <span class="user"><?=$question['userName']?> asked:</span>
+                <span class="date"><?=date('Y-m-d H:i:s', $question['date']);?></span>
+                <p><?=$question['questionTxt']?></p>
+                <button id="show_reply_button" onclick="show_reply(<?=$question['questionId']?>)">Replies...</button>
+            </article>
+        <?php } ?>
+
+        <?php if(isset($_SESSION['user'])){
+            $userID = getUser($_SESSION['user'])['userId'];
             ?>
-                <script src="../js/comments.js" defer></script>
-                <form id="ask_question">
-                    <p>Ask a question...</p>
-                    <textarea name="comment_text"></textarea>
-                    <input type="hidden" name="petId" value="<?=$animal?>">
-                    <input type="hidden" name="userId" value="<?=$userID?>">
-                    <input type="submit" value="submit">
-                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                </form>
-                <span id="comment_submit_message"></span>
-    <?php } ?>
+            <script src="../js/comments.js" defer></script>
+            <form id="ask_question">
+                <p>Ask a question...</p>
+                <textarea name="comment_text"></textarea>
+                <input type="hidden" name="petId" value="<?=$animal?>">
+                <input type="hidden" name="userId" value="<?=$userID?>">
+                <input type="submit" value="submit">
+                <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+            </form>
+            <span id="comment_submit_message"></span>
+        <?php } ?>
 
     </section>
-
     <?php
+}
+
+function draw_proposals($user,$animal){
+    $proposals = null;
+    if($user == null){
+        $proposals = get_proposals_for_pet($animal);
+    }
+    else{
+        $proposals = get_proposals($user,$animal);
+    }
 }
