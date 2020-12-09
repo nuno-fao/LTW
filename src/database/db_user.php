@@ -15,7 +15,9 @@ function checkPassword($user,$password) {
     $stmt = $dbh->prepare('SELECT userName,password FROM Users WHERE userName = ?');
     $stmt->execute(array($user));
     $result = $stmt->fetchAll();
-    return password_verify($password,$result[0]['password']);
+    if(count($result)>0)
+        return password_verify($password,$result[0]['password']);
+    else return false;
 }
 
 function addUser($user,$password,$email,$name){
