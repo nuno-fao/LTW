@@ -63,6 +63,15 @@ else{
     function draw_footer(){?>
 </div>
 <footer>
+    <div class="footer">
+        <div class="text">
+            <p>Projeto Black Dog</p>
+        </div>
+        <div class="text">
+            <p>2020</p>
+        </div>
+        
+    </div>
 </footer>
 </body>
 </html>
