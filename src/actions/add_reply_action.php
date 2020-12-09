@@ -16,7 +16,7 @@ class reply{
     }
 }
 
-$error = new reply();
+$error = new add_pet_reply();
 
 if(isset($_SESSION['user']) && isset($_POST['questionId']) && isset($_POST['reply_text'])){
     if(strlen($_POST['questionId'])<=0 || strlen($_POST['reply_text']) <=0 || strlen($_SESSION['user'])<=0){

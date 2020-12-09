@@ -113,14 +113,12 @@ function add_animal_photo_to_db($photo_path,$pet){
 
 function change_photo_petid($petId, $photo_id){
     global $dbh;
-    echo '<br>';
     $stmt = $dbh->prepare('UPDATE Photos SET pet = ? WHERE photoId = ?;');
     return $stmt->execute(array($petId,$photo_id));
 }
 
 function change_pet_photo_id($petId, $photo_id){
     global $dbh;
-    echo '<br>';
     $stmt = $dbh->prepare('UPDATE Pets SET profilePic = ? WHERE petId = ?;');
     return $stmt->execute(array($photo_id,$petId));
 }
