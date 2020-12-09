@@ -102,20 +102,20 @@ function add_pet_profile(parent,petId,name,species,size,color,location,user,path
     newaux=create_element("label",null,"animal_text_box",null,name);
     newdiv.appendChild(newaux);
 
-    newaux=create_element("label",null,"animal_text_box",null,species);
+    // newaux=create_element("label",null,null,null,species);
+    // newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,null,null,size);
     newdiv.appendChild(newaux);
 
-    newaux=create_element("label",null,"animal_text_box",null,size);
+    newaux=create_element("label",null,null,null,color);
     newdiv.appendChild(newaux);
 
-    newaux=create_element("label",null,"animal_text_box",null,color);
+    newaux=create_element("label",null,null,null,location);
     newdiv.appendChild(newaux);
 
-    newaux=create_element("label",null,"animal_text_box",null,location);
-    newdiv.appendChild(newaux);
-
-    newaux=create_element("label",null,"animal_text_box",null,user);
-    newdiv.appendChild(newaux);
+    // newaux=create_element("label",null,null,null,user);
+    // newdiv.appendChild(newaux);
 
     newa.appendChild(newdiv);
 

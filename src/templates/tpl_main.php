@@ -161,9 +161,6 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             <label>
                 <?=$location?>
             </label>
-            <label>
-                <?=$user?>
-            </label>
         </div>
     </a>
     <?php
