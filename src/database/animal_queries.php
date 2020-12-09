@@ -36,7 +36,7 @@ function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_el
 
 function getAllAnimals(){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT * FROM Pets');
+    $stmt = $dbh->prepare('SELECT petId,Pets.name,size,color,location,PetState.state,path,gender, Species.specie, Users.userName FROM Pets JOIN Users ON Pets.user=Users.userId JOIN Species ON Pets.species = Species.specieId JOIN PetState ON Pets.state = PetState.petStetId JOIN Photos ON Pets.profilePic=Photos.photoId');
     $stmt->execute();
     return $stmt->fetchAll();
 }

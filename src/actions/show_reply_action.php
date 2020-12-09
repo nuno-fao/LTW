@@ -19,4 +19,4 @@ else{
     $error=true;
 }
 
-print_r( $error);
+echo json_encode($error);

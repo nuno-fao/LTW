@@ -1,11 +1,19 @@
-function apply_filter(){
-    let name = escapeHtml(document.querySelector('input.textInput#Name[id="Name"]').value);
-    let location = escapeHtml(document.querySelector('input.textInput#Location[id="Location"]').value);
-    let min =  escapeHtml(document.querySelector('input.intInput#MinSize[id="MinSize"]').value);
-    let max =  escapeHtml(document.querySelector('input.intInput#MaxSize[id="MaxSize"]').value);
+let name = null;
+let loc = null;
+let min = null;
+let max = null;
+let gender = null;
+let tags = null;
 
-    
-    let gender = document.querySelector('input[type=radio]:checked').id;
+function apply_filter(){
+    name = escapeHtml(document.querySelector('input.textInput#Name[id="Name"]').value).toLowerCase();
+    loc = escapeHtml(document.querySelector('input.textInput#Location[id="Location"]').value).toLowerCase();
+    min =  escapeHtml(document.querySelector('input.intInput#MinSize[id="MinSize"]').value);
+    max =  escapeHtml(document.querySelector('input.intInput#MaxSize[id="MaxSize"]').value);
+
+    if(name=="") name=null;
+    if(loc=="") loc=null;
+    gender = document.querySelector('input[type=radio]:checked').id;
     if(gender=="all"){
         gender=null;
     }
@@ -13,7 +21,7 @@ function apply_filter(){
         gender=gender[0];
     }
 
-    let tags = []
+    tags = []
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
     for (let i = 0; i < checkboxes.length; i++) {
         tags.push(checkboxes[i].name)
@@ -41,7 +49,7 @@ function apply_filter(){
     } 
 
     let request = new XMLHttpRequest();
-    request.addEventListener("load",function (){filter_results(name,location,min,max,tags,gender)});
+    request.addEventListener("load",filter_results);
     request.open("post","../actions/filter_action.php",true);
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     request.send();
@@ -49,11 +57,98 @@ function apply_filter(){
 }
 
 
-function filter_results(name,location,min,max,tags,gender){
-    console.log("ARGUMENTOS",name,location,min,max,tags,gender);
-    console.log(this.responseText);
+function filter_results(evt){
+    //console.log("ARGUMENTOS",name,loc,min,max,tags,gender);
     let parsed_response = JSON.parse(this.responseText);
-    console.log("DB",parsed_response);
+    //console.log("DB",parsed_response);
 
+    let match = [];
+    for(let i in parsed_response){
+        let animal = parsed_response[i];
+        if(matches_filter(animal)){
+            match.push(animal);
+        }
+    }
 
+    if(match.length==0){
+        alert("No animals match your search criteria.");
+    }
+    else{
+        let parent = document.getElementById("animal_profiles");
+        while (parent.firstChild) {
+            parent.firstChild.remove();
+        }
+        for(let i in match){
+            let animal=match[i];
+            add_pet_profile(parent,animal["petId"],animal["name"],animal["specie"],animal["size"],animal["color"],animal["location"],animal["userName"],animal["path"]);
+        }
+    }
+
+}
+
+function add_pet_profile(parent,petId,name,species,size,color,location,user,path){
+    let newa=create_element("a",null,"animal_main_page",null,null);
+    newa.href="animal_profile.php?pet_id="+petId;
+
+    let newdiv=create_element("div",null,"animal_img_box",null,null);
+
+    let newaux=create_element("div",null,"animal_image_box",null,null);
+    newaux.src=path;
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,name);
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,species);
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,size);
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,color);
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,location);
+    newdiv.appendChild(newaux);
+
+    newaux=create_element("label",null,"animal_text_box",null,user);
+    newdiv.appendChild(newaux);
+
+    newa.appendChild(newdiv);
+
+    parent.appendChild(newa);
+
+}
+
+function matches_filter(animal){
+
+    if(name!=null){
+        if(! animal["name"].toLowerCase().includes(name)){
+            return false;
+        }
+    }
+    if(loc!=null){
+        if(! animal["location"].toLowerCase().includes(loc)){
+            console.log("loc");
+            return false;
+        }
+    }
+    let size = parseFloat(animal["size"]);
+    if(size<min){
+        console.log("min");
+        return false;
+    }
+    if(max!=null && size>max){
+        console.log("max");
+        return false;
+    }
+    if(gender!=null && gender!=animal["gender"]){
+        console.log("gender");
+        return false;
+    }
+    if(!tags.includes(animal["specie"]) || !tags.includes(animal["color"]) || !tags.includes(animal["state"])){
+        console.log("specie color");
+        return false;
+    }
+    return true;
 }

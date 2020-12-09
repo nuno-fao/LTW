@@ -20,4 +20,4 @@ $error = getAllAnimals();
 // else{
 //     $error = true;
 // }
-echo json_encode($error, JSON_FORCE_OBJECT);
+echo json_encode($error);
