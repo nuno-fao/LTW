@@ -54,3 +54,8 @@ function on_error_animate(node){
         iterations: 1
     });
 }
+
+function dropdown(ID) {
+    document.getElementById(ID).classList.toggle("show_dropdown");
+  }
+  

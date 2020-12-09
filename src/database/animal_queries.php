@@ -47,6 +47,14 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
+
+function get_states(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT state from PetState ');
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
 function get_specie_by_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');

@@ -121,10 +121,11 @@ ul.no_bullet li {
 }
 
 .multipleSelector,
-.radioSelector {
+.radioSelector,
+.textInput,
+.intRange {
     padding: 1em;
     margin: 0;
-    border-bottom: black;
 }
 
 #filterTag {
@@ -132,9 +133,18 @@ ul.no_bullet li {
     color: #ffffdc;
     padding: 1em;
 }
+#filterTag button{
+    float: right;
+}
+
+button.dropdown_button{
+    float: right;
+}
 
 div.multipleSelector,
-div.radioSelector {
+div.radioSelector, 
+div.textInput,
+div.intRange {
     border-bottom: 2px solid black;
 }
 
@@ -145,6 +155,20 @@ div.radioSelector {
 
 .radioSelector span {
     border-radius: 50%;
+}
+.textInput input.textInput{
+    padding: 0.5em;
+}
+
+.intRange div{
+    margin: 0.3em;
+}
+.intRange input[type="number"]{
+    width: 4em;
+    margin: 0.3em;
+}
+.dropdown_content{
+    display: none;
 }
 
 .multipleSelector label span,
@@ -230,7 +254,6 @@ img.animal_image_box{
     width: 100%;
 }
 
-
-/* article.question span.question_id{
-    display: none;
-} */
+.show_dropdown {
+    display: block;
+}
