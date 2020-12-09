@@ -110,7 +110,6 @@ function receive_edition(evt){
             window.location.replace("user.php?user="+escapeHtml(new_user.value));
         }
         else reset_user_info();
-
     }
 }
 

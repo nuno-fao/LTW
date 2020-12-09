@@ -33,6 +33,7 @@ else if (!checkPassword($_POST['name'], $_POST['pass'])) {
     $error->pass = true;
 }
 else {
+    session_regenerate_id(true);
     $_SESSION['user'] = $_POST['name'];
 }
 echo json_encode($error);
