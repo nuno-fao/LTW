@@ -34,6 +34,13 @@ function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_el
     return $stmt->fetchAll();
 }
 
+function getAllAnimals(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * FROM Pets');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 function get_animal_photo($petId){
     global $dbh;
     $stmt = $dbh->prepare('SELECT path from Photos join Pets on Photos.photoId = Pets.profilePic where pet = ? ORDER BY path DESC');
