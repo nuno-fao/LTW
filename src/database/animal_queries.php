@@ -34,6 +34,13 @@ function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_el
     return $stmt->fetchAll();
 }
 
+function getAllAnimals(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT petId,Pets.name,size,color,location,PetState.state,path,gender, Species.specie, Users.userName FROM Pets JOIN Users ON Pets.user=Users.userId JOIN Species ON Pets.species = Species.specieId JOIN PetState ON Pets.state = PetState.petStetId JOIN Photos ON Pets.profilePic=Photos.photoId');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 function get_animal_photo($petId){
     global $dbh;
     $stmt = $dbh->prepare('SELECT path from Photos join Pets on Photos.photoId = Pets.profilePic where pet = ? ORDER BY path DESC');
@@ -47,6 +54,14 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
+
+function get_states(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT state from PetState ');
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
 function get_specie_by_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
