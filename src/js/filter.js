@@ -92,7 +92,9 @@ function add_pet_profile(parent,petId,name,species,size,color,location,user,path
 
     let newdiv=create_element("div",null,"animal_img_box",null,null);
 
-    let newaux=create_element("div",null,"animal_image_box",null,null);
+    let newaux=create_element("img",null,"animal_image_box",null,null);
+    newaux.width="200";
+    newaux.height="200";
     newaux.src=path;
     newdiv.appendChild(newaux);
 
