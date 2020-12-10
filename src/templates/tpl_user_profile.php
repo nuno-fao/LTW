@@ -32,7 +32,7 @@ function draw_user_aside($user){
         <?php
         $animals = getUserAnimals($user_info['userId']);
         foreach ($animals as $animal){
-            draw_animal_small($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user);
+            draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$user);
         }
         ?>
     </section>
@@ -46,7 +46,7 @@ function draw_user_aside($user){
         <?php
         $animals = getUserFavouriteAnimals($user_info['userName']);
         foreach ($animals as $animal){
-            draw_animal_small($animal["pet"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal['userName']);
+            draw_animal($animal["pet"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal['userName']);
         }
         ?>
     </section>

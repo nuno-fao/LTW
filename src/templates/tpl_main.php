@@ -36,7 +36,7 @@ function draw_aside(){?>
                 </div>
             </div>
             <div class="multipleSelector">
-                <p class="radiotext">Species</p>
+                <label>Species</label>
                 <div>
                     <?php
                     $species = get_species();
@@ -96,7 +96,7 @@ function draw_aside(){?>
                 </div>
             </div>
             <div class="radioSelector">
-                <p class="radiotext">Gender</p>
+                <label>Gender</label>
                 <div>
                     <label>
                         <input type="radio" id="male" name="gender" value="male">
@@ -118,8 +118,6 @@ function draw_aside(){?>
                     </label>
                 </div>
             </div>
-            <div class="white-box">
-            </div>
         </div>
     </aside>
 <?php } ?>
@@ -127,11 +125,12 @@ function draw_aside(){?>
 <?php
 function draw_animal_profiles(){?>
     <div class=pets_display>
+        <p class="title_pets_display">Pets available for adoption</p>
         <div id="animal_profiles">
             <?php
             $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
             foreach ($animals_array as $animal){
-                draw_animal_small($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
             }
             ?>
         </div>
@@ -141,44 +140,26 @@ function draw_animal_profiles(){?>
 
 
 
-function draw_animal_small($pet_id,$name,$species,$size,$color,$location,$state,$user){
+function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
     ?>
     <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
-        <div class="small_animal_box">
+        <div class="animal_img_box">
             <img class= "animal_image_box" src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
             <label class="animal_text_box">
                 <?=$name?>
             </label>
-        </div>
-    </a>
-    <?php
-}
-
-function draw_animal_big($pet_id,$name,$species,$size,$color,$location,$state,$user){
-    ?>
-    <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
-        <div class="small_animal_box">
-            <img class= "animal_image_box" src="<?=get_animal_photo($pet_id)?>" width="200" height="200">
-            <label class="animal_text_box">
-                <?=$name?>
-            </label>
-            <div>
-            <label class="details">
+            <label>
                 <?=$species?>
             </label>
-            <label class="details">
+            <label>
                 <?=$size?>
             </label>
-            <label class="details">
+            <label>
                 <?=$color?>
             </label>
-            <label class="details">
+            <label>
                 <?=$location?>
             </label>
-            <label class="details">
-                <?=$user?>
-            </label>
-            </div>
         </div>
     </a>
     <?php

@@ -1,48 +1,83 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap%27');
-
 body {
-    background-color: #ebebeb;
-    font-family: 'Raleway';
+    background-color: #bebebe;
 }
 
-a.link{
-    color: inherit;
+/* HEADER */
+
+header {
+    background-color: #252531;
+    padding: .8em;
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    color: white;
+}
+
+header .login_register {
+    display: inline;
+    margin: auto 2em auto auto;
+}
+
+header .button {
+    padding: 1em;
+    margin-left: 1em;
+    border-radius: 10px;
+}
+
+header .button-text {
+    margin: auto;
+    width: 7em;
+    text-align: center;
+    display: inline-block;
 }
 
 
-/* LOGIN BUTTONS */
+header #login {
+    border: #8bc7b5 solid 4px;
+    color: #8bc7b5;
+    border-radius: 10px;
+    background-color: #fdfefe;
+}
+
+header #register {
+    border: #ed3a58 solid 4px;
+    border-radius: 10px;
+    background-color: #ed3a58;
+}
+
+header #title {
+    font-family: "Ubuntu Thin", sans-serif;
+    font-size: 3em;
+    margin: auto 0.3em;
+}
+
+/* HEADER BUTTONS */
 
 .login_register_form button {
     font-size: 1.2rem;
     flex: 1;
-    border: #A909AC solid 4px;
+    border: #ed3a58 solid 4px;
     border-radius: 10px;
-    background-color: #A909AC;
+    background-color: #ed3a58;
 }
 
 .login_register_form span{
     font-size: 1.2rem;
     flex: 1;
-    border: #A909AC solid 4px;
+    border: #ed3a58 solid 4px;
     border-radius: 10px;
-    background-color: #A909AC;
+    background-color: #ed3a58;
     text-align: center;
 }
 
-#buttons-section button{
-    color: #EBEBEB;
+#buttons-section button:first-child{
     margin-right: 0.5em;
-    font-family: 'Raleway';
-}
-
-#buttons-section .register{
-    color: #EBEBEB;
 }
 
 #login_register_outer_box {
     background-color: #ffffff;
     padding: 1em;
-    border-radius: 15px;
 }
 
 #login_register_title{
@@ -81,36 +116,22 @@ ul.no_bullet li {
 }
 
 #filterElement {
-    display: flex;
-    flex-direction: column;
     padding: 0;
     margin: 0;
 }
-
-
 
 .multipleSelector,
 .radioSelector,
 .textInput,
 .intRange {
     padding: 1em;
-    padding-left: 1.5em;
     margin: 0;
 }
 
-.radiotext{
-    padding: 0;
-    font-size: 1.1em;
-    margin: 1px;
-    color: #A909AC;
-}
-
 #filterTag {
-    background-color: #FFFFFF;
-    color: #A909AC;
-    font-size: 1.2em;
+    background-color: #232323;
+    color: #ffffdc;
     padding: 1em;
-    border-bottom: 2px solid black;
 }
 #filterTag button{
     float: right;
@@ -211,13 +232,38 @@ input[type=text], input[type=password] {
     background-color: #e6e6e6;
 }
 
+/* PET DISPLAY */
 
 
-.white-box{
+.pets_display{
+    width: 100%;
+
+}
+
+.animal_main_page{
+    margin-right: 2px;
+}
+
+.animal_text_box{
+    border-top: black;
+    border-radius: 1px;
+
+}
+
+img.animal_image_box{
+    border: 5px solid white;
+    border-radius: 3px;
+}
+
+
+.animal_text_box{
+    font-size: 2em;
+    font-weight: 300;
+    height: 40px;
+    display: block;
+    text-align: center;
     background-color: white;
-    min-height: 100px;
-    flex-grow: 1;
-    bottom: 0;
+    
 }
 
 .title_pets_display{
@@ -231,4 +277,3 @@ input[type=text], input[type=password] {
 .show_dropdown {
     display: block;
 }
-
