@@ -66,14 +66,14 @@ header #login {
     color: #EBEBEB;
     border-radius: 10px;
     background-color: #A909AC;
-    width: 42%;
+    margin-right: 10em;
 }
 
 header #logout {
     color: #EBEBEB;
     border-radius: 10px;
     background-color: #A909AC;
-    width: 45%;
+    margin-right: 10em;
 }
 
 header #register {
@@ -108,6 +108,7 @@ header #user{
     left: 0;
     display: flex;
     flex-direction: row;
+    margin-top: 0;
 }
 
 .footer .text{

@@ -7,7 +7,7 @@ function draw_aside(){?>
         <div id="filterTag">Filter</div>
         <div class="no_bullet" id="filterElement">
             <div class="multipleSelector">
-                Species
+                <p class="radiotext">Species</p>
                 <div>
                     <?php
                     $species = get_species();
@@ -26,7 +26,7 @@ function draw_aside(){?>
                 </div>
             </div>
             <div class="radioSelector">
-                Gender
+                <p class="radiotext">Gender</p>
                 <div>
                     <label>
                         <input type="radio" id="male" name="gender" value="male">
@@ -47,6 +47,8 @@ function draw_aside(){?>
                         <br>
                     </label>
                 </div>
+            </div>
+            <div class="white-box">
             </div>
         </div>
     </aside>

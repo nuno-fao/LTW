@@ -68,6 +68,8 @@ ul.no_bullet li {
 }
 
 #filterElement {
+    display: flex;
+    flex-direction: column;
     padding: 0;
     margin: 0;
 }
@@ -79,10 +81,19 @@ ul.no_bullet li {
     border-bottom: black;
 }
 
+.radiotext{
+    padding: 0;
+    font-size: 1.1em;
+    margin: 1px;
+    color: #A909AC;
+}
+
 #filterTag {
-    background-color: #232323;
-    color: #ffffdc;
+    background-color: #FFFFFF;
+    color: #A909AC;
+    font-size: 1.2em;
     padding: 1em;
+    border-bottom: 2px solid black;
 }
 
 div.multipleSelector,
@@ -138,4 +149,13 @@ input[type=text], input[type=password] {
     border: 1px solid #ccc;
     box-sizing: border-box;
     background-color: #e6e6e6;
+}
+
+
+
+.white-box{
+    background-color: white;
+    min-height: 100px;
+    flex-grow: 1;
+    bottom: 0;
 }
