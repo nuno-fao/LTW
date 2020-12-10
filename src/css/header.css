@@ -58,6 +58,7 @@ header #title{
     font-size: 3em;
     margin: auto 0.3em;
     font-weight: bold;
+    padding-left: 0.5em;
 
 }
 
@@ -70,10 +71,15 @@ header #login {
 }
 
 header #logout {
-    color: #EBEBEB;
     border-radius: 10px;
     background-color: #A909AC;
     margin-right: 10em;
+}
+
+#login a,
+#logout a{
+    color: #EBEBEB;
+    font-weight: 600;
 }
 
 header #register {
@@ -85,6 +91,11 @@ header #register {
     
 }
 
+#register a{
+    color: #A909AC;
+    font-weight: 600;
+}
+
 header #add_pet{
     color: #A909AC;
     margin: 0;
@@ -93,9 +104,20 @@ header #add_pet{
     margin-left: 6rem;
 }
 
+#add_pet a{
+    color: #A909AC;
+    font-weight: 600;
+}
+
+header #username{
+    text-align: right;
+    vertical-align: middle;
+    padding: 1em;
+    text-decoration: none;
+}
+
 header #user{
-    float: right;
-    float: center;
+    color: white;
 }
 
 /* FOOTER */

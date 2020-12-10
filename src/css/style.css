@@ -3,6 +3,10 @@ body {
     font-family: 'Raleway';
 }
 
+a.link{
+    color: inherit;
+}
+
 
 /* LOGIN BUTTONS */
 
