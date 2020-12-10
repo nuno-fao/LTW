@@ -9,17 +9,17 @@ body {
 .login_register_form button {
     font-size: 1.2rem;
     flex: 1;
-    border: #ed3a58 solid 4px;
+    border: #A909AC solid 4px;
     border-radius: 10px;
-    background-color: #ed3a58;
+    background-color: #A909AC;
 }
 
 .login_register_form span{
     font-size: 1.2rem;
     flex: 1;
-    border: #ed3a58 solid 4px;
+    border: #A909AC solid 4px;
     border-radius: 10px;
-    background-color: #ed3a58;
+    background-color: #A909AC;
     text-align: center;
 }
 
