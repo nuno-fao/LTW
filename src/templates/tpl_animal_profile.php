@@ -89,10 +89,49 @@ function draw_animal_comments($animal){
         <?php foreach ($questions as $question){ ?>
             <article class="question" id="question_id_<?=$question['questionId']?>">
                 <!-- <span class="question_id"><?=$question['questionId']?></span> -->
-                <span class="user"><?=$question['userName']?> asked:</span>
+                <a id="author" href="user.php?user=<?=$question['userName']?>">
+                    <?=$question['userName']?> asked:
+                </a>
                 <span class="date"><?=date('Y-m-d H:i:s', $question['date']);?></span>
                 <p><?=$question['questionTxt']?></p>
-                <button id="show_reply_button" onclick="show_reply(<?=$question['questionId']?>)">Replies...</button>
+                <div class="drop_down">
+                    <button onclick="dropdown('replies_dropdown_<?=$question['questionId']?>')" class="dropdown_button">Show Replies</button>
+                </div>
+                <div id="replies_dropdown_<?=$question['questionId']?>" class="dropdown_content">
+                    <?php
+                    $replies = show_question_reply($question['questionId']);
+                    if($replies){
+                        foreach ($replies as $reply){?>
+                            <div class="reply">
+                                <a id="author" href="user.php?user=<?=$reply['userName']?>">
+                                    <?=$reply['userName']?> replied:
+                                </a>
+                                <span class="date"><?=date('Y-m-d H:i:s', $reply['date']);?></span>
+                                <p><?=$reply['answerTxt']?></p>
+                            <div>
+                            <?php
+                        }
+                    }
+                    else{ ?>
+                        <p>There are no replies to this question yet</p>
+                    <?php
+                    }
+
+                    if(isset($_SESSION['user'])){
+                        $userID = getUser($_SESSION['user'])['userId'];
+                        ?>
+                        <div id="reply_<?=$question['questionId']?>" class="reply_area">
+                            <p>Send a reply...</p>
+                            <textarea name="reply_text"></textarea>
+                            <input type="hidden" name="userId" value="<?=$userID?>">
+                            <input type="hidden" name="questionId" value="<?=$question['questionId']?>">
+                            <input type="submit" value="submit" onclick="submitReply('reply_<?=$question['questionId']?>')">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                        </div>
+                    <?php }
+                    ?>
+            </div>
+                
             </article>
         <?php } ?>
 
@@ -108,7 +147,6 @@ function draw_animal_comments($animal){
                 <input type="submit" value="submit">
                 <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
             </form>
-            <span id="comment_submit_message"></span>
         <?php } ?>
 
     </section>
