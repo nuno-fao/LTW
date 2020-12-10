@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap%27');
+
 body {
     background-color: #ebebeb;
     font-family: 'Raleway';
@@ -27,13 +29,20 @@ a.link{
     text-align: center;
 }
 
-#buttons-section button:first-child{
+#buttons-section button{
+    color: #EBEBEB;
     margin-right: 0.5em;
+    font-family: 'Raleway';
+}
+
+#buttons-section .register{
+    color: #EBEBEB;
 }
 
 #login_register_outer_box {
     background-color: #ffffff;
     padding: 1em;
+    border-radius: 15px;
 }
 
 #login_register_title{
@@ -78,9 +87,12 @@ ul.no_bullet li {
     margin: 0;
 }
 
+
+
 .multipleSelector,
 .radioSelector {
     padding: 1em;
+    padding-left: 1.5em;
     margin: 0;
     border-bottom: black;
 }
