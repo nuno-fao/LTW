@@ -6,7 +6,7 @@ function draw_aside(){?>
     <aside id="filter">
         <div id="filterTag">
             Filter
-            <button type="button" onclick="apply_filter()">Apply</button> 
+            <button type="button" onclick="apply_filter()">Apply</button>
         </div>
         <div class="no_bullet" id="filterElement">
             <div class="textInput">
@@ -58,8 +58,10 @@ function draw_aside(){?>
                 </div>
             </div>
             <div class="multipleSelector">
-                <label>Colors</label>
-                <button onclick="dropdown('colors_dropdown')" class="dropdown_button">Show</button>
+                <div class="drop_down">
+                    <label class="drop_down">Colors</label>
+                    <button onclick="dropdown('colors_dropdown')" class="dropdown_button">Show</button>
+                </div>
                 <div id="colors_dropdown" class="dropdown_content">
                     <?php
                     $colors = get_colors();

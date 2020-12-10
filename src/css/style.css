@@ -158,6 +158,7 @@ div.intRange {
 }
 .textInput input.textInput{
     padding: 0.5em;
+    width: 100%;
 }
 
 .intRange div{
@@ -169,6 +170,14 @@ div.intRange {
 }
 .dropdown_content{
     display: none;
+}
+
+div.drop_down{
+    display: flex;
+}
+
+label.drop_down{
+    margin: auto auto auto 0;
 }
 
 .multipleSelector label span,
