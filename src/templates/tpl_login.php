@@ -13,7 +13,7 @@ function draw_login(){
 
                 <div id="buttons-section">
                     <button type="submit">Login</button>
-                    <span><a href="" class="no_link_style">Register</a></span>
+                    <span><a href="" class="register">Register</a></span>
                 </div>
             </div>
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">

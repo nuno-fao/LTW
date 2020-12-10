@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap%27');
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+header {
+    background-color: #19142C;
+    width: 100%;
+    padding: 1.5em 0;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    color: white;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.logged_in{
+    background-color: #19142C;
+    width: 100%;
+    padding: 1.5em 0;
+    display: flex;
+    margin: 0 auto;
+    flex-direction: row;
+    color: white;
+    display: grid;
+    grid-template-columns: 1.5fr 0.5fr 1fr;
+}
+
+header .login_register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+header .not_logged {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+header .button {
+    padding: 1em;
+    margin-left: 1em;
+    border-radius: 10px;
+}
+
+header .button-text {
+    margin: auto;
+    width: 7em;
+    text-align: center;
+    display: inline-block;
+}
+
+header #title{
+    color: #A909AC;
+    font-size: 3em;
+    margin: auto 0.3em;
+    font-weight: bold;
+    padding-left: 0.5em;
+
+}
+
+
+header #login {
+    color: #EBEBEB;
+    border-radius: 10px;
+    background-color: #A909AC;
+    margin-right: 10em;
+}
+
+header #logout {
+    border-radius: 10px;
+    background-color: #A909AC;
+    margin-right: 10em;
+}
+
+#login a,
+#logout a{
+    color: #EBEBEB;
+    font-weight: 600;
+}
+
+header #register {
+    color: #A909AC;
+    margin: 0;
+    border-radius: 10px;
+    background-color:  #EBEBEB;
+    margin-left: 12rem;
+    
+}
+
+#register a{
+    color: #A909AC;
+    font-weight: 600;
+}
+
+header #add_pet{
+    color: #A909AC;
+    margin: 0;
+    border-radius: 10px;
+    background-color:  #EBEBEB;
+    margin-left: 6rem;
+}
+
+#add_pet a{
+    color: #A909AC;
+    font-weight: 600;
+}
+
+header #username{
+    text-align: right;
+    vertical-align: middle;
+    padding: 1em;
+    text-decoration: none;
+}
+
+header #user{
+    color: white;
+}
+
+/* FOOTER */
+
+.footer{
+    background-color: #19142C;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0;
+}
+
+.footer .text{
+    color: #A909AC;
+    margin: 10px;
+    margin-left: 5%;
+    font-weight: 550;
+}

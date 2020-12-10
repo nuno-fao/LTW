@@ -11,6 +11,8 @@ function draw_head($page_name){
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/layout.css">
     <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/animal.css">
 </head>
 <body>
 <?php } ?>
@@ -20,26 +22,40 @@ function draw_header(){
 getName();
 if(isset($_SESSION['user'])){
     $Bar_code = '
-    <section class="login_register">
+    <header class="logged_in">
+    <a id="title" href="../index.php">Projeto Black Dog</a>
+    <div id= "username">
         <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
-        <div id="register" class="button" ><a href="../actions/logout_action.php" class="button-text">Logout</a></div>
-        <div id="add_pet" class="button" ><a href="add_pet.php" class="button-text">Add Pet</a></div>
+    </div>
+    <section class="login_register">
+        <div id="add_pet" class="button" >
+            <a href="add_pet.php" class="button-text">Add Pet</a>
+        </div>
+        <div id="logout" class="button" >
+            <a href="../actions/logout_action.php" class="button-text">Logout</a>
+        </div>
+        
     </section>
+    </header>
     ';
 }
 else{
     $Bar_code = '
-    <section class="login_register">
-        <div id="register" class="button" ><a href="register.php" class="button-text">Register</a></div>
-        <div id="login" class="button"><a href="login.php" class="button-text">Login</a></div>
+    <header>
+    <a id="title" href="../index.php">Projeto Black Dog</a>
+    <section class="not_logged">
+        <div id="register" class="button" >
+            <a href="register.php" class="button-text">Sign Up</a>
+        </div>
+        <div id="login" class="button">
+            <a href="login.php" class="button-text">Log In</a>
+        </div>
     </section>
+    </header>
     ';
 }
 ?>
-<header>
-    <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
-    <?=$Bar_code;?>
-</header>
+<?=$Bar_code;?>
 <div class="body">
     <?php } ?>
 
@@ -47,6 +63,15 @@ else{
     function draw_footer(){?>
 </div>
 <footer>
+    <div class="footer">
+        <div class="text">
+            <p>Projeto Black Dog</p>
+        </div>
+        <div class="text">
+            <p>2020</p>
+        </div>
+        
+    </div>
 </footer>
 </body>
 </html>
