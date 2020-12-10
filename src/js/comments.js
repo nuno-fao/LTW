@@ -19,7 +19,7 @@ function submitComment(evt){
 
 function receiveComments(evt){
     if(this.responseText == 'true'){
-        document.getElementById("comment_submit_message").innerHTML="Error Adding Question!";
+        alert("Error Adding Question!");
         return false;
     }
     let parsed_response = JSON.parse(this.responseText);
@@ -28,8 +28,9 @@ function receiveComments(evt){
 
     let newspan, newCont;
 
-    newspan = document.createElement("span");
-    newspan.className="user";
+    newspan = document.createElement("a");
+    newspan.id="author";
+    newspan.href="user.php?user="+parsed_response['userName'];
     newCont = document.createTextNode(escapeHtml(parsed_response['userName'] + ' asked: '));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
