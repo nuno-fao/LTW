@@ -132,9 +132,15 @@ ul.no_bullet li {
     background-color: #232323;
     color: #ffffdc;
     padding: 1em;
+    display: flex;
 }
 #filterTag button{
     float: right;
+    margin: auto 0 auto auto;
+}
+
+#filterTag label{
+    margin: auto auto auto 0;
 }
 
 button.dropdown_button{
@@ -277,3 +283,5 @@ img.animal_image_box{
 .show_dropdown {
     display: block;
 }
+
+

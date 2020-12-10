@@ -5,7 +5,9 @@ function draw_aside(){?>
 
     <aside id="filter">
         <div id="filterTag">
-            Filter
+            <label>
+                Filter
+            </label>
             <button type="button" onclick="apply_filter()">Apply</button>
         </div>
         <div class="no_bullet" id="filterElement">
