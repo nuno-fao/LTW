@@ -20,7 +20,7 @@ $error = new reply();
 
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error->questionId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['questionId']);
-    $error = true;
+    $error->error = true;
 }
 else if(isset($_SESSION['user']) && isset($_POST['questionId']) && isset($_POST['text']) && isset($_POST['userId'])){
     if(strlen($_POST['questionId'])<=0 || strlen($_POST['text']) <=0 || strlen($_POST['userId']) <=0 || strlen($_SESSION['user'])<=0){
@@ -31,7 +31,7 @@ else if(isset($_SESSION['user']) && isset($_POST['questionId']) && isset($_POST[
         $strip_questionId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['questionId']);
         $strip_reply_text = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['text']);
 
-        $userId = $_POST['userId'];
+        $userId = getUser($_SESSION['user'])['userId'];
 
         add_question_reply($strip_reply_text,$strip_questionId,$date,$userId);
         

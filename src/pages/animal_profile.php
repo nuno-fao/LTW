@@ -22,11 +22,12 @@ if(isset($_GET['pet_id']) && check_pet($_GET['pet_id'])) {
 
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
 
-    if($user_name == $_SESSION['user']){
-        draw_proposals(null,$animal_data['petId']);
-    }
-    else{
-        draw_proposals($_SESSION['user'],$animal_data['petId']);
+    if(isset($_SESSION['user'])) {
+        if ($user_name == $_SESSION['user']) {
+            draw_proposals(null, $animal_data['petId']);
+        } else {
+            draw_proposals($_SESSION['user'], $animal_data['petId']);
+        }
     }
 
     draw_footer();
