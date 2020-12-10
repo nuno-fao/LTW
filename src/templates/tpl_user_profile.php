@@ -50,6 +50,16 @@ function draw_user_aside($user){
         }
         ?>
     </section>
+    <section id="user_proposals">
+        <?php
+        $user = getUser($_SESSION['user']);
+        $proposals = get_proposals_for_user($user['userId']);
+        foreach ($proposals as $proposal){
+            $pet = get_animal_data($proposal['pet']);
+            draw_proposal($_SESSION['user'],$pet['name'],$proposal['text'],$proposal['state']);
+        }
+        ?>
+    </section>
     <?php
 
 

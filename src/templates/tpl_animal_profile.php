@@ -157,8 +157,75 @@ function draw_proposals($user,$animal){
     $proposals = null;
     if($user == null){
         $proposals = get_proposals_for_pet($animal);
+        if($proposals!=null){
+            echo '<script src="../js/add_proposal_reply.js" defer></script>';
+            echo "<section>";
+            foreach ($proposals as $proposal){
+                $user = get_user_by_ID($proposal['user']);
+                $pet = get_animal_data($proposal['pet']);
+                ?>
+                <div class="proposal">
+                    <input type="hidden" name="csrf" value=<?=$_SESSION['user']?>>
+                    <input type="hidden" name="proposal_id" value=<?=$proposal['proposalId']?>>
+                    <input type="hidden" name="pet_id" value=<?=$pet['petId']?>>
+                    <label id="proposal-user"><?=$user['userName']?></label>
+                    <label id="proposal-pet"><?=$pet['name']?></label>
+                    <label id="proposal-text"><?=$proposal['text']?></label>
+                    <label id="proposal_state"><?php
+                        switch($proposal['state']){
+                            case 0:
+                                echo "For Review";
+                                break;
+                            case 1:
+                                echo "Accepted";
+                                break;
+                            case 2:
+                                echo "Denied";
+                                break;
+                        }
+                        ?>
+                    </label>
+                    <?php
+                    if($proposal['state']==0){
+                        echo "    <button id='accept_button'>Accept Proposal</button>
+                                  <button id='deny_button'>Deny Proposal</button>";
+                    }
+                    elseif ($proposal['state']==1){
+                        echo "<button id='deny_button'>Deny Proposal</button>";
+                    }
+                    elseif ($proposal['state']==2){
+                        echo "<button id='accept_button'>Accept Proposal</button>";
+                    }
+                    ?>
+                </div>
+                <?php
+            }
+            echo "</section>";
+        }
     }
     else{
-        $proposals = get_proposals($user,$animal);
+        $user_data = getUser($user);
+        $proposals = get_proposals($user_data['userId'],$animal);
+        if($proposals!=null){
+            echo "<section>";
+            foreach ($proposals as $proposal){
+                $pet = get_animal_data($proposal['pet']);
+                draw_proposal($user_data['userName'],$pet['name'],$proposal['text'],$proposal['state']);
+            }?>
+            <div id="add_proposal">
+                <label>Add A proposal</label>
+                <form id="proposal_form" action="../actions/add_proposal_action.php" method="post">
+                    <label for="proposal-text">Proposal Text:</label>
+                    <textarea id="proposal-text" name="proposal_text" rows="4" cols="50"></textarea>
+                    <br><br>
+                    <input type="submit" value="Submit">
+                    <input type="hidden" name="csrf" value=<?=$_SESSION['csrf']?>>
+                    <input type="hidden" name="pet_id" value=<?=$animal?>>
+                </form>
+            </div>
+            </section>
+            <?php
+        }
+
     }
 }

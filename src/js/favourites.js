@@ -11,7 +11,7 @@ function toogleFavourite(evt){
 
     let request = new XMLHttpRequest();
     request.addEventListener("load",receiveFavourite)
-    request.open("post","../actions/favourite_action.php",true);
+    request.open("post","../actions/add_proposal_reply_action",true);
     request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
     request.send(encodeForAjax({petId: _petId, csrf: _csrf}));
 
