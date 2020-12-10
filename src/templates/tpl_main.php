@@ -30,12 +30,9 @@ function draw_aside(){?>
             <div class="intRange">
                 <label>Size (cm)</label>
                 <div>
-                    <label>
-                        <label>Min   <input type="number" class="intInput" id="MinSize" name="MinSize" min="0"></label>
-                        <br>
-                        <label>Max   <input type="number" class="intInput" id="MaxSize" name="MaxSize" min="1"></label>
-                        <br>
-                    </label>
+                    <label class="range_container"><label class="intInput">Min</label><input type="number" class="intInput" id="MinSize" name="MinSize" min="0" max="200" value="1"></label>
+                    <span style="height: 10px; display: block"></span>
+                    <label class="range_container"><label class="intInput">Max</label><input type="number" class="intInput" id="MaxSize" name="MaxSize" min="1" max="200" value="200"></label>
                 </div>
             </div>
             <div class="multipleSelector">

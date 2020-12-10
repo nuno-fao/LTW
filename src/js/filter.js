@@ -5,6 +5,23 @@ let max = null;
 let gender = null;
 let tags = null;
 
+let minV = 1;
+let maxV = 200;
+
+let minR = document.querySelector('input[id="MinSize"]');
+let maxR = document.querySelector('input[id="MaxSize"]');
+minR.addEventListener("change",setMin);
+maxR.addEventListener("change",setMax);
+
+function setMin(evt){
+    console.log(evt.target.value,maxR.value);
+    maxR.min = escapeHtml(evt.target.value);
+}
+function setMax(evt){
+    console.log(evt.target.value,minR.value);
+    minR.max = escapeHtml(evt.target.value);
+}
+
 function apply_filter(){
     name = escapeHtml(document.querySelector('input.textInput#Name[id="Name"]').value).toLowerCase();
     loc = escapeHtml(document.querySelector('input.textInput#Location[id="Location"]').value).toLowerCase();

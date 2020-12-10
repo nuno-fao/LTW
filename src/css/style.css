@@ -172,6 +172,17 @@ div.intRange {
     display: none;
 }
 
+.range_container{
+    display: flex;
+}
+
+input.intInput[type=number]{
+    margin: 0 0 0 auto;
+}
+label.intInput{
+    margin: auto 0;
+}
+
 div.drop_down{
     display: flex;
 }
