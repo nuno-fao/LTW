@@ -173,7 +173,7 @@ function draw_proposals($user,$animal){
                     <input type="hidden" name="proposal_id" value=<?=$proposal['proposalId']?>>
                     <input type="hidden" name="pet_id" value=<?=$pet['petId']?>>
                     <div id="proposal_head">
-                        <label id="proposal-user"><?=$user['userName']?> proposed:</label><label><?php
+                        <label id="proposal-user"><?=$user['userName']?> proposed:</label><label id="proposal_state"><?php
                             switch($proposal['state']){
                                 case 0:
                                     echo "For Review";

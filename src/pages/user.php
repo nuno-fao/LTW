@@ -21,6 +21,6 @@ if(isset($_GET['user']) && checkUser($_GET['user']) ) {
     draw_footer();
 }
 else {
-    echo  "User Not Found";
+    header('Location: ' . '../index.php');
 }
 ?>
