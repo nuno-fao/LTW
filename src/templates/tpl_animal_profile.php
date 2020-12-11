@@ -7,7 +7,7 @@ function draw_animal_aside($animal){
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
     $state = get_state_description($animal_data['state']);
     ?>
-    <aside id="animal_profile">
+    <aside id="animal_profile" class="animal_profile_box">
 
         <img src="<?=get_animal_photo($animal)?>" class="profile_img" width="100%" height="100%">
         <label>
@@ -74,7 +74,7 @@ function draw_animal_profile($animal){
             foreach($photos as $photo){
                 ?>
                 <div class=gallery_photo>
-                    <img src = "<?=$photo['path']?>" width=250 height=250/>
+                    <img src = "<?=$photo['path']?>" width=auto height=200/>
                 </div>
 
                 <?php
