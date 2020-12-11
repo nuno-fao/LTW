@@ -19,7 +19,8 @@ header .login_register {
 
 #animal_profile_body{
     display: grid;
-    grid-template-columns: 16em auto auto;
+    grid-template-columns: 16em minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows: minmax(24em,0) auto auto;
     grid-template-areas:
             "profile photos photos"
             "profile questions proposals";

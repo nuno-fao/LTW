@@ -375,7 +375,9 @@ form textarea#proposal-text{
 .footer .text{
     margin: 10px;
     margin-left: 5%;
-    font-weight: 550;
+    font-size: 1.2em;
+    font-weight: 400;
+    color:white;
 }
 
 
@@ -392,6 +394,19 @@ form textarea#proposal-text{
     height: auto;
     vertical-align: middle;
     overflow: hidden;
-    border-radius: 10px;
 }
+
+
+/* ANIMAL PROFILE PICTURES */
+
+.gallery_photo{
+    border: 20px solid white;
+    border-radius: 15px;
+}
+
+#animal_profile.animal_profile_box{
+    border-radius: 15px;
+}
+
+
 
