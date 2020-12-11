@@ -1,7 +1,8 @@
 body {
     background-color: #bebebe;
     width: 100%;
-    min-height: 100%;
+    position: relative;
+    min-height: 100vh;
 }
 
 a:hover,
@@ -20,10 +21,7 @@ a:link {
 header {
     background-color: #252531;
     padding: .8em;
-    width: 100%;
-    display: flex;
     margin: 0 auto;
-    flex-direction: row;
     color: white;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
@@ -365,7 +363,7 @@ form textarea#proposal-text{
 .footer{
     background-color:  #252531;
     width: 100%;
-    position: relative;
+    position: absolute;
     bottom: 0;
     left: 0;
     display: flex;
@@ -417,16 +415,20 @@ form textarea#proposal-text{
 }
 #pet_main_photo:first-child{
     display: block;
-    margin: auto
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
 }
 
 .grid_add_pet{
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: auto 1fr;
     justify-self: center;
+    margin-left: 1em;
 }
 
 .add_pet_input{
+    margin-left: 1em;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto;
@@ -443,13 +445,21 @@ form textarea#proposal-text{
 
 #pet_info{
     padding: 1.5em;
-    display: block;
-    margin: auto;
 }
 
 .add_pet_input > label{
     vertical-align: middle;
     line-height: 50px;
+}
+
+.add_pet_input > input{
+    vertical-align: middle;
+    height: 50px;
+}
+
+.add_pet_input > select{
+    vertical-align: middle;
+    height: 50px;
 }
 
 
