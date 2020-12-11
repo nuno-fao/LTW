@@ -1,6 +1,7 @@
 body {
     background-color: #bebebe;
     width: 100%;
+    min-height: 100%;
 }
 
 a:hover,
@@ -369,7 +370,6 @@ form textarea#proposal-text{
     left: 0;
     display: flex;
     flex-direction: row;
-    margin-top: 0;
 }
 
 .footer .text{
@@ -407,6 +407,51 @@ form textarea#proposal-text{
 #animal_profile.animal_profile_box{
     border-radius: 15px;
 }
+
+
+/* ADD PET */
+
+#pet_main_photo{
+    width: fit-content;
+    padding: 1em;
+}
+#pet_main_photo:first-child{
+    display: block;
+    margin: auto
+}
+
+.grid_add_pet{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-self: center;
+}
+
+.add_pet_input{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+            "pet_name   name_input     animal_length  length_input"
+            "birthdate  birth_input    species        species_input"
+            "color      color_input    gender         gender_input"
+            "location  location_input  picture        picture_input";
+    grid-gap: 1em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+#pet_info{
+    padding: 1.5em;
+    display: block;
+    margin: auto;
+}
+
+.add_pet_input > label{
+    vertical-align: middle;
+    line-height: 50px;
+}
+
 
 
 
