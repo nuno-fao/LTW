@@ -9,7 +9,7 @@ function draw_animal_aside($animal){
     ?>
     <aside id="animal_profile">
 
-        <img src="<?=get_animal_photo($animal)?>" width="100%" height="100%">
+        <img src="<?=get_animal_photo($animal)?>" class="profile_img" width="100%" height="100%">
         <label>
             <?=$animal_data['name']?>
         </label>
@@ -22,10 +22,13 @@ function draw_animal_aside($animal){
         <label>
             <?=$animal_data['location']?>
         </label>
+        <label>
         <a id="owner_profile" href="user.php?user=<?=$user_name?>">
             <?=$user_name?>
         </a>
-
+        <label>
+            <br>
+            <br>
         <label>
             <?=$state['state']?>
         </label>
