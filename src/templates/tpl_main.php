@@ -4,10 +4,41 @@ include_once('../database/user_queries.php');
 function draw_aside(){?>
 
     <aside id="filter">
-        <div id="filterTag">Filter</div>
+        <div id="filterTag">
+            <label>
+                Filter
+            </label>
+            <button type="button" onclick="apply_filter()">Apply</button>
+        </div>
         <div class="no_bullet" id="filterElement">
+            <div class="textInput">
+                <label>Name</label>
+                <div>
+                    <label>
+                        <input type="text" class="textInput" id="Name" name="Name" placeholder="Insert Name...">
+                        <br>
+                    </label>
+                </div>
+            </div>
+            <div class="textInput">
+                <label>Location</label>
+                <div>
+                    <label>
+                        <input type="text" class="textInput" id="Location" name="Location" placeholder="Insert Location...">
+                        <br>
+                    </label>
+                </div>
+            </div>
+            <div class="intRange">
+                <label>Size (cm)</label>
+                <div>
+                    <label class="range_container"><label class="intInput">Min</label><input type="number" class="intInput" id="MinSize" name="MinSize" min="0" max="200" value="1"></label>
+                    <span style="height: 10px; display: block"></span>
+                    <label class="range_container"><label class="intInput">Max</label><input type="number" class="intInput" id="MaxSize" name="MaxSize" min="1" max="200" value="200"></label>
+                </div>
+            </div>
             <div class="multipleSelector">
-                Species
+                <label>Species</label>
                 <div>
                     <?php
                     $species = get_species();
@@ -15,7 +46,7 @@ function draw_aside(){?>
                         $specie = $specie["specie"];
                         ?>
                         <label>
-                            <input type="checkbox" id="<?=$specie?>" name="<?=$specie?>">
+                            <input type="checkbox" id="<?=$specie?>" name="<?=$specie?>" checked>
                             <span></span>
                             <?=$specie?>
                             <br>
@@ -25,8 +56,49 @@ function draw_aside(){?>
                     ?>
                 </div>
             </div>
+            <div class="multipleSelector">
+                <div class="drop_down">
+                    <label class="drop_down">Colors</label>
+                    <button onclick="dropdown('colors_dropdown')" class="dropdown_button">Show</button>
+                </div>
+                <div id="colors_dropdown" class="dropdown_content">
+                    <?php
+                    $colors = get_colors();
+                    foreach ($colors as $color){
+                        $color = $color['color'];
+                        ?>
+                        <label>
+                            <input type="checkbox" id="<?=$color?>" name="<?=$color?>" checked>
+                            <span></span>
+                            <?=$color?>
+                            <br>
+                        </label>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="multipleSelector">
+                <label>States</label>
+                <div>
+                    <?php
+                    $states = get_states();
+                    foreach ($states as $state){
+                        $state = $state['state'];
+                        ?>
+                        <label>
+                            <input type="checkbox" id="<?=$state?>" name="<?=$state?>" checked>
+                            <span></span>
+                            <?=$state?>
+                            <br>
+                        </label>
+                        <?php
+                    }
+                    ?>
+                </div>
+            </div>
             <div class="radioSelector">
-                Gender
+                <label>Gender</label>
                 <div>
                     <label>
                         <input type="radio" id="male" name="gender" value="male">
@@ -55,7 +127,6 @@ function draw_aside(){?>
 <?php
 function draw_animal_profiles(){?>
     <div class=pets_display>
-        <p class="title_pets_display">Pets available for adoption</p>
         <div id="animal_profiles">
             <?php
             $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);
@@ -89,9 +160,6 @@ function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user)
             </label>
             <label>
                 <?=$location?>
-            </label>
-            <label>
-                <?=$user?>
             </label>
         </div>
     </a>

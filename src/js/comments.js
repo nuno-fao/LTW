@@ -19,29 +19,31 @@ function submitComment(evt){
 
 function receiveComments(evt){
     if(this.responseText == 'true'){
-        document.getElementById("comment_submit_message").innerHTML="Error Adding Question!";
+        alert("Error Adding Question!");
         return false;
     }
-    let scoob = JSON.parse(this.responseText);
+    let parsed_response = JSON.parse(this.responseText);
     let newArticle = document.createElement("article");
     newArticle.className="question";
 
     let newspan, newCont;
 
-    newspan = document.createElement("span");
-    newspan.className="user";
-    newCont = document.createTextNode(escapeHtml(scoob['userName'] + ' asked: '));
+    newspan = document.createElement("a");
+    newspan.id="author";
+    newspan.href="user.php?user="+parsed_response['userName'];
+    newCont = document.createTextNode(escapeHtml(parsed_response['userName'] + ' asked: '));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 
     newspan = document.createElement("span");
     newspan.className="date";
-    newCont = document.createTextNode(escapeHtml(format_time(scoob['date'])));
+    newCont = document.createTextNode(escapeHtml(format_time(parsed_response['date'])));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 
     newspan = document.createElement("p");
-    newCont = document.createTextNode(escapeHtml(scoob['comment_txt']));
+    newspan.id = "question_text";
+    newCont = document.createTextNode(escapeHtml(parsed_response['comment_txt']));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);
 

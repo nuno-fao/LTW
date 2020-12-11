@@ -2,6 +2,11 @@ body {
     background-color: #bebebe;
 }
 
+a:hover,
+button:hover{
+    cursor: pointer;
+}
+
 /* HEADER */
 
 header {
@@ -33,7 +38,8 @@ header .button-text {
 }
 
 
-header #login {
+header #login,
+header #add-pet{
     border: #8bc7b5 solid 4px;
     color: #8bc7b5;
     border-radius: 10px;
@@ -46,11 +52,17 @@ header #register {
     background-color: #ed3a58;
 }
 
+header #user{
+    margin: auto;
+}
+
 header #title {
     font-family: "Ubuntu Thin", sans-serif;
     font-size: 3em;
     margin: auto 0.3em;
 }
+
+
 
 /* HEADER BUTTONS */
 
@@ -93,7 +105,13 @@ header #title {
 }
 
 .no_link_style:hover{
-    cursor: default;
+    cursor: pointer;
+}
+
+.animal_image_box,
+.animal_image_box:hover,
+.animal_text_box{
+    cursor: pointer;
 }
 
 
@@ -105,6 +123,8 @@ aside {
     background-color: white;
     margin: 0 0 auto 0;
 }
+
+
 
 a {
     all: unset;
@@ -121,20 +141,36 @@ ul.no_bullet li {
 }
 
 .multipleSelector,
-.radioSelector {
+.radioSelector,
+.textInput,
+.intRange {
     padding: 1em;
     margin: 0;
-    border-bottom: black;
 }
 
 #filterTag {
     background-color: #232323;
     color: #ffffdc;
     padding: 1em;
+    display: flex;
+}
+#filterTag button{
+    float: right;
+    margin: auto 0 auto auto;
+}
+
+#filterTag label{
+    margin: auto auto auto 0;
+}
+
+button.dropdown_button{
+    float: right;
 }
 
 div.multipleSelector,
-div.radioSelector {
+div.radioSelector,
+div.textInput,
+div.intRange {
     border-bottom: 2px solid black;
 }
 
@@ -145,6 +181,40 @@ div.radioSelector {
 
 .radioSelector span {
     border-radius: 50%;
+}
+.textInput input.textInput{
+    padding: 0.5em;
+    width: 100%;
+}
+
+.intRange div{
+    margin: 0.3em;
+}
+.intRange input[type="number"]{
+    width: 4em;
+    margin: 0.3em;
+}
+.dropdown_content{
+    display: none;
+}
+
+.range_container{
+    display: flex;
+}
+
+input.intInput[type=number]{
+    margin: 0 0 0 auto;
+}
+label.intInput{
+    margin: auto 0;
+}
+
+div.drop_down{
+    display: flex;
+}
+
+label.drop_down{
+    margin: auto auto auto 0;
 }
 
 .multipleSelector label span,
@@ -179,7 +249,7 @@ div.radioSelector {
     border-radius: inherit;
 }
 
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=email] {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -200,6 +270,8 @@ input[type=text], input[type=password] {
     margin-right: 2px;
 }
 
+
+
 .animal_text_box{
     border-top: black;
     border-radius: 1px;
@@ -219,7 +291,6 @@ img.animal_image_box{
     display: block;
     text-align: center;
     background-color: white;
-    
 }
 
 .title_pets_display{
@@ -230,7 +301,51 @@ img.animal_image_box{
     width: 100%;
 }
 
+.show_dropdown {
+    display: block;
+}
 
-/* article.question span.question_id{
-    display: none;
-} */
+section#questions,
+section#proposals{
+    padding: 2em;
+    background-color: #cccccc;
+    border: #cccccc 2px solid;
+    border-radius: 8px;
+}
+
+section#proposals{
+    display: flex;
+    flex-flow: column;
+}
+
+div.reply a#author{
+    margin-left: 1em;
+}
+
+div.reply{
+    background-color: #cabeca;
+    padding-top: 0.5em;
+    padding-bottom:  0.5em;
+    margin: 0.4em;
+}
+
+div.proposal{
+    padding: 0.3em;
+    display: flex;
+    flex-flow: column;
+}
+
+label#proposal-text{
+    padding: 0.7em;
+    background-color: #cabeca;
+    border: #cccccc 2px solid;
+    border-radius: 8px;
+    margin: auto auto auto 1em;
+}
+
+form textarea#proposal-text{
+    width: 100%;
+    resize: none;
+}
+
+

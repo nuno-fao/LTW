@@ -34,6 +34,13 @@ function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_el
     return $stmt->fetchAll();
 }
 
+function getAllAnimals(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT petId,Pets.name,size,color,location,PetState.state,path,gender, Species.specie, Users.userName FROM Pets JOIN Users ON Pets.user=Users.userId JOIN Species ON Pets.species = Species.specieId JOIN PetState ON Pets.state = PetState.petStetId JOIN Photos ON Pets.profilePic=Photos.photoId');
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
 function get_animal_photo($petId){
     global $dbh;
     $stmt = $dbh->prepare('SELECT path from Photos join Pets on Photos.photoId = Pets.profilePic where pet = ? ORDER BY path DESC');
@@ -47,6 +54,14 @@ function get_species(){
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
+
+function get_states(){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT state from PetState ');
+    $stmt->execute(array());
+    return $stmt->fetchAll();
+}
+
 function get_specie_by_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
@@ -88,10 +103,10 @@ function get_state_description($state){
     return $stmt->fetchAll()[0];
 }
 
-function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic){
+function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic,$gender){
     global $dbh;
-    $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic) VALUES(?,?,?,?,?,?,?,?)');
-    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic));
+    $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic,gender) VALUES(?,?,?,?,?,?,?,?,?)');
+    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic,$gender));
 }
 
 function get_pet($name){
@@ -113,14 +128,12 @@ function add_animal_photo_to_db($photo_path,$pet){
 
 function change_photo_petid($petId, $photo_id){
     global $dbh;
-    echo '<br>';
     $stmt = $dbh->prepare('UPDATE Photos SET pet = ? WHERE photoId = ?;');
     return $stmt->execute(array($petId,$photo_id));
 }
 
 function change_pet_photo_id($petId, $photo_id){
     global $dbh;
-    echo '<br>';
     $stmt = $dbh->prepare('UPDATE Pets SET profilePic = ? WHERE petId = ?;');
     return $stmt->execute(array($photo_id,$petId));
 }
