@@ -17,6 +17,7 @@ if(isset($_GET['user']) && checkUser($_GET['user']) ) {
     draw_head($_GET['user']." Page");
     draw_header();
     draw_user_aside($_GET['user']);
+    echo '</div>';
     draw_footer();
 }
 else {

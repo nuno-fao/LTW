@@ -13,6 +13,7 @@ if(!isset($_SESSION['user'])){
     draw_head("Register");
     draw_header();
     draw_register();
+    echo '</div>';
     draw_footer();
 }
 else{

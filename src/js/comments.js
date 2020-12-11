@@ -42,6 +42,7 @@ function receiveComments(evt){
     newArticle.appendChild(newspan);
 
     newspan = document.createElement("p");
+    newspan.id = "question_text";
     newCont = document.createTextNode(escapeHtml(parsed_response['comment_txt']));
     newspan.appendChild(newCont);
     newArticle.appendChild(newspan);

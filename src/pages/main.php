@@ -12,5 +12,6 @@ draw_head("Main Page");
 draw_header();
 draw_aside();
 draw_animal_profiles();
+echo '</div>';
 draw_footer();
 ?>

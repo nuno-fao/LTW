@@ -18,6 +18,7 @@ if(isset($_GET['pet_id']) && check_pet($_GET['pet_id'])) {
     $animal_data = get_animal_data($_GET['pet_id']);
     draw_head($animal_data['name']." Page");
     draw_header();
+    echo "<section id='animal_profile_body'>";
     draw_animal_aside($_GET['pet_id']);
     draw_animal_profile($_GET['pet_id']);
     draw_animal_comments($_GET['pet_id']);
@@ -31,7 +32,7 @@ if(isset($_GET['pet_id']) && check_pet($_GET['pet_id'])) {
             draw_proposals($_SESSION['user'], $animal_data['petId']);
         }
     }
-
+    echo '</section>';
     draw_footer();
 }
 else{

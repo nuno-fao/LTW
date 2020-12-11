@@ -15,7 +15,16 @@ header .login_register {
 
 .body{
     display: flex;
-    flex-direction: row;
+}
+
+#animal_profile_body{
+    display: grid;
+    grid-template-columns: 16em auto auto;
+    grid-template-areas:
+            "profile photos photos"
+            "profile questions proposals";
+    grid-gap: 40px;
+    width: 100%;
 }
 
 aside {
@@ -50,6 +59,10 @@ aside {
     flex-wrap: wrap;
     justify-content: flex-start;
 }
+#animal_profile{
+    display: flex;
+    flex-flow: column;
+}
 
 #animal_main_page{
     display: flex;
@@ -58,6 +71,102 @@ aside {
     margin: auto;
 }
 
+section#favourites{
+    margin: auto;
+}
+form#favourite_form{
+    margin: auto;
+    padding: 1em;
+}
+
 #animal_main_page > label{
     text-align: center;
+}
+
+aside#animal_profile{
+    grid-area: profile;
+}
+
+section#questions{
+    grid-area: questions;
+    display: flex;
+    flex-flow: column;
+    height: 100%;
+}
+
+#animal_main_section{
+    grid-area: photos;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+}
+
+#proposals{
+    grid-area: proposals;
+}
+
+div#question_header,
+div.proposal{
+    display: flex;
+}
+
+a#author{
+    margin: auto 1em auto 0;
+}
+
+span.date{
+    margin: auto auto auto 0;
+}
+
+button.dropdown_button{
+    margin: auto 0 auto auto;
+}
+
+p#question_text{
+    margin: 1em auto 1em 2em;
+    max-width: 23em;
+    border: #bebebe solid 3px;
+    border-radius: 5px;
+    padding: 0.3em;
+    background-color: #bebebe;
+}
+
+div[id^="replies_dropdown"]{
+    margin: 1em 2em 1em auto;
+    max-width: 30em;
+    border: #bebebe solid 3px;
+    border-radius: 5px;
+    padding: 0.3em;
+    background-color: #bebebe;
+}
+
+div[id^="replies_dropdown"] p{
+    margin: auto auto auto 2em;
+    text-align: left;
+}
+div[id^="replies_dropdown"] textarea{
+    width: 100%;
+    resize: none;
+}
+
+div.reply p{
+    text-align: right;
+    margin: auto 1em auto auto;
+}
+
+form#ask_question textarea{
+    width: 100%;
+    height: 6em;
+    resize: none;
+}
+
+div#proposal_head{
+    display: flex;
+}
+
+div#proposal_head label{
+    margin: auto 1em auto auto;
+}
+div#proposal_head label:first-child{
+    margin: auto  auto auto 0;
 }

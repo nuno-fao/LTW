@@ -2,10 +2,8 @@
 function draw_proposal($user,$pet,$text,$state){
     ?>
     <div class="proposal">
-        <label id="proposal-user"><?=$user?></label>
-        <label id="proposal-pet"><?=$pet?></label>
-        <label id="proposal-text"><?=$text?></label>
-        <label><?php
+        <div id="proposal_head">
+        <label id="proposal-user"><?=$user?> proposed:</label><label><?php
             switch($state){
                 case 0:
                     echo "For Review";
@@ -18,7 +16,10 @@ function draw_proposal($user,$pet,$text,$state){
                     break;
             }
             ?>
+        </div>
         </label>
+        <label id="proposal-text"><?=$text?></label>
+
     </div>
 
     <?php

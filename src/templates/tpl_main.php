@@ -127,7 +127,6 @@ function draw_aside(){?>
 <?php
 function draw_animal_profiles(){?>
     <div class=pets_display>
-        <p class="title_pets_display">Pets available for adoption</p>
         <div id="animal_profiles">
             <?php
             $animals_array = getAnimals(null,null,null,null,null,null,null,0,20);

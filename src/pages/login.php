@@ -13,6 +13,7 @@ if(!isset($_SESSION['user'])){
     draw_head("Login");
     draw_header();
     draw_login();
+    echo '</div>';
     draw_footer();
     ?>
     login: nunation<br>
