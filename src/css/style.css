@@ -288,7 +288,7 @@ input[type=text], input[type=password], input[type=email] {
 .animal_text_box{
     border-top: black;
     border-radius: 1px;
-
+    width: 210px; /* change later */
 }
 
 img.animal_image_box{
@@ -465,6 +465,23 @@ form textarea#proposal-text{
 .add_pet_input > select{
     vertical-align: middle;
     height: 50px;
+}
+
+
+.user_page{
+    display: grid;
+    grid-template-columns: auto 0.4fr 1fr;
+    grid-gap: 10px;
+}
+
+.user_page > div{
+    text-align: center;
+    margin: auto;
+    font-size: 1.3em;
+}
+
+#user_profile > label{
+    display: block;
 }
 
 

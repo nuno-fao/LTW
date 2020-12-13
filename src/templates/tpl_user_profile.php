@@ -4,6 +4,7 @@ function draw_user_aside($user)
 {
     $user_info =  getUser($user);
 ?>
+    <div class= "user_page">
     <aside id="user_profile">
         <img src="<?= getPicturePath($user) ?>" width="200" height="200" />
         <label id="user">
@@ -98,6 +99,7 @@ function draw_user_aside($user)
         }
         ?>
     </section>
+    </div>
 <?php
 
 
