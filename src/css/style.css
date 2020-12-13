@@ -280,30 +280,38 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .animal_main_page{
-    margin-right: 2px;
+    margin: 5px
 }
 
 
-
-.animal_text_box{
-    border-top: black;
-    border-radius: 1px;
-    width: 210px; /* change later */
-}
 
 img.animal_image_box{
     border: 5px solid white;
     border-radius: 3px;
 }
 
+.animal_box{
+    background-color: white;
+    width: fit-content;
+    border: 10px solid white;
+    border-radius: 10px;
+}
 
-.animal_text_box{
+.animal_box > label{
+    display: block;
+    padding-left: 2em;
+    color: #252531;
+}
+
+.animal_box > label.animal_text_box{
     font-size: 2em;
     font-weight: 300;
     height: 40px;
     display: block;
-    text-align: center;
     background-color: white;
+    border-top: 1px solid #252531;
+    padding-left: 0.8em;
+    color: #252531;
 }
 
 .title_pets_display{
@@ -480,10 +488,24 @@ form textarea#proposal-text{
     font-size: 1.3em;
 }
 
-#user_profile > label{
-    display: block;
+#user_profile{
+    border-radius: 0px 0px 15px 15px;
 }
 
+#user_profile > label{
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em;
+    margin-top: 0.8em;
+    color: #252531;
+    border: 1px solid #252531;
+    border-radius: 10px;
+
+}
+
+#user_profile:first-child{
+    text-align: center;
+}
 
 
 
