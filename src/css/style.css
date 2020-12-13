@@ -280,7 +280,7 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .animal_main_page{
-    margin: 5px
+    margin: 5px;
 }
 
 
@@ -479,7 +479,8 @@ form textarea#proposal-text{
 .user_page{
     display: grid;
     grid-template-columns: auto 0.4fr 1fr;
-    grid-gap: 10px;
+    grid-gap: 1em;
+    min-height: 100px;
 }
 
 .user_page > div{
@@ -508,4 +509,43 @@ form textarea#proposal-text{
 }
 
 
+.animal_image_box{
+    background-color: white;
+}
 
+.animal_img_box{
+    width: 210px;
+    border: 4px solid white;
+}
+
+.animal_img_box > label{
+    display: block;
+
+}
+
+#user_posts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+
+.question_text_box{
+    padding: 0.8em
+}
+
+#user_proposals{
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.8em;
+}
+
+.proposal{
+    min-height: 100px;
+    margin: auto;
+}
+
+#user_posts > a.animal_main_page{
+    border-radius: 15px;
+    background-color: white;
+    padding: 0.5em;
+}
