@@ -207,3 +207,10 @@ function add_question_reply($answerTxt,$question,$date,$author){
     $stmt = $dbh->prepare('INSERT INTO Answers (answerTxt,question,date,author) VALUES (?,?,?,?)');
     $stmt->execute(array($answerTxt,$question,$date,$author));
 }
+
+function accpeted_proposals($animal_id){
+    global $dbh;
+    $stmt = $dbh->prepare('select * from Proposals where pet=? and state=1');
+    $stmt->execute(array($animal_id));
+    return count($stmt->fetchAll());
+}
