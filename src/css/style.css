@@ -3,6 +3,7 @@ body {
     width: 100%;
     position: relative;
     min-height: 100vh;
+    padding-bottom: 70px;
 }
 
 a:hover,
@@ -363,11 +364,13 @@ form textarea#proposal-text{
 .footer{
     background-color:  #252531;
     width: 100%;
-    position: absolute;
     bottom: 0;
+    margin: auto;
+    position: absolute;
     left: 0;
     display: flex;
     flex-direction: row;
+    height: 70px;
 }
 
 .footer .text{
