@@ -48,6 +48,10 @@ function receive(evt){
     let accept_b = document.querySelector("div[id='"+curr_id+"'] button[id='accept_button']");
     let deny_b = document.querySelector("div[id='"+curr_id+"'] button[id='deny_button']");
     if(this.responseText === 'true'){
+        if(accept_b != null) {
+            accept_b.style = "color: red";
+            on_error_animate(accept_b);
+        }
         return false;
     }
     if(b==1){
