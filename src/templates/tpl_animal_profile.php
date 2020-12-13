@@ -163,13 +163,13 @@ function draw_proposals($user,$animal){
         $proposals = get_proposals_for_pet($animal);
         if($proposals!=null){
             echo '<script src="../js/add_proposal_reply.js" defer></script>';
-            echo "<section id='proposals'>";
+            echo "<section id='proposals' >";
             foreach ($proposals as $proposal){
                 $user = get_user_by_ID($proposal['user']);
                 $pet = get_animal_data($proposal['pet']);
                 ?>
-                <div class="proposal">
-                    <input type="hidden" name="csrf" value=<?=$_SESSION['user']?>>
+                <div class="proposal" id=<?=$proposal['proposalId']?>>
+                    <input type="hidden" name="csrf" value=<?=$_SESSION['csrf']?>>
                     <input type="hidden" name="proposal_id" value=<?=$proposal['proposalId']?>>
                     <input type="hidden" name="pet_id" value=<?=$pet['petId']?>>
                     <div id="proposal_head">
@@ -192,14 +192,14 @@ function draw_proposals($user,$animal){
 
                     <?php
                     if($proposal['state']==0){
-                        echo "    <button id='accept_button'>Accept Proposal</button>
-                                  <button id='deny_button'>Deny Proposal</button>";
+                        echo "    <button id='accept_button' onclick=accept(".$proposal['proposalId'].")>Accept Proposal</button>
+                                  <button id='deny_button' onclick=deny(".$proposal['proposalId'].")>Deny Proposal</button>";
                     }
                     elseif ($proposal['state']==1){
-                        echo "<button id='deny_button'>Deny Proposal</button>";
+                        echo "<button id='deny_button' onclick=deny(".$proposal['proposalId'].")>Deny Proposal</button>";
                     }
                     elseif ($proposal['state']==2){
-                        echo "<button id='accept_button'>Accept Proposal</button>";
+                        echo "<button id='accept_button' onclick=accept(".$proposal['proposalId'].")>Accept Proposal</button>";
                     }
                     ?>
                 </div>

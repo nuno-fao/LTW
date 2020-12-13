@@ -105,6 +105,10 @@ section#questions{
     grid-area: proposals;
 }
 
+section#proposals{
+    max-width: 30em;
+}
+
 div#question_header,
 div.proposal{
     display: flex;
