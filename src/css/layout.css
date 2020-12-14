@@ -93,7 +93,6 @@ section#questions{
     grid-area: questions;
     display: flex;
     flex-flow: column;
-    height: 100%;
 }
 
 #animal_main_section{

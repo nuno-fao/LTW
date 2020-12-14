@@ -354,6 +354,7 @@ div.proposal{
     padding: 0.3em;
     display: flex;
     flex-flow: column;
+    margin-bottom: 1em;
 }
 
 label#proposal-text{
@@ -361,7 +362,7 @@ label#proposal-text{
     background-color: #cabeca;
     border: #cccccc 2px solid;
     border-radius: 8px;
-    margin: auto auto auto 1em;
+    margin: auto auto 1em 1em;
 }
 
 form textarea#proposal-text{
@@ -395,7 +396,6 @@ form textarea#proposal-text{
 /* ANIMAL PROFILE */
 
 #animal_profile label{
-    font-weight: 550;
     text-align: center;
     padding: 0.5em;
 }
@@ -405,10 +405,13 @@ form textarea#proposal-text{
     height: auto;
     vertical-align: middle;
     overflow: hidden;
+    margin-bottom: 0.5em;
 }
 
 
 /* ANIMAL PROFILE PICTURES */
+
+
 
 .gallery_photo{
     border: 20px solid white;
@@ -539,13 +542,21 @@ form textarea#proposal-text{
     padding: 0.8em;
 }
 
+.proposal > *{
+    padding: 1em;
+}
+
 .proposal{
     min-height: 100px;
-    margin: auto;
 }
 
 #user_posts > a.animal_main_page{
     border-radius: 15px;
     background-color: white;
     padding: 0.5em;
+}
+
+.add_pet_input > input.file_chooser{
+    text-align: center;
+    margin: auto;
 }
