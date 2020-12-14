@@ -195,9 +195,17 @@ function add_question_reply($answerTxt,$question,$date,$author){
     $stmt->execute(array($answerTxt,$question,$date,$author));
 }
 
-function accpeted_proposals($animal_id){
+function accepted_proposals($animal_id){
     global $dbh;
     $stmt = $dbh->prepare('select * from Proposals where pet=? and state=1');
     $stmt->execute(array($animal_id));
     return count($stmt->fetchAll());
 }
+
+function remove_pet($pet_id){
+    global $dbh;
+    $stmt = $dbh->prepare('DELETE from Pets where petId=?');
+    $stmt->execute(array($pet_id));
+}
+
+

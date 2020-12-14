@@ -1,5 +1,5 @@
 <?php
-include_once "../database/animal_queries.php";
+include_once "../database/pet_queries.php";
 include_once "../database/user_queries.php";
 
 session_start();
@@ -9,7 +9,7 @@ $error = false;
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error = true;
 }
-else if(accpeted_proposals($_POST['petId']) > 0 && $_POST['reply']=="a"){
+else if(accepted_proposals($_POST['petId']) > 0 && $_POST['reply']=="a"){
     $error = true;
 }
 else if(isset($_SESSION['user']) && check_pet($_POST['petId'])){

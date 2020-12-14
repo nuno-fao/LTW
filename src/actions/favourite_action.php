@@ -1,5 +1,5 @@
 <?php
-include_once "../database/animal_queries.php";
+include_once "../database/pet_queries.php";
 session_start();
 
 $error = false;

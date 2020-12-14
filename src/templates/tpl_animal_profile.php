@@ -1,5 +1,5 @@
 <?php
-include_once('../database/animal_queries.php');
+include_once('../database/pet_queries.php');
 include_once('../database/user_queries.php');
 
 function draw_animal_aside($animal){
@@ -55,6 +55,19 @@ function draw_animal_aside($animal){
                 ?>
             </section>
             <?php
+            $pet = get_animal_data($animal);
+            $user = getUser($_SESSION['user']);
+            if ($pet['user'] == $user['userId']) {
+                ?>
+                <section  id = "remove_pet">
+                    <form action="../actions/delete_pet_action.php" method="POST"  id = "remove_pet_form">
+                        <input type="hidden" name="pet_id" value="<?=$animal?>">
+                        <input type="submit" id="remove_button" value="Remove Pet">
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    </form>
+                </section>
+                <?php
+            }
         }
         ?>
     </aside>
@@ -156,6 +169,23 @@ function draw_animal_comments($animal){
 
         </section>
         <?php
+    }
+    else{
+        if(isset($_SESSION['user'])){
+            $userID = getUser($_SESSION['user'])['userId'];
+            ?>
+            <section id="questions">
+                <script src="../js/comments.js" defer></script>
+                <form id="ask_question">
+                    <p>Ask a question...</p>
+                    <textarea name="comment_text"></textarea>
+                    <input type="hidden" name="petId" value="<?=$animal?>">
+                    <input type="hidden" name="userId" value="<?=$userID?>">
+                    <input type="submit" value="submit">
+                    <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                </form>
+            </section>
+        <?php }
     }
 }
 
