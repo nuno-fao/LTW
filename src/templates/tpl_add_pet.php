@@ -15,8 +15,6 @@ function draw_add_pet(){
                     <label for="length">Animal Length(1 to 200 cm):</label>
                     <input type="number" id="size" name="size" min="1" max="200" value="50"> <?//substituir por algo decente com js, css e divs?>
 
-                    <label for="dateofbirth">Date Of Birth</label>
-                    <input type="date" name="dateofbirth" id="dateofbirth">
                     <label for="species">Species</label>
                     <select name="species" id="species">
                         <?php
@@ -48,6 +46,7 @@ function draw_add_pet(){
 
                     <label for="picture">Picture</label>
                     <input type="file" name="picture" id="picture" accept=".jpg, .jpeg, .png, .gif">
+                    <input type="file" name="other_picture" id="other_pictures" accept=".jpg, .jpeg, .png, .gif" multiple>
                     <input type="hidden" name="submit" value="submit">
                     <input type="submit" value="Add Pet">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">

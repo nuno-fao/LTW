@@ -78,7 +78,7 @@ function draw_user_aside($user)
         <br>
         <?php
     }
-    if(isset($_SESSION['user']) && $user===$_SESSION['user']) {
+    if(isset($_SESSION['user']) && $user['userName']===$_SESSION['user']) {
         ?>
         <div>
             <label>Posts where you asked questions and/or replied</label>

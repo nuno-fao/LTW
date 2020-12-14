@@ -3,7 +3,6 @@ form_add_pet.addEventListener('submit',add_pet);
 
 let _name ;
 let _length ;
-let _dateofbirth ;
 let _species;
 let _color;
 let _gender ;
@@ -18,9 +17,9 @@ let file;
 let formData ;
 
 
+let other_pics;
 let pic_input = fileInput = document.getElementById("picture");
 pic_input.onchange = function (e){
-    console.log("dsadsadsa");
 }
 
 function add_pet(evt){
@@ -28,7 +27,6 @@ function add_pet(evt){
 
     _name = (document.querySelector("input[name='name']"));
     _length = (document.querySelector("input[name='size']"));
-    _dateofbirth = (document.querySelector("input[name='dateofbirth']"));
     _species = (document.querySelector("select[name='species']"));
     _color = (document.querySelector("select[name='color']"));
     _gender = (document.querySelector("select[name='gender']"));
@@ -42,13 +40,16 @@ function add_pet(evt){
 
 
     fileInput = document.getElementById("picture");
+    other_pics = document.getElementById("other_pictures");
     file = fileInput.files[0];
     formData = new FormData();
+    for (let i = 0; i<other_pics.files.length;i++){
+        formData.append('picture'+i.toString(),other_pics.files[i])
+    }
 
     formData.append('picture', file);
     formData.append('name',escapeHtml(_name.value));
     formData.append('size',escapeHtml(_length.value));
-    formData.append('dateofbirth',escapeHtml(_dateofbirth.value));
     formData.append('species',escapeHtml(_species.value));
     formData.append('color',escapeHtml(_color.value));
     formData.append('gender',escapeHtml(_gender.value));
@@ -73,13 +74,6 @@ function receive_add_pet(evt){
     else {
         fileInput.style="color: black";
     }
-
-    if(parsed_reply['other_pics']){
-        //on_error_animate();
-        // error = true;
-        error = true;
-    }
-
     if(parsed_reply['name']){
         on_error_animate(_name);
         _name.style="color: red";
@@ -97,16 +91,6 @@ function receive_add_pet(evt){
     else {
         _length.style="color: black";
     }
-
-    if(parsed_reply['date']){
-        on_error_animate(_dateofbirth);
-        _dateofbirth.style="color: red";
-        error = true;
-    }
-    else {
-        _dateofbirth.style="color: black";
-    }
-
     if(parsed_reply['species']){
         on_error_animate(_species);
         _species.style="color: red";
@@ -149,6 +133,14 @@ function receive_add_pet(evt){
     }
     else {
         fileInput.style="color: black";
+    }
+    if(parsed_reply['other_pics']){
+        on_error_animate(other_pics);
+        other_pics.style="color: red";
+        error = true;
+    }
+    else {
+        other_pics.style="color: black";
     }
     if(!error)
         window.location.href = "animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']);

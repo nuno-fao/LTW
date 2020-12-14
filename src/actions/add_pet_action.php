@@ -10,7 +10,6 @@ class add_pet_reply
     public $other_pics = false;
     public $name = false;
     public $size = false;
-    public $date = false;
     public $species = false;
     public $color = false;
     public $location = false;
@@ -18,17 +17,16 @@ class add_pet_reply
     public $gender = false;
     public $pet_id = null;
 
-    function add_error($name,$size,$date,$species,$color,$location,$gender){
+    function add_error($name,$size,$species,$color,$location,$gender){
         $this->name = !$name;
         $this->size = !$size;
-        $this->date = !$date;
         $this->species = !$species;
         $this->color = !$color;
         $this->location = !$location;
         $this->gender = !$gender;
     }
     function has_error(){
-        return $this->name || $this->size || $this->date || $this->species || $this->color || $this->location;
+        return $this->name || $this->size|| $this->species || $this->color || $this->location;
     }
 }
 
@@ -39,12 +37,12 @@ if ($_SESSION['csrf'] !== $_POST['csrf']) {
 }
 else if(count($_FILES)==0){
     $reply->main_pic = true;
-    $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['dateofbirth']) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
+    $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
 
 }
 else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
     $user = 0;
-    $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['dateofbirth']) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
+    $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
     if(!$reply->has_error()){
         $main_pic = get_animal_profile_pic();
         if($main_pic['name'] == null){
@@ -57,13 +55,13 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 
-                if (strlen($_POST['name'])>0 && !preg_match ("/^[a-zA-Z\s-]+$/", $_POST['name'])) {
+                if (strlen($_POST['name'])>0 && !preg_match ("/^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/", $_POST['name'])) {
                     $reply->name = true;
                 }
                 else {
-                    $name_stripped = preg_replace ("/[^a-zA-Z\s-]/", '', $_POST['name']);
-                    $location_stripped = preg_replace ("/[^a-zA-Z\s()-]/", '', $_POST['location']);
-                    $size_stripped = preg_replace ("/[^a-zA-Z0-9\s]/", '', $_POST['size']);
+                    $name_stripped = preg_replace ("/[^A-Za-zÀ-ÖØ-öø-ÿ\s-]/", '', $_POST['name']);
+                    $location_stripped = preg_replace ("/[^A-Za-zÀ-ÖØ-öø-ÿ\s()-]/", '', $_POST['location']);
+                    $size_stripped = preg_replace ("/[^0-9\s-]/", '', $_POST['size']);
                     $gender = null;
                     if($_POST['gender']=='female'){
                         $gender = 'f';
@@ -86,19 +84,18 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                             $reply->query = true;
                         } else if (!add_animal_photo($pet_id, $main_pic, true)) {
                             $reply->main_pic = true;
-                        } /*else {
+                        } else {
                             foreach ($_FILES as $file) {
-                                if (add_animal_photo($pet_id, $file, false)) {
+                                if (!add_animal_photo($pet_id, $file, false)) {
                                     $reply->other_pics = true;
                                     break;
                                 }
                             }
-                        }*/
+                        }
                     }
                     $reply->pet_id = $pet_id;
                 }
             } catch (PDOException $er) {
-                print_r($er);
                 $reply->query = true;
             }
         }
