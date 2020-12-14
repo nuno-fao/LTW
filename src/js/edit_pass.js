@@ -48,9 +48,17 @@ function receiveEditPass(evt){
     else if(answer['newpass']==true){
         error = true;
 
-        oldpass.placeholder = "Password Incorrect";
+        oldpass.placeholder = "Old Password";
         newpass.placeholder = "Password Has Invalid Characters";
-        newpass.placeholder = "Confirm New Password";
+        confirm.placeholder = "Confirm New Password";
+
+        on_error_animate(newpass);
+    }
+    else if(answer['newpass']=="size"){
+        error = true;
+
+        oldpass.placeholder = "Old Password";
+        newpass.placeholder = "Password must have 8 or more characters";
 
         on_error_animate(newpass);
     }
