@@ -314,6 +314,10 @@ img.animal_image_box{
     color: #252531;
 }
 
+#user_animals >a.animal_main_page > div.animal_box{
+    margin-top: 1.5em;
+}
+
 .title_pets_display{
     color: purple;
     display: block;
@@ -481,15 +485,22 @@ form textarea#proposal-text{
 
 .user_page{
     display: grid;
-    grid-template-columns: auto 0.4fr 1fr;
+    grid-template-columns: auto 0.3fr 1fr;
     grid-gap: 1em;
     min-height: 100px;
 }
 
 .user_page > div{
-    text-align: center;
-    margin: auto;
+    background-color: white;
+    display: flex;
     font-size: 1.3em;
+    border-radius: 15px;
+}
+
+.user_page > div > label{
+    margin: auto;
+    padding-right: 2em;
+    padding-left: 2em;
 }
 
 #user_profile{
@@ -560,3 +571,28 @@ form textarea#proposal-text{
     text-align: center;
     margin: auto;
 }
+
+#ask_question > p{
+    margin-left: 1em;
+}
+
+#ask_question > input{
+    margin: 1em 0 0 1em;
+}
+
+#add_proposal > label{
+    padding: 0 1em 1em 1em;
+}
+
+#proposal_form{
+    padding-top: 1em;
+}
+
+#proposal_form > input{
+    margin: 0 0 0 1em;
+}
+
+#user_animals{
+    padding:auto;
+}
+
