@@ -8,8 +8,8 @@ function editPassRequest(evt){
     evt.preventDefault();
 
     let _oldpass = escapeHtml(document.querySelector("input[name='oldpass']").value);
-    let _newpass = escapeHtml(document.querySelector("input[name='newpass']").value);
-    let _confirm = escapeHtml(document.querySelector("input[name='confirm']").value);
+    let _newpass = document.querySelector("input[name='newpass']").value;
+    let _confirm = document.querySelector("input[name='confirm']").value;
     let _csrf = escapeHtml(document.querySelector("input[name='csrf']").value);
     _name = escapeHtml(document.querySelector("input[name='user']").value);
 
