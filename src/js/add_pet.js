@@ -17,6 +17,12 @@ let fileInput ;
 let file;
 let formData ;
 
+
+let pic_input = fileInput = document.getElementById("picture");
+pic_input.onchange = function (e){
+    console.log("dsadsadsa");
+}
+
 function add_pet(evt){
     evt.preventDefault();
 
@@ -135,6 +141,14 @@ function receive_add_pet(evt){
     }
     else {
         _gender.style="color: black";
+    }
+    if(parsed_reply['safety_error']){
+        on_error_animate(fileInput);
+        fileInput.style="color: red";
+        error = true;
+    }
+    else {
+        fileInput.style="color: black";
     }
     if(!error)
         window.location.href = "animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']);

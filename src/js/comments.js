@@ -51,7 +51,8 @@ function receiveComments(evt){
     let after = document.querySelector("form[id='ask_question']");
     parent.insertBefore(newArticle,after);
 
-    document.getElementById("comment_submit_message").innerHTML="";
+    //document.getElementById("comment_submit_message").innerHTML="";
     document.querySelector("textarea[name='comment_text']").value="";
+
 
 }

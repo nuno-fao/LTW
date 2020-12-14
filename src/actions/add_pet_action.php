@@ -85,15 +85,15 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                         if ($pet_id == -1) {
                             $reply->query = true;
                         } else if (!add_animal_photo($pet_id, $main_pic, true)) {
-                            $reply->main_pic = false;
-                        } else {
+                            $reply->main_pic = true;
+                        } /*else {
                             foreach ($_FILES as $file) {
                                 if (add_animal_photo($pet_id, $file, false)) {
                                     $reply->other_pics = true;
                                     break;
                                 }
                             }
-                        }
+                        }*/
                     }
                     $reply->pet_id = $pet_id;
                 }
@@ -107,20 +107,41 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
 echo json_encode($reply);
 
 function add_animal_photo($pet_id,$picture,$is_main){
-    $check = getimagesize($picture["tmp_name"]);
-    if ($check !== false) {
-        $file_name = "../img/pet_pic" . $pet_id.uniqid();
-        if (move_uploaded_file($picture["tmp_name"], $file_name)) {
-            $photo_id = add_animal_photo_to_db($file_name, $pet_id);
-            if($is_main) {
-                change_pet_photo_id($pet_id, $photo_id);
-            }
-            return true;
-        } else {
-            return false;
-        }
+    //$check = getimagesize($picture["tmp_name"]);
+    $photo = imagecreatefromjpeg($picture['tmp_name']);
+    if($photo === false)
+        $photo = imagecreatefrompng($picture['tmp_name']);
+    if($photo === false)
+        $photo = imagecreatefromgif($picture['tmp_name']);
+    if ($photo === false)
+        return false;
+
+
+    $file_name = "../img/pet_pic" . $pet_id.uniqid();
+
+    $width = imagesx($photo);
+    $height = imagesy($photo);
+    $square = min($width,$height);
+
+    $pic  = imagecreatetruecolor(400,400);
+    imagecopyresized(
+        $pic,
+        $photo,
+        0,
+        0,
+        ($width>$square)?($width-$square)/2:0,
+        ($height>$square)?($height-$square)/2:0,
+        400,
+        400,
+        $square,
+        $square);
+    imagejpeg($pic,$file_name);
+
+    $photo_id = add_animal_photo_to_db($file_name, $pet_id);
+    if($is_main) {
+        change_pet_photo_id($pet_id, $photo_id);
     }
-    return false;
+    return true;
 }
 
 function get_last_pet_id($user,$pet){
