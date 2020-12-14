@@ -26,3 +26,10 @@ function addUser($user,$password,$email,$name){
     $stmt = $dbh->prepare('INSERT INTO Users(userName, password,Name, EmailAddress) VALUES(?,?,?,?)');
     $stmt->execute(array($user,$password,$name,$email));
 }
+
+function editPassword($user,$newpass){
+    global $dbh;
+    $password = password_hash($newpass, PASSWORD_DEFAULT);
+    $stmt = $dbh->prepare('UPDATE Users SET password = ? WHERE userName = ?');
+    $stmt->execute(array($password,$user));
+}

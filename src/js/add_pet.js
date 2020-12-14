@@ -17,6 +17,12 @@ let fileInput ;
 let file;
 let formData ;
 
+
+let pic_input = fileInput = document.getElementById("picture");
+pic_input.onchange = function (e){
+    console.log("dsadsadsa");
+}
+
 function add_pet(evt){
     evt.preventDefault();
 
@@ -57,10 +63,12 @@ function receive_add_pet(evt){
     if(this.responseText == true){
         return false;
     }
+    let error = false;
     let parsed_reply = JSON.parse(this.responseText);
     if(parsed_reply['main_pic'] == true){
         on_error_animate(fileInput);
         fileInput.style="color: red";
+        error = true;
     }
     else {
         fileInput.style="color: black";
@@ -68,11 +76,14 @@ function receive_add_pet(evt){
 
     if(parsed_reply['other_pics']){
         //on_error_animate();
+        // error = true;
+        error = true;
     }
 
     if(parsed_reply['name']){
         on_error_animate(_name);
         _name.style="color: red";
+        error = true;
     }
     else {
         _name.style="color: black";
@@ -81,6 +92,7 @@ function receive_add_pet(evt){
     if(parsed_reply['size']){
         on_error_animate(_length);
         _length.style="color: red";
+        error = true;
     }
     else {
         _length.style="color: black";
@@ -89,6 +101,7 @@ function receive_add_pet(evt){
     if(parsed_reply['date']){
         on_error_animate(_dateofbirth);
         _dateofbirth.style="color: red";
+        error = true;
     }
     else {
         _dateofbirth.style="color: black";
@@ -97,6 +110,7 @@ function receive_add_pet(evt){
     if(parsed_reply['species']){
         on_error_animate(_species);
         _species.style="color: red";
+        error = true;
     }
     else {
         _species.style = "color: black";
@@ -105,6 +119,7 @@ function receive_add_pet(evt){
     if(parsed_reply['color']){
         on_error_animate(_color);
         _color.style="color: red";
+        error = true;
     }
     else {
         _color.style="color: black";
@@ -113,6 +128,7 @@ function receive_add_pet(evt){
     if(parsed_reply['location']){
         on_error_animate(_location);
         _location.style="color: red";
+        error = true;
     }
     else {
         _location.style="color: black";
@@ -121,10 +137,19 @@ function receive_add_pet(evt){
     if(parsed_reply['gender']){
         on_error_animate(_gender);
         _gender.style="color: red";
+        error = true;
     }
     else {
         _gender.style="color: black";
     }
-
-    window.location.href = "animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']);
+    if(parsed_reply['safety_error']){
+        on_error_animate(fileInput);
+        fileInput.style="color: red";
+        error = true;
+    }
+    else {
+        fileInput.style="color: black";
+    }
+    if(!error)
+        window.location.href = "animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']);
 }

@@ -9,6 +9,9 @@ $error = false;
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error = true;
 }
+else if(accpeted_proposals($_POST['petId']) > 0 && $_POST['reply']=="a"){
+    $error = true;
+}
 else if(isset($_SESSION['user']) && check_pet($_POST['petId'])){
     $pet = get_animal_data($_POST['petId']);
     $user = getUser($_SESSION['user']);

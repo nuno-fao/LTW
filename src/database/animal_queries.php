@@ -1,13 +1,7 @@
 <?php
 include_once('../database/connection.php');
 
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
-
 function getAnimals($name,$species,$size,$color,$location,$state,$user,$first_elem,$length){
-    error_reporting(E_ALL);
-    ini_set('display_errors', 1);
     $name_sql = '((? is NULL) <> (NULL is not NULL))';
     $species_sql = '((? is NULL) <> (NULL is not NULL))';
     $size_sql = '((? is NULL) <> (NULL is not NULL))';
@@ -157,9 +151,6 @@ function check_pet_user_association($user,$pet) {
 
 function add_pet_favourite($user,$pet){
 
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
-    error_reporting(-1);
 
     global $dbh;
     $stmt = $dbh->prepare('Insert into Favourites(user,pet) values (?,?);');
@@ -167,10 +158,6 @@ function add_pet_favourite($user,$pet){
 }
 
 function remove_pet_favourite($user,$pet){
-
-    ini_set('display_startup_errors', 1);
-    ini_set('display_errors', 1);
-    error_reporting(-1);
 
     global $dbh;
     $stmt = $dbh->prepare('DELETE FROM Favourites WHERE user = ? AND pet = ?;');
@@ -206,4 +193,11 @@ function add_question_reply($answerTxt,$question,$date,$author){
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Answers (answerTxt,question,date,author) VALUES (?,?,?,?)');
     $stmt->execute(array($answerTxt,$question,$date,$author));
+}
+
+function accpeted_proposals($animal_id){
+    global $dbh;
+    $stmt = $dbh->prepare('select * from Proposals where pet=? and state=1');
+    $stmt->execute(array($animal_id));
+    return count($stmt->fetchAll());
 }

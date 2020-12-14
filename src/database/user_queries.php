@@ -1,9 +1,6 @@
 <?php
 include_once('../database/connection.php');
 
-ini_set('display_startup_errors', 1);
-ini_set('display_errors', 1);
-error_reporting(-1);
 
 function getName(){
     if(isset($_SESSION['user'])){
@@ -96,6 +93,16 @@ function get_proposals_for_user($userId){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Proposals Where user=?');
     $stmt->execute(array($userId));
+    $out = $stmt->fetchAll();
+    if(count($out)==0)
+        return null;
+    return $out;
+}
+
+function get_questions_participated($userId){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT DISTINCT questionId, questionTxt, pet FROM Questions LEFT JOIN Answers ON Answers.question = Questions.questionId WHERE Questions.user = ? OR Answers.author = ? ');
+    $stmt->execute(array($userId,$userId));
     $out = $stmt->fetchAll();
     if(count($out)==0)
         return null;
