@@ -21,6 +21,9 @@ else if (!isset($_POST['oldpass']) || !checkPassword($_POST['name'], $_POST['old
 else if(!isset($_POST['newpass'])){
     $error->newpass = true;
 }
+else if(strlen($_POST['newpass'])<8){
+    $error->newpass = "size";
+}
 else if(!isset($_POST['confirm']) || $_POST['newpass'] != $_POST['confirm']){
     $error->confirm = true;
 }
