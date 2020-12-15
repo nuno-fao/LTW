@@ -44,7 +44,7 @@ function get_animal_photo($petId){
 
 function get_species(){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT specie from Species ');
+    $stmt = $dbh->prepare('SELECT * from Species ');
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
@@ -56,12 +56,20 @@ function get_states(){
     return $stmt->fetchAll();
 }
 
-function get_specie_by_id($specie){
+function get_specie_id($specie){
     global $dbh;
     $stmt = $dbh->prepare('SELECT specieId from Species where specie=?');
     $stmt->execute(array($specie));
     return $stmt->fetchAll()[0]['specieId'];
 }
+
+function get_specie($specie_id){
+    global $dbh;
+    $stmt = $dbh->prepare('SELECT * from Species where specieId=?');
+    $stmt->execute(array($specie_id));
+    return $stmt->fetchAll()[0];
+}
+
 function get_color_id($color){
     global $dbh;
     $stmt = $dbh->prepare('SELECT color from Colors where color=?');
@@ -101,6 +109,11 @@ function add_pet($name,$species,$size,$color,$location,$state,$user,$profilePic,
     global $dbh;
     $stmt = $dbh->prepare('INSERT INTO Pets(name, species,size, color,location,state,user,profilePic,gender) VALUES(?,?,?,?,?,?,?,?,?)');
     return $stmt->execute(array($name,$species,$size,$color,$location,$state,$user,$profilePic,$gender));
+}
+function edit_pet($name,$species,$size,$color,$location,$state,$gender,$pet_id){
+    global $dbh;
+    $stmt = $dbh->prepare('UPDATE Pets set name=?, species=?,size=?, color=?,location=?,state=?,gender=? where petId=?');
+    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$gender,$pet_id));
 }
 
 function get_pet($name){

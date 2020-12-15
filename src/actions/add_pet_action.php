@@ -51,7 +51,7 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
         else{
             $error_on_query = true;
             try {
-                $specie = get_specie_by_id($_POST['species']);
+                $specie = get_specie_id($_POST['species']);
                 $user = getUser($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 

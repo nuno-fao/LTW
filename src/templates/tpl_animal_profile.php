@@ -20,6 +20,9 @@ function draw_animal_aside($animal){
             <?=$animal_data['color']?>
         </label>
         <label>
+            <?=get_specie($animal_data['species'])['specie']?>
+        </label>
+        <label>
             <?=$animal_data['location']?>
         </label>
         <a id="owner_profile" href="user.php?user=<?=$user_name?>">
@@ -63,6 +66,13 @@ function draw_animal_aside($animal){
                     <form action="../actions/delete_pet_action.php" method="POST"  id = "remove_pet_form">
                         <input type="hidden" name="pet_id" value="<?=$animal?>">
                         <input type="submit" id="remove_button" value="Remove Pet">
+                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                    </form>
+                </section>
+                <section  id = "remove_pet">
+                    <form action="../pages/edit_pet.php" method="POST"  id = "remove_pet_form">
+                        <input type="hidden" name="pet_id" value="<?=$animal?>">
+                        <input type="submit" id="edit_button" value="Edit Pet">
                         <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                     </form>
                 </section>
