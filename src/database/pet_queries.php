@@ -204,8 +204,23 @@ function accepted_proposals($animal_id){
 
 function remove_pet($pet_id){
     global $dbh;
-    $stmt = $dbh->prepare('DELETE from Pets where petId=?');
-    $stmt->execute(array($pet_id));
+    $stmt1 = $dbh->prepare('DELETE from Pets where petId=?');
+    $stmt1 ->execute(array($pet_id));
+    $stmt2 = $dbh->prepare('DELETE from Photos where pet=?');
+    $stmt2 ->execute(array($pet_id));
+    $questions = $dbh->prepare('Select * from Questions where pet=?');
+    $questions ->execute(array($pet_id));
+
+    $del_answer = $dbh->prepare('DELETE from Answers where question=?');
+    foreach ($questions as $question){
+        $del_answer->execute(array($question['questionId']));
+    }
+
+    $stmt4 = $dbh->prepare('DELETE from Questions where pet=?');
+    $stmt4 ->execute(array($pet_id));
+
+    $stmt4 = $dbh->prepare('DELETE from Proposals where pet=?');
+    $stmt4 ->execute(array($pet_id));
 }
 
 

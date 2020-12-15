@@ -96,6 +96,7 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                     $reply->pet_id = $pet_id;
                 }
             } catch (PDOException $er) {
+                print_r($er);
                 $reply->query = true;
             }
         }

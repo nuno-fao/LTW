@@ -5,9 +5,9 @@ include_once('../database/pet_queries.php');
 include_once("../pages/security_functions.php");
 session_start();
 
-ini_set('display_errors', '1');
+/*ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
+error_reporting(E_ALL);*/
 
 if (!isset($_SESSION['csrf'])) {
     $_SESSION['csrf'] = generate_random_token();
