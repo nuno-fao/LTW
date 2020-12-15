@@ -90,7 +90,7 @@ function draw_user_aside($user)
             if ($questions) {
                 foreach ($questions as $question) { ?>
                     <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$question['pet']?>"  >
-                        <div class="animal_img_box">
+                        <div class="animal_box">
                             <img class= "animal_image_box" src="<?=get_animal_photo($question['pet'])?>" width="200" height="200">
                             <label class="question_text_box">
                                 <?=$question['questionTxt']?>
