@@ -236,4 +236,8 @@ function remove_pet($pet_id){
     $stmt4 ->execute(array($pet_id));
 }
 
-
+function update_state($pet_id,$state){
+    global $dbh;
+    $stmt = $dbh->prepare('UPDATE Pets SET state=? WHERE petId=?');
+    $stmt->execute(array($state,$pet_id));
+}
