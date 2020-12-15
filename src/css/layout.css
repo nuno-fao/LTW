@@ -174,3 +174,12 @@ div#proposal_head label{
 div#proposal_head label:first-child{
     margin: auto  auto auto 0;
 }
+
+div#change_state_div {
+    display: flex;
+    flex-flow: row;
+}
+div#change_state_div input[type="submit"]{
+    width: 6em;
+    text-align: center;
+}

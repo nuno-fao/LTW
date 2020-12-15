@@ -29,9 +29,40 @@ function draw_animal_aside($animal){
             <?=$user_name?>
         </a>
 
-        <label>
-            <?=$state['state']?>
-        </label>
+        <div id="change_state_div"> 
+            <?php
+            if($state['state']=='For Adoption'){?>
+                <?=$state["state"]?>
+                <form action="../actions/change_state_action.php" method="post">
+                    <input type="hidden" name="new_state" value="2">
+                    <input type="submit" name="submit" value="Next">
+                </form>
+
+                <?php
+            }
+            else if($state['state']=='Proposal Accepted'){?>
+                <form action="../actions/change_state_action.php" method="post">
+                    <input type="hidden" name="new_state" value="1">
+                    <input type="submit" name="submit" value="Previous">
+                </form>
+                <?=$state["state"]?>
+                <form action="../actions/change_state_action.php" method="post">
+                    <input type="hidden" name="new_state" value="3">
+                    <input type="submit" name="submit" value="Next">
+                </form>
+
+                <?php
+            }
+            if($state['state']=='Addopted'){?>
+                <form action="../actions/change_state_action.php" method="post">
+                    <input type="hidden" name="new_state" value="2">
+                    <input type="submit" name="submit" value="Previous">
+                </form>
+                <?=$state["state"]?>
+                <?php
+            }
+            ?>
+        </div>
         <?php
         if(isset($_SESSION['user'])){
             ?>

@@ -70,7 +70,7 @@ function draw_edit_pet($pet){
                     <input type="file" name="other_picture" id="other_pictures" accept=".jpg, .jpeg, .png, .gif" multiple>
                     <input type="hidden" name="submit" value="submit">
                     <input type="hidden" name="pet_id" value="<?=$pet?>">
-                    <input type="submit" value="Add Pet">
+                    <input type="submit" value="Confirm Changes">
                     <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
                 </form>
                 <button id="discard_button">Discard Changes</button>
