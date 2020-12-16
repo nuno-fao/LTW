@@ -26,15 +26,29 @@ function draw_user_aside($user)
         ?>
 
     </aside>
-
-    <div>
-        <label>User Animals</label>
-    </div>
+    
+    
+    
     <section id="user_animals">
+        <div>
+            <label>User Animals</label>
+        </div>
         <?php
         $animals = getUserAnimals($user_info['userId']);
         foreach ($animals as $animal) {
-            draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            if($animal['state']!=3){
+                draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            }
+        }
+        ?>
+        <div>
+            <label>Animals Given To Adoption</label>
+        </div>
+        <?php
+        foreach ($animals as $animal) {
+            if($animal['state']==3){
+                draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            }
         }
         ?>
     </section>
