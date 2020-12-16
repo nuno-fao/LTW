@@ -26,15 +26,29 @@ function draw_user_aside($user)
         ?>
 
     </aside>
-
-    <div>
-        <label>User Animals</label>
-    </div>
+    
+    
+    
     <section id="user_animals">
+        <div>
+            <label>User Animals</label>
+        </div>
         <?php
         $animals = getUserAnimals($user_info['userId']);
         foreach ($animals as $animal) {
-            draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            if($animal['state']!=3){
+                draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            }
+        }
+        ?>
+        <div>
+            <label>Animals Given To Adoption</label>
+        </div>
+        <?php
+        foreach ($animals as $animal) {
+            if($animal['state']==3){
+                draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
+            }
         }
         ?>
     </section>
@@ -78,7 +92,7 @@ function draw_user_aside($user)
         <br>
         <?php
     }
-    if(isset($_SESSION['user']) && $user===$_SESSION['user']) {
+    if(isset($_SESSION['user']) && $user['userName']===$_SESSION['user']) {
         ?>
         <div>
             <label>Posts where you asked questions and/or replied</label>
@@ -90,7 +104,7 @@ function draw_user_aside($user)
             if ($questions) {
                 foreach ($questions as $question) { ?>
                     <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$question['pet']?>"  >
-                        <div class="animal_img_box">
+                        <div class="animal_box">
                             <img class= "animal_image_box" src="<?=get_animal_photo($question['pet'])?>" width="200" height="200">
                             <label class="question_text_box">
                                 <?=$question['questionTxt']?>

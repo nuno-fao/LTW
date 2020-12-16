@@ -30,7 +30,7 @@ function getPicturePath($user){
 
 function getUserAnimals($userId){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT petId,name,size,color,location from Pets WHERE user=?');
+    $stmt = $dbh->prepare('SELECT petId,name,size,color,location,state from Pets WHERE user=?');
     $stmt->execute(array($userId));
     return $stmt->fetchAll();
 }

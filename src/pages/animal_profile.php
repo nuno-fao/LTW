@@ -1,7 +1,7 @@
 <?php
 include_once('../templates/tpl_common.php');
 include_once('../templates/tpl_animal_profile.php');
-include_once('../database/animal_queries.php');
+include_once('../database/pet_queries.php');
 include_once('../templates/tpl_proposals.php');
 include_once("security_functions.php");
 

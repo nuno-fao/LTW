@@ -1,5 +1,11 @@
-let form_add_pet = document.querySelector("section[id='pet_info'] form");
-form_add_pet.addEventListener('submit',add_pet);
+let form_edit_pet = document.querySelector("section[id='pet_info'] form");
+form_edit_pet.addEventListener('submit',edit_pet);
+
+let discard_edit_pet = document.querySelector("section[id='pet_info'] button[id='discard_button']");
+discard_edit_pet.addEventListener('click',function (e){
+    window.location.href = "animal_profile.php?pet_id="+escapeHtml(document.querySelector("input[name='pet_id']").value);
+});
+
 
 let _name ;
 let _length ;
@@ -8,6 +14,7 @@ let _color;
 let _gender ;
 let _location ;
 let _csrf ;
+let _pet_id;
 
 let request ;
 
@@ -22,7 +29,7 @@ let pic_input = fileInput = document.getElementById("picture");
 pic_input.onchange = function (e){
 }
 
-function add_pet(evt){
+function edit_pet(evt){
     evt.preventDefault();
 
     _name = (document.querySelector("input[name='name']"));
@@ -32,10 +39,11 @@ function add_pet(evt){
     _gender = (document.querySelector("select[name='gender']"));
     _location = (document.querySelector("input[name='location']"));
     _csrf = (document.querySelector("input[name='csrf']"));
+    _pet_id = (document.querySelector("input[name='pet_id']"));
 
     request = new XMLHttpRequest();
-    request.addEventListener("load",receive_add_pet)
-    request.open("post","../actions/add_pet_action.php",true);
+    request.addEventListener("load",receive_edit_pet)
+    request.open("post","../actions/edit_pet_action.php",true);
     //request.setRequestHeader('Content-Type','multipart/form-data');
 
 
@@ -55,12 +63,13 @@ function add_pet(evt){
     formData.append('gender',escapeHtml(_gender.value));
     formData.append('location',escapeHtml(_location.value));
     formData.append('csrf',escapeHtml(_csrf.value));
+    formData.append('pet_id',escapeHtml(_pet_id.value));
     formData.append('submit',"submit");
     request.send(formData);
 
 }
 
-function receive_add_pet(evt){
+function receive_edit_pet(evt){
     if(this.responseText == true){
         return false;
     }

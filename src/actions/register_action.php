@@ -41,7 +41,7 @@ if ( !preg_match ("/^[a-zA-Z0-9_\s-]+$/", $USER)) {
 else if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $EMAIL)) {
     $error->email = true;
 }
-else if ( !preg_match ("/^[a-zA-Z\s-]+$/", $NAME)) {
+else if ( !preg_match ("/^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/", $NAME)) {
     $error->name = true;
 }
 else if ($_SESSION['csrf'] !== $_POST['csrf']) {
