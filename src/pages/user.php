@@ -16,6 +16,7 @@ if(isset($_GET['user']) && checkUser($_GET['user']) ) {
     echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
     draw_head($_GET['user']." Page");
     draw_header();
+    echo '<div class="user_page">';
     draw_user_aside($_GET['user']);
     echo '</div>';
     draw_footer();
