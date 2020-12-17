@@ -10,7 +10,7 @@ function draw_add_pet(){
                 </div>
             </section>
             <section id="pet_info">
-                <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data" class="add_pet_input">
+                <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data" class="add_edit_pet_form">
                     <label>Pet Name:</label><input type="text" name="name">
                     <label for="length">Animal Length(1 to 200 cm):</label>
                     <input type="number" id="size" name="size" min="1" max="200" value="50"> <?//substituir por algo decente com js, css e divs?>

@@ -107,8 +107,9 @@ echo json_encode($reply);
 function add_animal_photo($pet_id,$picture,$is_main){
     //$check = getimagesize($picture["tmp_name"]);
     $photo = imagecreatefromjpeg($picture['tmp_name']);
-    if($photo === false)
+    if($photo === false) {
         $photo = imagecreatefrompng($picture['tmp_name']);
+    }
     if($photo === false)
         $photo = imagecreatefromgif($picture['tmp_name']);
     if ($photo === false)

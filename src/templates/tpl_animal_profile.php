@@ -29,6 +29,7 @@ function draw_animal_aside($animal){
         <a id="owner_profile" href="user.php?user=<?=$user_name?>">
             <?=$user_name?>
         </a>
+        </label>
         <div id="change_state_div"> 
             <?php
             if(isset($_SESSION['user'])){

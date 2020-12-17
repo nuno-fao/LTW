@@ -17,7 +17,7 @@ function draw_register(){
 
                 <div id="buttons-section">
                     <button type="submit">Register</button>
-                    <span><a href="Login" class="no_link_style">Login</a></span>
+                    <button onclick="window.location.href = '../pages/login.php'">Login</button>
                 </div>
             </div>
             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">

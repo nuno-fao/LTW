@@ -447,8 +447,8 @@ form textarea#proposal-text{
     margin-left: 1em;
 }
 
-.add_pet_input{
-    margin-left: 1em;
+.add_edit_pet_form{
+    margin: auto;
     display: grid;
     grid-template-columns: auto auto auto auto;
     grid-template-rows: auto auto auto auto;
@@ -467,17 +467,24 @@ form textarea#proposal-text{
     padding: 1.5em;
 }
 
-.add_pet_input > label{
+.add_edit_pet_form > label{
     vertical-align: middle;
     line-height: 50px;
 }
 
-.add_pet_input > input{
+.add_edit_pet_form > input{
     vertical-align: middle;
     height: 50px;
 }
 
-.add_pet_input > select{
+.add_edit_pet_form input[type='submit'],
+.add_edit_pet_form button{
+    width: 20em;
+    height: 3em;
+}
+
+
+.add_edit_pet_form > select{
     vertical-align: middle;
     height: 50px;
 }
@@ -567,7 +574,7 @@ form textarea#proposal-text{
     padding: 0.5em;
 }
 
-.add_pet_input > input.file_chooser{
+.add_edit_pet_form > input.file_chooser{
     text-align: center;
     margin: auto;
 }
@@ -592,7 +599,4 @@ form textarea#proposal-text{
     margin: 0 0 0 1em;
 }
 
-#user_animals{
-    padding:auto;
-}
 

@@ -30,8 +30,8 @@ $error->get_error(!isset($_POST['user']) || strlen($_POST['user']) == 0  , !isse
 if(!isset($_SESSION['user'])){
     $error = true;
 }
-if ( !preg_match ("/^[a-zA-Z0-9_-]+$/", $_POST['user'])) {
-    $error->c = $_POST['user'];
+if ( !preg_match ("/^[a-z0-9_-]+$/", $_POST['user'])) {
+    //$error->c = $_POST['user'];
     $error->user = true;
 }
 if ( !preg_match ("/^[a-zA-Z@.0-9_-]+$/", $_POST['e_address'])) {
