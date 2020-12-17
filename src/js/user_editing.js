@@ -139,8 +139,10 @@ function discard_changes(evt){
     user_info.removeChild(discard_changes_button);
     user_info.removeChild(make_changes_button);
 
-    user_info.appendChild(_user);
-    user_info.appendChild(_name);
-    user_info.appendChild(_email);
-    user_info.appendChild(user_edit_button);
+    let after=document.getElementById("change_password_link");
+
+    user_info.insertBefore(_user,after);
+    user_info.insertBefore(_name,after);
+    user_info.insertBefore(_email,after);
+    user_info.insertBefore(user_edit_button,after);
 }

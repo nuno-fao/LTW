@@ -20,7 +20,7 @@ function draw_user_aside($user)
             ?>
             <script src="../js/user_editing.js" defer></script>
             <button id="edit_user_profile">Edit Profile</button>
-            <a href="edit_pass.php">Change Password</a>
+            <a id="change_password_link" href="edit_pass.php">Change Password</a>
             <?php
         }
         ?>
