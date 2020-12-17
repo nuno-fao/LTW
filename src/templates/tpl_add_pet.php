@@ -2,7 +2,7 @@
 include_once "../database/pet_queries.php";
 function draw_add_pet(){
     ?>
-        <section>
+        <section class="grid_add_pet">
             <section id="pet_main_photo">
                 <img src="../img/default_animal_pic.gif"/>
                 <div id="add_photo">
@@ -10,7 +10,7 @@ function draw_add_pet(){
                 </div>
             </section>
             <section id="pet_info">
-                <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data">
+                <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data" class="add_pet_input">
                     <label>Pet Name:</label><input type="text" name="name">
                     <label for="length">Animal Length(1 to 200 cm):</label>
                     <input type="number" id="size" name="size" min="1" max="200" value="50"> <?//substituir por algo decente com js, css e divs?>
@@ -37,6 +37,7 @@ function draw_add_pet(){
                         }
                         ?>
                     </select>
+                    <label for="gender">Gender</label> <?//Eu mudei isto para consistencia?>
                     <select name="gender" id="gender">
                         <option value="female">female</option>
                         <option value="male">male</option>

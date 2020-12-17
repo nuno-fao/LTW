@@ -7,9 +7,9 @@ function draw_animal_aside($animal){
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
     $state = get_state_description($animal_data['state']);
     ?>
-    <aside id="animal_profile">
+    <aside id="animal_profile" class="animal_profile_box">
 
-        <img src="<?=get_pet_photo($animal)?>" width="100%" height="100%">
+        <img src="<?=get_pet_photo($animal)?>" class="profile_img">
         <label>
             <?=$animal_data['name']?>
         </label>
@@ -25,50 +25,56 @@ function draw_animal_aside($animal){
         <label>
             <?=$animal_data['location']?>
         </label>
+        <label>
         <a id="owner_profile" href="user.php?user=<?=$user_name?>">
             <?=$user_name?>
         </a>
-
         <div id="change_state_div"> 
             <?php
-            $user = get_user($_SESSION['user']);
-            if ($animal_data['user'] == $user['userId']) {
-                if($state['state']=='For Adoption'){?>
-                    <?=$state["state"]?>
-                    <form action="../actions/change_state_action.php" method="post">
-                        <input type="hidden" name="petId" value="<?=$animal?>">
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                        <input type="hidden" name="new_state" value="2">
-                        <input type="submit" name="submit" value="Next">
-                    </form>
-    
-                    <?php
+            if(isset($_SESSION['user'])){
+                $user = get_user($_SESSION['user']);
+                if ($animal_data['user'] == $user['userId']) {
+                    if($state['state']=='For Adoption'){?>
+                        <?=$state["state"]?>
+                        <form action="../actions/change_state_action.php" method="post">
+                            <input type="hidden" name="petId" value="<?=$animal?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                            <input type="hidden" name="new_state" value="2">
+                            <input type="submit" name="submit" value="Next">
+                        </form>
+        
+                        <?php
+                    }
+                    else if($state['state']=='Proposal Accepted'){?>
+                        <form action="../actions/change_state_action.php" method="post">
+                            <input type="hidden" name="petId" value="<?=$animal?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                            <input type="hidden" name="new_state" value="1">
+                            <input type="submit" name="submit" value="Previous">
+                        </form>
+                        <?=$state["state"]?>
+                        <form action="../actions/change_state_action.php" method="post">
+                            <input type="hidden" name="petId" value="<?=$animal?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                            <input type="hidden" name="new_state" value="3">
+                            <input type="submit" name="submit" value="Next">
+                        </form>
+        
+                        <?php
+                    }
+                    else if($state['state']=='Addopted'){?>
+                        <form action="../actions/change_state_action.php" method="post">
+                            <input type="hidden" name="petId" value="<?=$animal?>">
+                            <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
+                            <input type="hidden" name="new_state" value="2">
+                            <input type="submit" name="submit" value="Previous">
+                        </form>
+                        <?=$state["state"]?>
+                        <?php
+                    }
                 }
-                else if($state['state']=='Proposal Accepted'){?>
-                    <form action="../actions/change_state_action.php" method="post">
-                        <input type="hidden" name="petId" value="<?=$animal?>">
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                        <input type="hidden" name="new_state" value="1">
-                        <input type="submit" name="submit" value="Previous">
-                    </form>
-                    <?=$state["state"]?>
-                    <form action="../actions/change_state_action.php" method="post">
-                        <input type="hidden" name="petId" value="<?=$animal?>">
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                        <input type="hidden" name="new_state" value="3">
-                        <input type="submit" name="submit" value="Next">
-                    </form>
-    
-                    <?php
-                }
-                else if($state['state']=='Addopted'){?>
-                    <form action="../actions/change_state_action.php" method="post">
-                        <input type="hidden" name="petId" value="<?=$animal?>">
-                        <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
-                        <input type="hidden" name="new_state" value="2">
-                        <input type="submit" name="submit" value="Previous">
-                    </form>
-                    <?=$state["state"]?>
+                else{ ?>
+                    <label><?=$state["state"]?></label>
                     <?php
                 }
             }
@@ -141,7 +147,7 @@ function draw_animal_profile($animal){
             foreach($photos as $photo){
                 ?>
                 <div class=gallery_photo>
-                    <img src = "<?=$photo['path']?>" width=250 height=250/>
+                    <img src = "<?=$photo['path']?>" width=auto height=200/>
                 </div>
 
                 <?php

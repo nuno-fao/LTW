@@ -1,5 +1,9 @@
 body {
     background-color: #bebebe;
+    width: 100%;
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 50px;
 }
 
 a:hover,
@@ -7,16 +11,21 @@ button:hover{
     cursor: pointer;
 }
 
+/* COLORED LINKS */
+
+a:link {
+    color:inherit;
+ }
+
 /* HEADER */
 
 header {
     background-color: #252531;
     padding: .8em;
-    width: 100%;
-    display: flex;
     margin: 0 auto;
-    flex-direction: row;
     color: white;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
 }
 
 header .login_register {
@@ -53,6 +62,7 @@ header #register {
 }
 
 header #user{
+    color: white;
     margin: auto;
 }
 
@@ -60,6 +70,7 @@ header #title {
     font-family: "Ubuntu Thin", sans-serif;
     font-size: 3em;
     margin: auto 0.3em;
+    color: white;
 }
 
 
@@ -269,30 +280,42 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .animal_main_page{
-    margin-right: 2px;
+    margin: 5px;
 }
 
 
-
-.animal_text_box{
-    border-top: black;
-    border-radius: 1px;
-
-}
 
 img.animal_image_box{
     border: 5px solid white;
     border-radius: 3px;
 }
 
+.animal_box{
+    background-color: white;
+    width: fit-content;
+    border: 10px solid white;
+    border-radius: 10px;
+}
 
-.animal_text_box{
+.animal_box > label{
+    display: block;
+    padding-left: 2em;
+    color: #252531;
+}
+
+.animal_box > label.animal_text_box{
     font-size: 2em;
     font-weight: 300;
     height: 40px;
     display: block;
-    text-align: center;
     background-color: white;
+    border-top: 1px solid #252531;
+    padding-left: 0.8em;
+    color: #252531;
+}
+
+#user_animals >a.animal_main_page > div.animal_box{
+    margin-top: 1.5em;
 }
 
 .title_pets_display{
@@ -335,6 +358,7 @@ div.proposal{
     padding: 0.3em;
     display: flex;
     flex-flow: column;
+    margin-bottom: 1em;
 }
 
 label#proposal-text{
@@ -342,7 +366,7 @@ label#proposal-text{
     background-color: #cabeca;
     border: #cccccc 2px solid;
     border-radius: 8px;
-    margin: auto auto auto 1em;
+    margin: auto auto 1em 1em;
 }
 
 form textarea#proposal-text{
@@ -350,4 +374,225 @@ form textarea#proposal-text{
     resize: none;
 }
 
+/* FOOTER */
+
+.footer{
+    background-color:  #252531;
+    width: 100%;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+    font-size: 0.9em;
+}
+
+.footer .text{
+    margin: 3px;
+    margin-left: 5%;
+    font-weight: 400;
+    color:white;
+}
+
+
+/* ANIMAL PROFILE */
+
+#animal_profile label{
+    text-align: center;
+    padding: 0.5em;
+}
+
+.profile_img{
+    background-color: white;
+    height: auto;
+    vertical-align: middle;
+    overflow: hidden;
+    margin-bottom: 0.5em;
+}
+
+
+/* ANIMAL PROFILE PICTURES */
+
+
+
+.gallery_photo{
+    border: 20px solid white;
+    border-radius: 15px;
+}
+
+#animal_profile.animal_profile_box{
+    border-radius: 15px;
+}
+
+
+/* ADD PET */
+
+#pet_main_photo{
+    width: fit-content;
+    padding: 1em;
+}
+#pet_main_photo:first-child{
+    display: block;
+    margin: auto;
+    background-color: white;
+    border-radius: 15px;
+}
+
+.grid_add_pet{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    justify-self: center;
+    margin-left: 1em;
+}
+
+.add_pet_input{
+    margin-left: 1em;
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+            "pet_name   name_input     animal_length  length_input"
+            "birthdate  birth_input    species        species_input"
+            "color      color_input    gender         gender_input"
+            "location  location_input  picture        picture_input";
+    grid-gap: 1em;
+    background-color: white;
+    padding: 1em;
+    border-radius: 15px;
+}
+
+#pet_info{
+    padding: 1.5em;
+}
+
+.add_pet_input > label{
+    vertical-align: middle;
+    line-height: 50px;
+}
+
+.add_pet_input > input{
+    vertical-align: middle;
+    height: 50px;
+}
+
+.add_pet_input > select{
+    vertical-align: middle;
+    height: 50px;
+}
+
+
+.user_page{
+    display: grid;
+    grid-template-columns: auto 0.3fr 1fr;
+    grid-gap: 1em;
+    min-height: 100px;
+}
+
+.user_page > div{
+    background-color: white;
+    display: flex;
+    font-size: 1.3em;
+    border-radius: 15px;
+}
+
+.user_page > div > label{
+    margin: auto;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+#user_profile{
+    border-radius: 0px 0px 15px 15px;
+}
+
+#user_profile > label{
+    display: block;
+    padding: 0.5em;
+    margin: 0.5em;
+    margin-top: 0.8em;
+    color: #252531;
+    border: 1px solid #252531;
+    border-radius: 10px;
+
+}
+
+#user_profile:first-child{
+    text-align: center;
+}
+
+
+.animal_image_box{
+    background-color: white;
+}
+
+.animal_img_box{
+    width: 210px;
+    border: 4px solid white;
+}
+
+.animal_img_box > label{
+    display: block;
+
+}
+
+#user_posts{
+    display: grid;
+    grid-template-columns: auto auto auto;
+}
+
+
+.question_text_box{
+    padding: 0.8em
+}
+
+#user_proposals{
+    background-color: white;
+    border-radius: 15px;
+    padding: 0.8em;
+}
+
+.proposal > *{
+    padding: 1em;
+}
+
+.proposal{
+    min-height: 100px;
+}
+
+#user_posts > a.animal_main_page{
+    border-radius: 15px;
+    background-color: white;
+    padding: 0.5em;
+}
+
+.add_pet_input > input.file_chooser{
+    text-align: center;
+    margin: auto;
+}
+
+#ask_question > p{
+    margin-left: 1em;
+}
+
+#ask_question > input{
+    margin: 1em 0 0 1em;
+}
+
+#add_proposal > label{
+    padding: 0 1em 1em 1em;
+}
+
+#proposal_form{
+    padding-top: 1em;
+}
+
+#proposal_form > input{
+    margin: 0 0 0 1em;
+}
+
+#user_animals{
+    padding:auto;
+}
 

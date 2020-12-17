@@ -1,5 +1,5 @@
 body {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -15,11 +15,13 @@ header .login_register {
 
 .body{
     display: flex;
+    
 }
 
 #animal_profile_body{
     display: grid;
-    grid-template-columns: 16em auto auto;
+    grid-template-columns: 16em minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows: minmax(24em,0) auto auto;
     grid-template-areas:
             "profile photos photos"
             "profile questions proposals";
@@ -91,7 +93,6 @@ section#questions{
     grid-area: questions;
     display: flex;
     flex-flow: column;
-    height: 100%;
 }
 
 #animal_main_section{
