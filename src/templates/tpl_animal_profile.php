@@ -3,13 +3,13 @@ include_once('../database/pet_queries.php');
 include_once('../database/user_queries.php');
 
 function draw_animal_aside($animal){
-    $animal_data = get_animal_data($animal);
+    $animal_data = get_pet_data($animal);
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
     $state = get_state_description($animal_data['state']);
     ?>
     <aside id="animal_profile">
 
-        <img src="<?=get_animal_photo($animal)?>" width="100%" height="100%">
+        <img src="<?=get_pet_photo($animal)?>" width="100%" height="100%">
         <label>
             <?=$animal_data['name']?>
         </label>
@@ -31,7 +31,7 @@ function draw_animal_aside($animal){
 
         <div id="change_state_div"> 
             <?php
-            $user = getUser($_SESSION['user']);
+            $user = get_user($_SESSION['user']);
             if ($animal_data['user'] == $user['userId']) {
                 if($state['state']=='For Adoption'){?>
                     <?=$state["state"]?>
@@ -104,8 +104,8 @@ function draw_animal_aside($animal){
                 ?>
             </section>
             <?php
-            $pet = get_animal_data($animal);
-            $user = getUser($_SESSION['user']);
+            $pet = get_pet_data($animal);
+            $user = get_user($_SESSION['user']);
             if ($pet['user'] == $user['userId']) {
                 ?>
                 <section  id = "remove_pet">
@@ -133,7 +133,7 @@ function draw_animal_aside($animal){
 }
 
 function draw_animal_profile($animal){
-    $photos = get_animal_photos($animal);
+    $photos = get_pet_photos($animal);
     ?>
     <section id="animal_main_section">
         <section id="gallery">
@@ -153,7 +153,7 @@ function draw_animal_profile($animal){
 }
 
 function draw_animal_comments($animal){
-    $questions = get_animal_questions($animal);
+    $questions = get_pet_questions($animal);
     if(count($questions)){
         ?>
         <section id="questions">
@@ -192,7 +192,7 @@ function draw_animal_comments($animal){
                         }
 
                         if(isset($_SESSION['user'])){
-                            $userID = getUser($_SESSION['user'])['userId'];
+                            $userID = get_user($_SESSION['user'])['userId'];
                             ?>
                             <div id="reply_<?=$question['questionId']?>" class="reply_area">
                                 <p>Send a reply...</p>
@@ -211,7 +211,7 @@ function draw_animal_comments($animal){
             ?>
 
             <?php if(isset($_SESSION['user'])){
-                $userID = getUser($_SESSION['user'])['userId'];
+                $userID = get_user($_SESSION['user'])['userId'];
                 ?>
                 <script src="../js/comments.js" defer></script>
                 <form id="ask_question">
@@ -229,7 +229,7 @@ function draw_animal_comments($animal){
     }
     else{
         if(isset($_SESSION['user'])){
-            $userID = getUser($_SESSION['user'])['userId'];
+            $userID = get_user($_SESSION['user'])['userId'];
             ?>
             <section id="questions">
                 <script src="../js/comments.js" defer></script>
@@ -255,7 +255,7 @@ function draw_proposals($user,$animal){
             echo "<section id='proposals' >";
             foreach ($proposals as $proposal){
                 $user = get_user_by_ID($proposal['user']);
-                $pet = get_animal_data($proposal['pet']);
+                $pet = get_pet_data($proposal['pet']);
                 ?>
                 <div class="proposal" id=<?=$proposal['proposalId']?>>
                     <input type="hidden" name="csrf" value=<?=$_SESSION['csrf']?>>
@@ -298,12 +298,12 @@ function draw_proposals($user,$animal){
         }
     }
     else{
-        $user_data = getUser($user);
+        $user_data = get_user($user);
         $proposals = get_proposals($user_data['userId'],$animal);
         echo "<section id='proposals'>";
         if($proposals!=null){
             foreach ($proposals as $proposal){
-                $pet = get_animal_data($proposal['pet']);
+                $pet = get_pet_data($proposal['pet']);
                 draw_proposal($user_data['userName'],$pet['name'],$proposal['text'],$proposal['state']);
             }
         }

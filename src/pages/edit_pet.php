@@ -13,7 +13,7 @@ if(isset($_POST['pet_id']) && check_pet($_POST['pet_id'])) {
     echo '<script src="../js/utils.js" defer></script>';
     echo '<script src="../js/edit_pet.js" defer></script>';
     echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
-    $animal_data = get_animal_data($_POST['pet_id']);
+    $animal_data = get_pet_data($_POST['pet_id']);
     draw_head($animal_data['name']." Edit Page");
     draw_header();
     draw_edit_pet($_POST['pet_id']);

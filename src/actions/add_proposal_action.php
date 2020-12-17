@@ -18,7 +18,7 @@ class _error{
 
 $error = new _error();
 
-$user = getUser($_SESSION['user'])['userId'];
+$user = get_user($_SESSION['user'])['userId'];
 
 $error->text_error = (!isset($_POST['proposal_text']) || strlen($_POST['proposal_text']) <=0 );
 

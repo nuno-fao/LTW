@@ -31,7 +31,7 @@ else if(isset($_SESSION['user']) && isset($_POST['questionId']) && isset($_POST[
         $strip_questionId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['questionId']);
         $strip_reply_text = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['text']);
 
-        $userId = getUser($_SESSION['user'])['userId'];
+        $userId = get_user($_SESSION['user'])['userId'];
 
         add_question_reply($strip_reply_text,$strip_questionId,$date,$userId);
         

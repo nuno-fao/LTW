@@ -13,8 +13,8 @@ else if(accepted_proposals($_POST['petId']) > 0 && $_POST['reply']=="a"){
     $error = true;
 }
 else if(isset($_SESSION['user']) && check_pet($_POST['petId'])){
-    $pet = get_animal_data($_POST['petId']);
-    $user = getUser($_SESSION['user']);
+    $pet = get_pet_data($_POST['petId']);
+    $user = get_user($_SESSION['user']);
     if($_POST['reply']=="a"){
         set_proposal_state($pet['petId'],$_POST['proposal_id'],1);
     }

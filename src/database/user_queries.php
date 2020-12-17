@@ -2,7 +2,7 @@
 include_once('../database/connection.php');
 
 
-function getName(){
+function get_name(){
     if(isset($_SESSION['user'])){
         global $dbh;
         $stmt = $dbh->prepare('SELECT userId, Name, EmailAddress from Users Where userName=?');
@@ -14,28 +14,28 @@ function getName(){
     }
 }
 
-function getUser($username){
+function get_user($user_name){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Users Where userName=?');
-    $stmt->execute(array($username));
+    $stmt->execute(array($user_name));
     return  $stmt->fetchAll()[0];
 }
 
-function getPicturePath($user){
+function get_picture_path($user_name){
     global $dbh;
     $stmt = $dbh->prepare('SELECT picturePath from Users Where userName=?');
-    $stmt->execute(array($user));
+    $stmt->execute(array($user_name));
     return $stmt->fetchAll()[0]['picturePath'];
 }
 
-function getUserAnimals($userId){
+function get_user_animals($user_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT petId,name,size,color,location,state from Pets WHERE user=?');
-    $stmt->execute(array($userId));
+    $stmt->execute(array($user_id));
     return $stmt->fetchAll();
 }
 
-function getUserFavouriteAnimals($username){
+function get_user_favourite_animals($username){
     global $dbh;
     $stmt = $dbh->prepare('select name,species,size,color,location,state,profilePic,pet,userName,user from Pets inner join (select user as f_user, pet from Favourites where user = ?) on pet = petId inner join (select userName,userId from Users) on userId = user;');
     $stmt->execute(array($username));
@@ -43,33 +43,33 @@ function getUserFavouriteAnimals($username){
 }
 
 
-function get_user_by_ID($userId){
+function get_user_by_ID($user_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Users Where userId=?');
-    $stmt->execute(array($userId));
+    $stmt->execute(array($user_id));
     return $stmt->fetchAll()[0];
 }
 
-function edit_user($user,$name,$email){
+function edit_user($user_name, $name, $email){
     global $dbh;
     $stmt = $dbh->prepare('UPDATE Users SET Name = ?,EmailAddress = ?,userName = ? WHERE userName = ?;');
-    $stmt->execute(array($name,$email,$user,$_SESSION['user']));
+    $stmt->execute(array($name,$email,$user_name,$_SESSION['user']));
 }
 
-function get_proposals($userId, $petId){
+function get_proposals($user_id, $pet_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Proposals Where user=? and pet=?');
-    $stmt->execute(array($userId,$petId));
+    $stmt->execute(array($user_id,$pet_id));
     $out = $stmt->fetchAll();
     if(count($out)==0)
         return null;
     return $out;
 }
 
-function get_proposals_for_pet($petId){
+function get_proposals_for_pet($pet_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Proposals Where pet=?');
-    $stmt->execute(array($petId));
+    $stmt->execute(array($pet_id));
     $out = $stmt->fetchAll();
     if(count($out)==0)
         return null;
@@ -89,20 +89,20 @@ function set_proposal_state($pet,$proposal_id,$state){
     $stmt->execute(array($state,$pet,$proposal_id));
 }
 
-function get_proposals_for_user($userId){
+function get_proposals_for_user($user_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT * from Proposals Where user=?');
-    $stmt->execute(array($userId));
+    $stmt->execute(array($user_id));
     $out = $stmt->fetchAll();
     if(count($out)==0)
         return null;
     return $out;
 }
 
-function get_questions_participated($userId){
+function get_questions_participated($user_id){
     global $dbh;
     $stmt = $dbh->prepare('SELECT DISTINCT questionId, questionTxt, pet FROM Questions LEFT JOIN Answers ON Answers.question = Questions.questionId WHERE Questions.user = ? OR Answers.author = ? ');
-    $stmt->execute(array($userId,$userId));
+    $stmt->execute(array($user_id,$user_id));
     $out = $stmt->fetchAll();
     if(count($out)==0)
         return null;

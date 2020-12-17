@@ -2,8 +2,8 @@
 include_once "../database/pet_queries.php";
 function draw_edit_pet($pet){
 
-    $pet_data = get_animal_data($pet);
-    $user = getUser($_SESSION['user']);
+    $pet_data = get_pet_data($pet);
+    $user = get_user($_SESSION['user']);
     if ($pet_data['user'] == $user['userId']) {
         ?>
         <section>

@@ -15,7 +15,7 @@ if(isset($_GET['pet_id']) && check_pet($_GET['pet_id'])) {
     echo '<script src="../js/favourites.js" defer></script>';
     echo '<script src="../js/reply.js" defer></script>';
     echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
-    $animal_data = get_animal_data($_GET['pet_id']);
+    $animal_data = get_pet_data($_GET['pet_id']);
     draw_head($animal_data['name']." Page");
     draw_header();
     echo "<section id='animal_profile_body'>";

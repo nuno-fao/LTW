@@ -19,7 +19,7 @@ function draw_head($page_name){
 
 <?php
 function draw_header(){
-getName();
+get_name();
 if(isset($_SESSION['user'])){
     $Bar_code = '
     <section class="login_register">
