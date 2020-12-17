@@ -10,27 +10,78 @@ function draw_animal_aside($animal){
     <aside id="animal_profile" class="animal_profile_box">
 
         <img src="<?=get_pet_photo($animal)?>" class="profile_img">
-        <label>
-            <?=$animal_data['name']?>
-        </label>
-        <label>
-            <?=$animal_data['size']?>
-        </label>
-        <label>
-            <?=$animal_data['color']?>
-        </label>
-        <label>
-            <?=get_specie($animal_data['species'])['specie']?>
-        </label>
-        <label>
-            <?=$animal_data['location']?>
-        </label>
-        <label>
-        <a id="owner_profile" href="user.php?user=<?=$user_name?>">
-            <?=$user_name?>
-        </a>
-        </label>
-        <div id="change_state_div"> 
+        <div class="animal_profile_info">
+            <label class="tag" for="name">
+                <b>Name:</b>
+            </label>
+            <label class="info" name="name">
+                <?=$animal_data['name']?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="size">
+                <b>Size:</b>
+            </label>
+            <label class="info" name="size">
+                <?=$animal_data['size']?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="color">
+                <b>Color:</b>
+            </label>
+            <label class="info" name="color">
+                <?=$animal_data['color']?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="specie">
+                <b>Specie:</b>
+            </label>
+            <label class="info" name="specie">
+                <?=get_specie($animal_data['species'])['specie']?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="location">
+                <b>location:</b>
+            </label>
+            <label class="info" name="location">
+                <?=$animal_data['location']?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="hender">
+                <b>Gender:</b>
+            </label>
+            <label class="info" name="gender">
+                <?php
+                if($animal_data['gender']=='f'){
+                    echo "female";
+                }
+                else{
+                    echo "male";
+                }
+                ?>
+            </label>
+        </div>
+
+        <div class="animal_profile_info">
+            <label class="tag" for="user_name">
+                <b>UserName:</b>
+            </label>
+            <label class="info" name="user_name">
+                <a id="owner_profile" href="user.php?user=<?=$user_name?>">
+                    <?=$user_name?>
+                </a>
+            </label>
+        </div>
+        <div id="change_state_div">
             <?php
             if(isset($_SESSION['user'])){
                 $user = get_user($_SESSION['user']);
@@ -43,7 +94,7 @@ function draw_animal_aside($animal){
                             <input type="hidden" name="new_state" value="2">
                             <input type="submit" name="submit" value="Next">
                         </form>
-        
+
                         <?php
                     }
                     else if($state['state']=='Proposal Accepted'){?>
@@ -60,7 +111,7 @@ function draw_animal_aside($animal){
                             <input type="hidden" name="new_state" value="3">
                             <input type="submit" name="submit" value="Next">
                         </form>
-        
+
                         <?php
                     }
                     else if($state['state']=='Adopted'){?>
@@ -143,16 +194,16 @@ function draw_animal_profile($animal){
     $photos = get_pet_photos($animal);
     ?>
     <section id="animal_main_section">
-            <?php
-            foreach($photos as $photo){
-                ?>
-                <div class=gallery_photo>
-                    <img src = "<?=$photo['path']?>">
-                </div>
-
-                <?php
-            }
+        <?php
+        foreach($photos as $photo){
             ?>
+            <div class=gallery_photo>
+                <img src = "<?=$photo['path']?>">
+            </div>
+
+            <?php
+        }
+        ?>
     </section>
     <?php
 }

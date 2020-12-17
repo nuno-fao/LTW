@@ -139,10 +139,10 @@ aside {
 
 #animal_profiles{
     margin: auto;
-    padding: 2em;
+    padding: 0.2em;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: space-evenly;
 }
 #animal_profile{
     display: flex;
@@ -266,4 +266,26 @@ div#change_state_div {
 div#change_state_div input[type="submit"]{
     width: 6em;
     text-align: center;
+}
+
+.animal_profile_info {
+    width: 16em;
+    display: grid;
+    grid-template-columns: 35% 65%;
+    grid-template-rows: auto;
+    grid-template-areas:
+            "tag info";
+}
+
+label.tag{
+    grid-area: tag;
+    margin-left: 0.1em;
+    margin-right: auto;
+}
+
+label.info{
+    grid-area: info;
+    margin-left: auto;
+    margin-right: 0;
+    width: 10.4em;
 }
