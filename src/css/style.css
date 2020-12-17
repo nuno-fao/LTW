@@ -517,8 +517,7 @@ form textarea#proposal-text{
 #user_profile > label{
     display: block;
     padding: 0.5em;
-    margin: 0.5em;
-    margin-top: 0.8em;
+    margin: 0.8em 0.5em 0.5em 0.5em;
     color: #252531;
     border: 1px solid #252531;
     border-radius: 10px;
@@ -527,7 +526,6 @@ form textarea#proposal-text{
 #user_profile > input{
     display: block;
     padding: 0.7em;
-    margin: 0.7em;
     color: #252531;
     border: 1px solid #252531;
     border-radius: 10px;
@@ -555,8 +553,7 @@ form textarea#proposal-text{
 
 #edit_user_profile{
     padding: 0.1em;
-    margin: 0.5em;
-    margin-bottom: 1em;
+    margin-bottom: 0.5em 0.5em 1em 0.5;
     color: #252531;
     background-color: #cccccc;
     border: 1px solid #252531;
