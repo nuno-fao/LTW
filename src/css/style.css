@@ -517,16 +517,60 @@ form textarea#proposal-text{
 #user_profile > label{
     display: block;
     padding: 0.5em;
-    margin: 0.5em;
-    margin-top: 0.8em;
+    margin: 0.8em 0.5em 0.5em 0.5em;
     color: #252531;
     border: 1px solid #252531;
     border-radius: 10px;
-
 }
+
+#user_profile > input{
+    display: block;
+    padding: 0.7em;
+    color: #252531;
+    border: 1px solid #252531;
+    border-radius: 10px;
+    margin: 1em auto;
+    background-color: white;
+    text-align: center;
+    min-width: 90%;
+}
+
+#user_profile > a{
+    padding: 0.1em;
+    margin: 0.5em;
+    color: #252531;
+    background-color: #cccccc;
+    border: 1px solid #252531;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 5px;
+}
+
 
 #user_profile:first-child{
     text-align: center;
+}
+
+#edit_user_profile{
+    padding: 0.1em;
+    margin-bottom: 0.5em 0.5em 1em 0.5;
+    color: #252531;
+    background-color: #cccccc;
+    border: 1px solid #252531;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.95em;
+    border-radius: 5px;
+}
+
+#make_changes,
+#discard_button{
+    margin: 1em 0.4em 1em 0.4em;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 0.95em;
+    background-color: #cccccc;
+    border: 1px solid #252531;
+    border-radius: 5px;
 }
 
 
@@ -609,6 +653,10 @@ div .title{
     height: 40px;
     display: block;
     padding-left: 0.8em;
+    color: #252531;
+}
+
+header .button-text{
     color: #252531;
 }
 
