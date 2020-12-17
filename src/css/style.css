@@ -419,6 +419,7 @@ form textarea#proposal-text{
 .gallery_photo{
     border: 20px solid white;
     border-radius: 15px;
+    margin: 0.1em;
 }
 
 #animal_profile.animal_profile_box{
