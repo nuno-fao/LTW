@@ -473,8 +473,7 @@ form textarea#proposal-text{
 }
 
 .add_edit_pet_form > input{
-    vertical-align: middle;
-    height: 50px;
+    margin: auto ;
 }
 
 .add_edit_pet_form input[type='submit'],

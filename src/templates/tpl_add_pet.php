@@ -3,12 +3,6 @@ include_once "../database/pet_queries.php";
 function draw_add_pet(){
     ?>
         <section class="grid_add_pet">
-            <section id="pet_main_photo">
-                <img src="../img/default_animal_pic.gif"/>
-                <div id="add_photo">
-
-                </div>
-            </section>
             <section id="pet_info">
                 <form action="../actions/add_pet_action.php"  method="post" enctype="multipart/form-data" class="add_edit_pet_form">
                     <label>Pet Name:</label><input type="text" name="name">
@@ -47,6 +41,7 @@ function draw_add_pet(){
 
                     <label for="picture">Picture</label>
                     <input type="file" name="picture" id="picture" accept=".jpg, .jpeg, .png, .gif">
+                    <label for="other_picture">Other Pictures</label>
                     <input type="file" name="other_picture" id="other_pictures" accept=".jpg, .jpeg, .png, .gif" multiple>
                     <input type="hidden" name="submit" value="submit">
                     <input type="submit" value="Add Pet">

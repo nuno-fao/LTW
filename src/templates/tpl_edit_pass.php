@@ -2,7 +2,7 @@
 function draw_edit_pass(){
     ?>
     <div id="edit_pass_box">
-        <form action="../actions/login_action.php" method="post" id="edit_pass_form">
+        <form action="../actions/login_action.php" method="post" class="edit_pass_form">
             <div id="edit_pass_title">
                 Change Password
             </div>

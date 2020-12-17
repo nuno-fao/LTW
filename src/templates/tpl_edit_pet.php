@@ -58,8 +58,9 @@ function draw_edit_pet($pet){
             <label for="location">Location</label>
             <input type="text" name="location" id="location" value="<?=$pet_data['location']?>">
 
-            <label for="picture">Picture</label>
+            <label for="picture">Main Picture</label>
             <input type="file" name="picture" id="picture" accept=".jpg, .jpeg, .png, .gif">
+            <label for="other_picture">Other Pictures</label>
             <input type="file" name="other_picture" id="other_pictures" accept=".jpg, .jpeg, .png, .gif" multiple>
             <input type="hidden" name="submit" value="submit">
             <input type="hidden" name="pet_id" value="<?=$pet?>">
