@@ -292,7 +292,6 @@ img.animal_image_box{
 
 .animal_box{
     background-color: white;
-    width: fit-content;
     border: 10px solid white;
     border-radius: 10px;
 }
@@ -555,7 +554,7 @@ form textarea#proposal-text{
 }
 
 #user_proposals{
-    background-color: white;
+    background-color: #cccccc;
     border-radius: 15px;
     padding: 0.8em;
 }
@@ -599,4 +598,16 @@ form textarea#proposal-text{
     margin: 0 0 0 1em;
 }
 
+.user_page section{
+    background-color: #cccccc;
+    border-radius: 1em;
+}
+
+div .title{
+    font-size: 1.3em;
+    height: 40px;
+    display: block;
+    padding-left: 0.8em;
+    color: #252531;
+}
 

@@ -63,7 +63,7 @@ function draw_animal_aside($animal){
         
                         <?php
                     }
-                    else if($state['state']=='Addopted'){?>
+                    else if($state['state']=='Adopted'){?>
                         <form action="../actions/change_state_action.php" method="post">
                             <input type="hidden" name="petId" value="<?=$animal?>">
                             <input type="hidden" name="csrf" value="<?=$_SESSION['csrf']?>">
