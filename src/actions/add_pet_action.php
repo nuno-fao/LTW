@@ -66,7 +66,7 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                     if($_POST['gender']=='female'){
                         $gender = 'f';
                     }
-                    elseif ($_POST['gender'] == male){
+                    elseif ($_POST['gender'] == 'male'){
                         $gender = 'm';
                     }
                     else{

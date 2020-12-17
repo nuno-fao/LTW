@@ -38,8 +38,11 @@ function draw_aside(){?>
                 </div>
             </div>
             <div class="multipleSelector">
-                <label>Species</label>
-                <div>
+                <div class="drop_down">
+                    <label class="drop_down">Species</label>
+                    <button onclick="dropdown('species_dropdown')" class="dropdown_button">Show</button>
+                </div>
+                <div id="species_dropdown" class="dropdown_content">
                     <?php
                     $species = get_species();
                     foreach ($species as $specie){
@@ -86,10 +89,21 @@ function draw_aside(){?>
                     foreach ($states as $state){
                         $state = $state['state'];
                         ?>
-                        <label>
-                            <input type="checkbox" id="<?=$state?>" name="<?=$state?>" checked>
-                            <span></span>
-                            <?=$state?>
+                        <label><?php
+                            if($state=='Adopted'){
+                            ?>
+                                <input type="checkbox" id="<?=$state?>" name="<?=$state?>">
+                                <span></span>
+                                <?=$state?>
+                            <?php
+                            }
+                            else{ ?>
+                                <input type="checkbox" id="<?=$state?>" name="<?=$state?>" checked>
+                                <span></span>
+                                <?=$state?>
+                            <?php
+                            }
+                            ?>
                             <br>
                         </label>
                         <?php
@@ -129,9 +143,11 @@ function draw_animal_profiles(){?>
     <div class=pets_display>
         <div id="animal_profiles">
             <?php
-            $animals_array = get_pets_filtered(null,null,null,null,null,null,null,0,20);
+            $animals_array = get_pets();
             foreach ($animals_array as $animal){
-                draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+                if($animal['state']!='Adopted'){
+                    draw_animal($animal["petId"],$animal["name"],null,$animal["size"],$animal["color"],$animal["location"],null,$animal["user"]);
+                }
             }
             ?>
         </div>
