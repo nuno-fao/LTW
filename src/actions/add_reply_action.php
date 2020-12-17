@@ -29,7 +29,7 @@ else if(isset($_SESSION['user']) && isset($_POST['questionId']) && isset($_POST[
     else {
         $date = time();
         $strip_questionId = preg_replace("/[^a-zA-Z0-9\s]/", '', $_POST['questionId']);
-        $strip_reply_text = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['text']);
+        $strip_reply_text = preg_replace("/[^A-Za-zÀ-ÖØ-öø-ÿ0-9\s():.,;?!-]/", '', $_POST['text']);
 
         $userId = get_user($_SESSION['user'])['userId'];
 

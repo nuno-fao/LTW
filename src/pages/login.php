@@ -16,7 +16,7 @@ if(!isset($_SESSION['user'])){
     echo '</div>';
     draw_footer();
     ?>
-    login: nunation<br>
+    login: default_user<br>
     password: 12345678<br>
     <?php
 }

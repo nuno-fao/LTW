@@ -22,7 +22,7 @@ $user = get_user($_SESSION['user'])['userId'];
 
 $error->text_error = (!isset($_POST['proposal_text']) || strlen($_POST['proposal_text']) <=0 );
 
-$strip_comment = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['proposal_text']);
+$strip_comment = preg_replace("/[^A-Za-zÀ-ÖØ-öø-ÿ0-9\s():.,;?!-]/", '', $_POST['proposal_text']);
 $striped_animal = preg_replace("/[^a-zA-Z0-9\s():.,;_?!-]/", '', $_POST['pet_id']);
 
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
