@@ -143,18 +143,16 @@ function draw_animal_profile($animal){
     $photos = get_pet_photos($animal);
     ?>
     <section id="animal_main_section">
-        <section id="gallery">
             <?php
             foreach($photos as $photo){
                 ?>
                 <div class=gallery_photo>
-                    <img src = "<?=$photo['path']?>" width=auto height=200/>
+                    <img src = "<?=$photo['path']?>">
                 </div>
 
                 <?php
             }
             ?>
-        </section>
     </section>
     <?php
 }

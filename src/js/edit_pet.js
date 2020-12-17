@@ -1,11 +1,13 @@
-let form_edit_pet = document.querySelector("section[id='pet_info'] form");
+let form_edit_pet = document.querySelector("form");
 form_edit_pet.addEventListener('submit',edit_pet);
 
-let discard_edit_pet = document.querySelector("section[id='pet_info'] button[id='discard_button']");
-discard_edit_pet.addEventListener('click',function (e){
-    window.location.href = "animal_profile.php?pet_id="+escapeHtml(document.querySelector("input[name='pet_id']").value);
-});
+let discard_edit_pet = document.getElementById("discard_button");
+discard_edit_pet.onclick = function (e){
+    e.preventDefault();
+    window.location.replace("animal_profile.php?pet_id="+escapeHtml(document.querySelector("input[name='pet_id']").value));
+};
 
+console.log(form_edit_pet,discard_edit_pet);
 
 let _name ;
 let _length ;
@@ -151,6 +153,7 @@ function receive_edit_pet(evt){
     else {
         other_pics.style="color: black";
     }
+    console.log(error);
     if(!error)
-        window.location.href = "animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']);
+        window.location.replace("animal_profile.php?pet_id="+escapeHtml(parsed_reply['pet_id']));
 }
