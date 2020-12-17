@@ -16,10 +16,10 @@ if (!isset($_SESSION['csrf'])) {
 if($_SESSION['csrf'] == $_POST['csrf']) {
     if (isset($_SESSION['user']) && strlen($_SESSION['user']) > 0) {
         if (isset($_POST['pet_id'])) {
-            $pet = get_animal_data($_POST['pet_id']);
-            $user = getUser($_SESSION['user']);
+            $pet = get_pet_data($_POST['pet_id']);
+            $user = get_user($_SESSION['user']);
             if ($pet['user'] == $user['userId']) {
-                $photos_paths = get_animal_photos($pet['petId']);
+                $photos_paths = get_pet_photos($pet['petId']);
                 foreach ($photos_paths as $photo_path){
                     unlink($photo_path['path']);
                 }

@@ -2,10 +2,10 @@
 include_once '../templates/tpl_main.php';
 function draw_user_aside($user)
 {
-    $user_info =  getUser($user);
+    $user_info =  get_user($user);
     ?>
     <aside id="user_profile">
-        <img src="<?= getPicturePath($user) ?>" width="200" height="200" />
+        <img src="<?= get_picture_path($user) ?>" width="200" height="200" />
         <label id="user">
             <?= $user ?>
         </label>
@@ -34,7 +34,7 @@ function draw_user_aside($user)
             <label>User Animals</label>
         </div>
         <?php
-        $animals = getUserAnimals($user_info['userId']);
+        $animals = get_user_animals($user_info['userId']);
         foreach ($animals as $animal) {
             if($animal['state']!=3){
                 draw_animal($animal["petId"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $user);
@@ -60,7 +60,7 @@ function draw_user_aside($user)
 
     <section id="user_favourite_animals">
         <?php
-        $animals = getUserFavouriteAnimals($user_info['userName']);
+        $animals = get_user_favourite_animals($user_info['userName']);
         foreach ($animals as $animal) {
             draw_animal($animal["pet"], $animal["name"], null, $animal["size"], $animal["color"], $animal["location"], null, $animal['userName']);
         }
@@ -76,11 +76,11 @@ function draw_user_aside($user)
         </div>
         <section id="user_proposals">
             <?php
-            $user = getUser($_SESSION['user']);
+            $user = get_user($_SESSION['user']);
             $proposals = get_proposals_for_user($user['userId']);
             if ($proposals) {
                 foreach ($proposals as $proposal) {
-                    $pet = get_animal_data($proposal['pet']);
+                    $pet = get_pet_data($proposal['pet']);
                     draw_proposal($_SESSION['user'], $pet['name'], $proposal['text'], $proposal['state']);
                 }
             } else {
@@ -99,13 +99,13 @@ function draw_user_aside($user)
         </div>
         <section id="user_posts">
             <?php
-            $user = getUser($_SESSION['user']);
+            $user = get_user($_SESSION['user']);
             $questions = get_questions_participated($user['userId']);
             if ($questions) {
                 foreach ($questions as $question) { ?>
                     <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$question['pet']?>"  >
                         <div class="animal_box">
-                            <img class= "animal_image_box" src="<?=get_animal_photo($question['pet'])?>" width="200" height="200">
+                            <img class= "animal_image_box" src="<?=get_pet_photo($question['pet'])?>" width="200" height="200">
                             <label class="question_text_box">
                                 <?=$question['questionTxt']?>
                             </label>

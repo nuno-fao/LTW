@@ -4,7 +4,7 @@ include_once "../database/pet_queries.php";
 
 // $error = false;
 
-$error = getAllAnimals();
+$error = get_pets();
 
 // if ($_SESSION['csrf'] !== $_POST['csrf']) {
 //     $error = true;

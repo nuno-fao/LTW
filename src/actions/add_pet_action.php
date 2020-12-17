@@ -52,7 +52,7 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
             $error_on_query = true;
             try {
                 $specie = get_specie_id($_POST['species']);
-                $user = getUser($_SESSION['user'])['userId'];
+                $user = get_user($_SESSION['user'])['userId'];
                 $color = get_color_id($_POST['color']);
 
                 if (strlen($_POST['name'])>0 && !preg_match ("/^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/", $_POST['name'])) {
@@ -135,7 +135,7 @@ function add_animal_photo($pet_id,$picture,$is_main){
         $square);
     imagejpeg($pic,$file_name);
 
-    $photo_id = add_animal_photo_to_db($file_name, $pet_id);
+    $photo_id = add_pet_photo_to_db($file_name, $pet_id);
     if($is_main) {
         change_pet_photo_id($pet_id, $photo_id);
     }
