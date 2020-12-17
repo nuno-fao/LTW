@@ -600,6 +600,9 @@ form textarea#proposal-text{
 #user_proposals{
     background-color: #cccccc;
     border-radius: 15px;
+}
+
+section#user_proposals > label{
     padding: 0.8em;
 }
 
@@ -659,3 +662,12 @@ header .button-text{
     color: #252531;
 }
 
+
+.user_page .title{
+    background-color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 2em;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 0.5em;
+}
