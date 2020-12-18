@@ -123,10 +123,13 @@ function reset_user_info(){
     _user.innerHTML=escapeHtml(new_user.value).trim()+" ";
     _name.innerHTML=escapeHtml(new_name.value).trim()+" ";
     _email.innerHTML=escapeHtml(new_email.value).trim()+" ";
-    user_info.appendChild(_user);
-    user_info.appendChild(_name);
-    user_info.appendChild(_email);
-    user_info.appendChild(user_edit_button);
+
+    let after=document.getElementById("change_password_link");
+
+    user_info.insertBefore(_user,after);
+    user_info.insertBefore(_name,after);
+    user_info.insertBefore(_email,after);
+    user_info.insertBefore(user_edit_button,after);
 
 }
 
