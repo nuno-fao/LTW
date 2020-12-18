@@ -15,10 +15,25 @@ let new_email ;
 let discard_changes_button ;
 let make_changes_button;
 
+
+
+function receive_user_check(evt){
+    if(this.responseText === "false"){
+        new_user.style = "color: black"
+    }
+    else {
+        new_user.style = "color: red"
+        on_error_animate(new_user);
+    }
+}
+
+let user_name;
+
 function edit_request(evt) {
     evt.preventDefault();
 
     _user = document.querySelector("aside[id='user_profile'] label[id='user']");
+    user_name = _user.innerHTML;
     _name = document.querySelector("aside[id='user_profile'] label[id='name']");
     _email = document.querySelector("aside[id='user_profile'] label[id='email']");
 
@@ -28,6 +43,7 @@ function edit_request(evt) {
     user_info.removeChild(_email);
     user_info.removeChild(user_edit_button);
     script = document.querySelector("aside[id='user_profile'] script");
+
 
     new_user = create_element("input", "user", null, escapeHtml(_user.innerHTML).trim(), null);
     new_name = create_element("input", "name", null, escapeHtml(_name.innerHTML).trim(), null);
@@ -47,6 +63,17 @@ function edit_request(evt) {
     user_info.insertBefore(new_email, script);
     user_info.appendChild(make_changes_button);
     user_info.appendChild(discard_changes_button);
+
+    new_user.oninput = function (evt){
+        if(new_user.value!=user_name.trim()) {
+            let request = new XMLHttpRequest();
+            request.addEventListener("load", receive_user_check);
+            request.open("post", "../actions/check_user_action.php", true);
+            request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            request.send(encodeForAjax({user: new_user.value}));
+        }
+    }
+
 }
 function make_change_user_request(evt){
 

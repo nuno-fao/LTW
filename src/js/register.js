@@ -1,6 +1,25 @@
 let form_login = document.querySelector("form[id='register_form']");
 form_login.addEventListener('submit',requestRegistry);
 
+document.querySelector("input[name='user']").oninput = function (evt){
+    let request = new XMLHttpRequest();
+    request.addEventListener("load",receive_user_check);
+    request.open("post","../actions/check_user_action.php",true);
+    request.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+    request.send(encodeForAjax({user: document.querySelector("input[name='user']").value}));
+}
+
+function receive_user_check(evt){
+    if(this.responseText === "false"){
+        document.querySelector("input[name='user']").style = "color: black"
+    }
+    else {
+        document.querySelector("input[name='user']").style = "color: red"
+        on_error_animate(document.querySelector("input[name='user']"));
+    }
+}
+
+
 function requestRegistry(evt){
     evt.preventDefault();
 
