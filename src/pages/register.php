@@ -11,7 +11,8 @@ if(!isset($_SESSION['user'])){
     echo '<script src="../js/register.js" defer></script>';
     echo '<script src="../js/utils.js" defer></script>';
     draw_head("Register");
-    draw_header();
+    $location = '<a href="main.php">main </a> > <a href="register.php"> register</a>';
+    draw_header($location);
     draw_register();
     echo '</div>';
     draw_footer();

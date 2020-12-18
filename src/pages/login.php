@@ -11,7 +11,8 @@ if(!isset($_SESSION['user'])){
     echo '<script src="../js/utils.js" defer></script>';
     echo '<script src="../js/login.js" defer></script>';
     draw_head("Login");
-    draw_header();
+    $location = '<a href="main.php">main </a> > <a href="login.php"> login</a>';
+    draw_header($location);
     draw_login();
     echo '</div>';
     draw_footer();

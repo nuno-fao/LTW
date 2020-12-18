@@ -9,7 +9,8 @@ if (!isset($_SESSION['csrf'])) {
 echo '<script src="../js/utils.js" defer></script>';
 echo '<script src="../js/filter.js" defer></script>';
 draw_head("Main Page");
-draw_header();
+$location = '<a href="main.php">main </a>';
+draw_header($location);
 draw_aside();
 draw_animal_profiles();
 echo '</div>';

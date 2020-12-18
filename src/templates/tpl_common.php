@@ -18,7 +18,7 @@ function draw_head($page_name){
 
 
 <?php
-function draw_header(){
+function draw_header($location){
 get_name();
 if(isset($_SESSION['user'])){
     $Bar_code = '
@@ -40,10 +40,12 @@ else{
 ?>
 <header>
     <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
+    <?php echo $location ?>
     <?=$Bar_code;?>
 </header>
 <div class="body">
-    <?php }
+    <?php 
+    }
 
 
 function draw_footer(){?>

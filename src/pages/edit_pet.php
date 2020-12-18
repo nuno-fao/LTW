@@ -12,7 +12,8 @@ if (!isset($_SESSION['csrf'])) {
 if(isset($_POST['pet_id']) && check_pet($_POST['pet_id'])) {
     $animal_data = get_pet_data($_POST['pet_id']);
     draw_head($animal_data['name']." Edit Page");
-    draw_header();
+    $location = '<a href="main.php">main </a> > <a href="animal_profile.php?pet_id='.$_POST["pet_id"].'"> pet_profile</a>  >edit_pet';
+    draw_header($location);
     echo '<script src="../js/utils.js" defer></script>';
     echo '<script src="../js/edit_pet.js" defer></script>';
     echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
