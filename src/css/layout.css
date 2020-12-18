@@ -5,12 +5,17 @@ body {
 
 header {
     display: flex;
+    flex-direction: column;
+}
+
+header .login_register,
+div#navbar {
+    display: flex;
     flex-direction: row;
 }
 
-header .login_register {
-    display: flex;
-    flex-direction: row;
+div#navigation {
+    margin-left: 3em;
 }
 
 .body{

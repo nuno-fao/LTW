@@ -39,9 +39,11 @@ else{
 }
 ?>
 <header>
-    <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
-    <?php echo $location ?>
-    <?=$Bar_code;?>
+    <div id="navbar">
+        <a id="title" href="../index.php" class="no_link_style">Projeto Black Dog</a>
+        <?=$Bar_code;?>
+    </div>
+    <div id="navigation"><?php echo $location ?></div>
 </header>
 <div class="body">
     <?php 

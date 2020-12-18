@@ -9,8 +9,8 @@ if (!isset($_SESSION['csrf'])) {
 echo '<script src="../js/utils.js" defer></script>';
 echo '<script src="../js/add_pet.js" defer></script>';
 draw_head("Add Pet");
-
-draw_header();
+$location = '<a href="main.php">main </a> > <a href="add_pet.php"> add_pet</a>';
+draw_header($location);
 if(isset($_SESSION['user'])){
     draw_add_pet();
 }
