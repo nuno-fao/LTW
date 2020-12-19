@@ -1,4 +1,4 @@
-let form_login = document.querySelector("form[id='edit_pass_form']");
+let form_login = document.querySelector("form[class='edit_pass_form']");
 form_login.addEventListener('submit',editPassRequest);
 
 
