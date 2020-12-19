@@ -14,6 +14,8 @@
 
 # Libraries:
  - No external libraries used
+ 
+ - php gd2 extension must be activated
 
 # Features:
  - Security
