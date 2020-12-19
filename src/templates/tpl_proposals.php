@@ -1,5 +1,12 @@
 <?php
-function draw_proposal($user,$pet,$text,$state){
+/**
+ * draw animal specifies proposal
+ * @param $user
+ * @param $pet
+ * @param $text
+ * @param $state
+ */
+function draw_proposal($user, $pet, $text, $state){
     ?>
     <div class="proposal">
         <div id="proposal_head">

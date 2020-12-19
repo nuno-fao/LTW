@@ -1,6 +1,10 @@
 <?php
 include_once('../database/connection.php');
 
+/**
+ * @param $user user_name
+ * @return return true if the user is already on the database
+ */
 function checkUser($user) {
     global $dbh;
 
@@ -10,7 +14,12 @@ function checkUser($user) {
     return $length>0;
 }
 
-function checkPassword($user,$password) {
+/**
+ * @param $user username
+ * @param $password
+ * @return true if the the password matches the $user password
+ */
+function checkPassword($user, $password) {
     global $dbh;
     $stmt = $dbh->prepare('SELECT userName,password FROM Users WHERE userName = ?');
     $stmt->execute(array($user));
@@ -20,14 +29,25 @@ function checkPassword($user,$password) {
     else return false;
 }
 
-function addUser($user,$password,$email,$name){
+/**
+ * @param $user user_name
+ * @param $password  user plain text password
+ * @param $email user email
+ * @param $name user name
+ */
+function addUser($user, $password, $email, $name){
     global $dbh;
     $password = password_hash($password, PASSWORD_DEFAULT);
     $stmt = $dbh->prepare('INSERT INTO Users(userName, password,Name, EmailAddress) VALUES(?,?,?,?)');
     $stmt->execute(array($user,$password,$name,$email));
 }
 
-function editPassword($user,$newpass){
+
+/**
+ * @param $user user_name
+ * @param $newpass user new password(plain text)
+ */
+function editPassword($user, $newpass){
     global $dbh;
     $password = password_hash($newpass, PASSWORD_DEFAULT);
     $stmt = $dbh->prepare('UPDATE Users SET password = ? WHERE userName = ?');

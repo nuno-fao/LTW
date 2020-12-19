@@ -2,6 +2,10 @@
 include_once('../database/pet_queries.php');
 include_once('../database/user_queries.php');
 
+/**
+ * draw animal aside info
+ * @param $animal
+ */
 function draw_animal_aside($animal){
     $animal_data = get_pet_data($animal);
     $user_name = get_user_by_ID($animal_data['user'])['userName'];
@@ -190,6 +194,10 @@ function draw_animal_aside($animal){
     <?php
 }
 
+/**
+ * draw animal profile pictures
+ * @param $animal
+ */
 function draw_animal_profile($animal){
     $photos = get_pet_photos($animal);
     ?>
@@ -208,6 +216,10 @@ function draw_animal_profile($animal){
     <?php
 }
 
+/**
+ * draw animal comments section
+ * @param $animal
+ */
 function draw_animal_comments($animal){
     $questions = get_pet_questions($animal);
     if(count($questions)){
@@ -302,7 +314,12 @@ function draw_animal_comments($animal){
     }
 }
 
-function draw_proposals($user,$animal){
+/**
+ * draw animal proposals for the specifies user and animal
+ * @param $user (if user is null all proposals of the animal are showed)
+ * @param $animal
+ */
+function draw_proposals($user, $animal){
     $proposals = null;
     if($user == null){
         $proposals = get_proposals_for_pet($animal);

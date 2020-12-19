@@ -1,4 +1,7 @@
 <?php
+/**
+ * draw password edition section
+ */
 function draw_edit_pass(){
     ?>
     <div id="edit_pass_box">

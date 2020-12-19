@@ -97,7 +97,14 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
 }
 echo json_encode($reply);
 
-function edit_animal_photo($pet_id,$picture,$is_main){
+
+/**
+ * @param $pet_id pet's id
+ * @param $picture picture to add
+ * @param $is_main whether the picture is the pet's main picture
+ * @return return true if the addition was successful
+ */
+function edit_animal_photo($pet_id, $picture, $is_main){
     //$check = getimagesize($picture["tmp_name"]);
     $photo = imagecreatefromjpeg($picture['tmp_name']);
     if($photo === false)
@@ -135,6 +142,12 @@ function edit_animal_photo($pet_id,$picture,$is_main){
     return true;
 }
 
+
+/**
+ * @param $user user_id of the pet's owner
+ * @param $pet  current pet name
+ * @return pet id or -1 if no pet found
+ */
 function get_last_pet_id($user,$pet){
     $pets = get_pet($pet);
     foreach ($pets as $Pet) {
@@ -145,6 +158,9 @@ function get_last_pet_id($user,$pet){
     return -1;
 }
 
+/**
+ * @return get main photo from $files and remove it from files array
+ */
 function get_animal_profile_pic(){
     $photo = $_FILES['picture'];
     if($photo == null)

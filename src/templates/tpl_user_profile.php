@@ -1,5 +1,9 @@
 <?php
 include_once '../templates/tpl_main.php';
+/**
+ * draw user aside info
+ * @param $user
+ */
 function draw_user_aside($user)
 {
     $user_info =  get_user($user);

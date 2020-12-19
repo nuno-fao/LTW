@@ -1,4 +1,7 @@
 <?php
+/**
+ *  draw login section
+ */
 function draw_login(){
     ?>
     <div id="login_register_outer_box">

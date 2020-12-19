@@ -1,5 +1,9 @@
 <?php
 include_once "../database/pet_queries.php";
+
+/**
+ * draws add pet section
+ */
 function draw_add_pet(){
     ?>
         <section class="grid_add_pet">

@@ -1,5 +1,9 @@
 <?php
 include_once "../database/pet_queries.php";
+/**
+ * darw pet edition section
+ * @param $pet
+ */
 function draw_edit_pet($pet){
 
     $pet_data = get_pet_data($pet);

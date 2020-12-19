@@ -1,6 +1,9 @@
 <?php
 include_once('../database/pet_queries.php');
 include_once('../database/user_queries.php');
+/**
+ *  draw main page filter section
+ */
 function draw_aside(){?>
 
     <aside id="filter">
@@ -139,6 +142,9 @@ function draw_aside(){?>
 <?php } ?>
 
 <?php
+/**
+ *  draw animal's profile section
+ */
 function draw_animal_profiles(){?>
     <div class=pets_display>
         <div id="animal_profiles">
@@ -156,8 +162,18 @@ function draw_animal_profiles(){?>
 <?php }
 
 
-
-function draw_animal($pet_id,$name,$species,$size,$color,$location,$state,$user){
+/**
+ * draw animal card
+ * @param $pet_id
+ * @param $name
+ * @param $species
+ * @param $size
+ * @param $color
+ * @param $location
+ * @param $state
+ * @param $user
+ */
+function draw_animal($pet_id, $name, $species, $size, $color, $location, $state, $user){
     ?>
     <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
         <div class="animal_box">

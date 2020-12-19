@@ -1,5 +1,9 @@
 <?php
 include_once('../database/user_queries.php');
+/**
+ * draw page head
+ * @param $page_name
+ */
 function draw_head($page_name){
 ?>
     <!DOCTYPE html>
@@ -18,12 +22,18 @@ function draw_head($page_name){
 
 
 <?php
+/**
+ * draw page navbar
+ * @param $location
+ */
 function draw_header($location){
 get_name();
 if(isset($_SESSION['user'])){
+    $NAME = $_COOKIE['name'];
+    preg_replace("/^[A-Za-zÀ-ÖØ-öø-ÿ\s-]+$/", $NAME);
     $Bar_code = '
     <section class="login_register">
-        <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$_COOKIE['name'].'</a>
+        <a id="user" href="user.php?user='.$_SESSION['user'].'"> '.$NAME.'</a>
         <div id="add-pet" class="button" ><a href="add_pet.php" class="button-text">Add Pet</a></div>
         <div id="register" class="button" ><a href="../actions/logout_action.php" class="button-text">Logout</a></div>
     </section>
@@ -46,26 +56,29 @@ else{
     <div id="navigation"><?php echo $location ?></div>
 </header>
 <div class="body">
-    <?php 
+    <?php
     }
 
 
-function draw_footer(){?>
-    </div>
-    <footer>
-        <div class="footer">
-            <div class="text">
-                <p>Projeto Black Dog</p>
-            </div>
-            <div class="text">
-                <p>2020</p>
-            </div>
-            
+    /**
+     *draw page footer
+     */
+    function draw_footer(){?>
+</div>
+<footer>
+    <div class="footer">
+        <div class="text">
+            <p>Projeto Black Dog</p>
         </div>
-    </footer>
-    </body>
-    </html>
-    <?php } ?>
+        <div class="text">
+            <p>2020</p>
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>
+<?php } ?>
 
 
 

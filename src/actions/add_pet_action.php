@@ -32,14 +32,17 @@ class add_pet_reply
 
 $reply = new add_pet_reply();
 
+//check if csrf matches
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $reply->safety_error = true;
 }
+//check if any image was set
 else if(count($_FILES)==0){
     $reply->main_pic = true;
     $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
 
 }
+//check if user is logged in
 else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
     $user = 0;
     $reply->add_error(isset($_POST['name']),strlen($_POST['size'] ) > 0 ,strlen($_POST['species']) > 0 , strlen($_POST['color']) > 0 ,strlen($_POST['location']) > 0,strlen($_POST['gender']) > 0);
@@ -104,7 +107,14 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
 }
 echo json_encode($reply);
 
-function add_animal_photo($pet_id,$picture,$is_main){
+
+/**
+ * @param $pet_id   id of the pet to add the photo
+ * @param $picture  picture to add
+ * @param $is_main  true if it is the animal profile picture
+ * @return true on succesfull addition
+ */
+function add_animal_photo($pet_id, $picture, $is_main){
     //$check = getimagesize($picture["tmp_name"]);
     $photo = imagecreatefromjpeg($picture['tmp_name']);
     if($photo === false) {
@@ -143,8 +153,14 @@ function add_animal_photo($pet_id,$picture,$is_main){
     return true;
 }
 
-function get_last_pet_id($user,$pet){
+/**
+ * @param $user user_id of the pet's owner
+ * @param $pet  current pet name
+ * @return pet id or -1 if no pet found
+ */
+function get_last_pet_id($user, $pet){
     $pets = get_pet($pet);
+    //check for pets of the $user with the profilepic nill(last inserted pet)
     foreach ($pets as $Pet) {
         if ($Pet['user'] == $user && $Pet['profilePic'] == "nill".$user) {
             return $Pet['petId'];
@@ -153,6 +169,10 @@ function get_last_pet_id($user,$pet){
     return -1;
 }
 
+
+/**
+ * @return get main photo from $files and remove it from files array
+ */
 function get_animal_profile_pic(){
     $photo = $_FILES['picture'];
     unset($_FILES['picture']);

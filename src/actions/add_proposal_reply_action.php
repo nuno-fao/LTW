@@ -9,6 +9,7 @@ $error = false;
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error = true;
 }
+//check if pet has proposals
 else if(accepted_proposals($_POST['petId']) > 0 && $_POST['reply']=="a"){
     $error = true;
 }

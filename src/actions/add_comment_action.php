@@ -18,9 +18,11 @@ class comment{
 
 $error = false;
 
+//check if csrf matches
 if ($_SESSION['csrf'] !== $_POST['csrf']) {
     $error = true;
 }
+//check if input variables are set
 else if(isset($_SESSION['user']) && isset($_POST['petId']) && isset($_POST['userId']) && isset($_POST['comment_text']) && check_pet($_POST['petId'])){
     if(strlen($_POST['petId'])<=0 || strlen($_POST['userId']) <=0 || strlen($_POST['comment_text']) <=0){
         $error = true;
