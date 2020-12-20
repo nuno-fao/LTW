@@ -1,6 +1,6 @@
 <?php
 include_once '../templates/tpl_main.php';
-ini_set('session.cookie_httponly', 1);
+
 /**
  * draw user aside info
  * @param $user
