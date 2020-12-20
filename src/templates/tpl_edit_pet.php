@@ -12,7 +12,7 @@ function draw_edit_pet($pet){
         ?>
         <form action="../actions/edit_pet_action.php"  method="post" enctype="multipart/form-data" class="add_edit_pet_form">
             <label>Pet Name:</label><input type="text" name="name" value="<?=$pet_data['name']?>">
-            <label for="length">Animal Length(1 to 200 cm):</label>
+            <label for="size">Animal Length(1 to 200 cm):</label>
             <input type="number" id="size" name="size" min="1" max="200" value="<?=$pet_data['size']?>"> <?//substituir por algo decente com js, css e divs?>
 
             <label for="species">Species</label>
@@ -64,7 +64,7 @@ function draw_edit_pet($pet){
 
             <label for="picture">Main Picture</label>
             <input type="file" name="picture" id="picture" accept=".jpg, .jpeg, .png, .gif">
-            <label for="other_picture">Other Pictures</label>
+            <label for="other_pictures">Other Pictures</label>
             <input type="file" name="other_picture" id="other_pictures" accept=".jpg, .jpeg, .png, .gif" multiple>
             <input type="hidden" name="submit" value="submit">
             <input type="hidden" name="pet_id" value="<?=$pet?>">

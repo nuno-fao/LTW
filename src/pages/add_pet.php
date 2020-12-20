@@ -6,9 +6,9 @@ session_start();
 if (!isset($_SESSION['csrf'])) {
     $_SESSION['csrf'] = generate_random_token();
 }
+draw_head("Add Pet");
 echo '<script src="../js/utils.js" defer></script>';
 echo '<script src="../js/add_pet.js" defer></script>';
-draw_head("Add Pet");
 $location = '<a href="main.php">main </a> > <a href="add_pet.php"> add_pet</a>';
 draw_header($location);
 if(isset($_SESSION['user'])){
@@ -17,6 +17,5 @@ if(isset($_SESSION['user'])){
 else{
     header('Location: ' . 'login.php');
 }
-echo '</div>';
 draw_footer();
 ?>

@@ -76,7 +76,7 @@ else if(isset($_POST['submit']) && isset($_SESSION['user'])) {
                     $reply->size = true;
                 } else {
                     $pet_id = $_POST['pet_id'];
-                    $error_on_query = edit_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped, 1,$gender,$pet_id);
+                    $error_on_query = edit_pet($name_stripped, $specie, $size_stripped, $color, $location_stripped,$gender,$pet_id);
                     if($main_pic)
                         edit_animal_photo($pet_id, $main_pic, true);
                     foreach ($_FILES as $file) {

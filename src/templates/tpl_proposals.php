@@ -1,4 +1,5 @@
 <?php
+ini_set('session.cookie_httponly', 1);
 /**
  * draw animal specifies proposal
  * @param $user
@@ -23,8 +24,8 @@ function draw_proposal($user, $pet, $text, $state){
                     break;
             }
             ?>
-        </div>
         </label>
+        </div>
         <label id="proposal-text"><?=$text?></label>
 
     </div>

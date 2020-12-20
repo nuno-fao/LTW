@@ -13,57 +13,57 @@ function draw_animal_aside($animal){
     ?>
     <aside id="animal_profile" class="animal_profile_box">
 
-        <img src="<?=get_pet_photo($animal)?>" class="profile_img">
+        <img src="<?=get_pet_photo($animal)?>" class="profile_img" alt="animal profile picture">
         <div class="animal_profile_info">
-            <label class="tag" for="name">
+            <label class="tag" >
                 <b>Name:</b>
             </label>
-            <label class="info" name="name">
+            <label class="info" id="name">
                 <?=$animal_data['name']?>
             </label>
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="size">
+            <label class="tag">
                 <b>Size:</b>
             </label>
-            <label class="info" name="size">
+            <label class="info" id="size">
                 <?=$animal_data['size']?>
             </label>
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="color">
+            <label class="tag" >
                 <b>Color:</b>
             </label>
-            <label class="info" name="color">
+            <label class="info" id="color">
                 <?=$animal_data['color']?>
             </label>
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="specie">
+            <label class="tag">
                 <b>Specie:</b>
             </label>
-            <label class="info" name="specie">
+            <label class="info" id="specie">
                 <?=get_specie($animal_data['species'])['specie']?>
             </label>
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="location">
+            <label class="tag">
                 <b>location:</b>
             </label>
-            <label class="info" name="location">
+            <label class="info" id="location">
                 <?=$animal_data['location']?>
             </label>
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="hender">
+            <label class="tag">
                 <b>Gender:</b>
             </label>
-            <label class="info" name="gender">
+            <label class="info" id="gender">
                 <?php
                 if($animal_data['gender']=='f'){
                     echo "female";
@@ -76,10 +76,10 @@ function draw_animal_aside($animal){
         </div>
 
         <div class="animal_profile_info">
-            <label class="tag" for="user_name">
+            <label class="tag">
                 <b>UserName:</b>
             </label>
-            <label class="info" name="user_name">
+            <label class="info" >
                 <a id="owner_profile" href="user.php?user=<?=$user_name?>">
                     <?=$user_name?>
                 </a>
@@ -206,7 +206,7 @@ function draw_animal_profile($animal){
         foreach($photos as $photo){
             ?>
             <div class=gallery_photo>
-                <img src = "<?=$photo['path']?>">
+                <img src = "<?=$photo['path']?>" alt="animal gallery picture">
             </div>
 
             <?php

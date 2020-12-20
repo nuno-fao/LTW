@@ -12,9 +12,9 @@ if (!isset($_SESSION['csrf'])) {
 }
 
 if(isset($_GET['user']) && checkUser($_GET['user']) ) {
+    draw_head($_GET['user']." Page");
     echo '<script src="../js/utils.js" defer></script>';
     echo '<input type="hidden" id="csrf" value='.$_SESSION['csrf'].'>';
-    draw_head($_GET['user']." Page");
     $location = '<a href="main.php">main </a> > <a href="user.php?user='.$_GET["user"].'"> user_profile</a>';
     draw_header($location);
     echo '<div class="user_page">';

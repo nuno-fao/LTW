@@ -8,18 +8,13 @@ if (!isset($_SESSION['csrf'])) {
 }
 
 if(!isset($_SESSION['user'])){
+    draw_head("Login");
     echo '<script src="../js/utils.js" defer></script>';
     echo '<script src="../js/login.js" defer></script>';
-    draw_head("Login");
     $location = '<a href="main.php">main </a> > <a href="login.php"> login</a>';
     draw_header($location);
     draw_login();
-    echo '</div>';
     draw_footer();
-    ?>
-    login: default_user<br>
-    password: 12345678<br>
-    <?php
 }
 else{
     header('Location: ' . 'user.php?user='.$_SESSION['user']);

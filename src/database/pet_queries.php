@@ -1,5 +1,6 @@
 <?php
 include_once('../database/connection.php');
+ini_set('session.cookie_httponly', 1);
 
 /**
  * @return array of pets with species names, state name and user username
@@ -37,7 +38,7 @@ function get_species(){
  */
 function get_states(){
     global $dbh;
-    $stmt = $dbh->prepare('SELECT state from PetState ');
+    $stmt = $dbh->prepare('SELECT * from PetState ');
     $stmt->execute(array());
     return $stmt->fetchAll();
 }
@@ -149,10 +150,10 @@ function add_pet($name, $species, $size, $color, $location, $state, $user, $prof
  * @param $pet_id
  * @return false on querie error
  */
-function edit_pet($name, $species, $size, $color, $location, $state, $gender, $pet_id){
+function edit_pet($name, $species, $size, $color, $location, $gender, $pet_id){
     global $dbh;
-    $stmt = $dbh->prepare('UPDATE Pets set name=?, species=?,size=?, color=?,location=?,state=?,gender=? where petId=?');
-    return $stmt->execute(array($name,$species,$size,$color,$location,$state,$gender,$pet_id));
+    $stmt = $dbh->prepare('UPDATE Pets set name=?, species=?,size=?, color=?,location=?,gender=? where petId=?');
+    return $stmt->execute(array($name,$species,$size,$color,$location,$gender,$pet_id));
 }
 
 /**

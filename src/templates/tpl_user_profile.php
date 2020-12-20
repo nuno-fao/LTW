@@ -1,5 +1,6 @@
 <?php
 include_once '../templates/tpl_main.php';
+ini_set('session.cookie_httponly', 1);
 /**
  * draw user aside info
  * @param $user
@@ -9,7 +10,7 @@ function draw_user_aside($user)
     $user_info =  get_user($user);
     ?>
     <aside id="user_profile">
-        <img src="<?= get_picture_path($user) ?>" width="200" height="200" />
+        <img src="<?= get_picture_path($user) ?>" width="200" height="200" alt="user profile picture"/>
         <label id="user">
             <?= $user ?>
         </label>
@@ -119,14 +120,14 @@ function draw_user_aside($user)
                 $questions = get_questions_participated($user['userId']);
                 if ($questions) {
                     foreach ($questions as $question) { ?>
-                        <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$question['pet']?>"  >
+                        <div class="animal_main_page" onclick="window.location.href = 'animal_profile.php?pet_id=<?=$question['pet']?>'">
                             <div class="animal_box">
-                                <img class= "animal_image_box" src="<?=get_pet_photo($question['pet'])?>" width="200" height="200">
+                                <img class= "animal_image_box" src="<?=get_pet_photo($question['pet'])?>" width="200" height="200" alt="animal profile picture related to question">
                                 <label class="question_text_box">
                                     <?=$question['questionTxt']?>
                                 </label>
                             </div>
-                        </a>
+                        </div>
                         <?php
                     }
                 }

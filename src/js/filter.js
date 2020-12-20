@@ -105,8 +105,8 @@ function filter_results(evt){
 
 function add_pet_profile(parent,petId,name,species,size,color,location,user,path){
     
-    let newa=create_element("a",null,"animal_main_page",null,null);
-    newa.href="animal_profile.php?pet_id="+petId;
+    let newa=create_element("div",null,"animal_main_page",null,null);
+    newa.onclick=function(){window.location.href = "animal_profile.php?pet_id="+petId};
 
     let newdiv=create_element("div",null,"animal_box",null,null);
 

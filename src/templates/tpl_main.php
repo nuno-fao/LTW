@@ -35,9 +35,9 @@ function draw_aside(){?>
             <div class="intRange">
                 <label>Size (cm)</label>
                 <div>
-                    <label class="range_container"><label class="intInput">Min</label><input type="number" class="intInput" id="MinSize" name="MinSize" min="0" max="200" value="1"></label>
+                    <div class="range_container"><label class="intInput">Min</label><input type="number" class="intInput" id="MinSize" name="MinSize" min="0" max="200" value="1"></div>
                     <span style="height: 10px; display: block"></span>
-                    <label class="range_container"><label class="intInput">Max</label><input type="number" class="intInput" id="MaxSize" name="MaxSize" min="1" max="200" value="200"></label>
+                    <div class="range_container"><label class="intInput">Max</label><input type="number" class="intInput" id="MaxSize" name="MaxSize" min="1" max="200" value="200"></div>
                 </div>
             </div>
             <div class="multipleSelector">
@@ -90,18 +90,19 @@ function draw_aside(){?>
                     <?php
                     $states = get_states();
                     foreach ($states as $state){
+                        $state_id = $state["petStetId"];
                         $state = $state['state'];
                         ?>
                         <label><?php
                             if($state=='Adopted'){
                             ?>
-                                <input type="checkbox" id="<?=$state?>" name="<?=$state?>">
+                                <input type="checkbox" id="<?=$state_id?>" name="<?=$state?>">
                                 <span></span>
                                 <?=$state?>
                             <?php
                             }
                             else{ ?>
-                                <input type="checkbox" id="<?=$state?>" name="<?=$state?>" checked>
+                                <input type="checkbox" id="<?=$state_id?>" name="<?=$state?>" checked>
                                 <span></span>
                                 <?=$state?>
                             <?php
@@ -130,7 +131,7 @@ function draw_aside(){?>
                         <br>
                     </label>
                     <label >
-                        <input type='radio' id="all" name="gender" value="all"checked="checked">
+                        <input type='radio' id="all" name="gender" value="all" checked="checked">
                         <span></span>
                         All
                         <br>
@@ -175,9 +176,9 @@ function draw_animal_profiles(){?>
  */
 function draw_animal($pet_id, $name, $species, $size, $color, $location, $state, $user){
     ?>
-    <a class="animal_main_page" href = "animal_profile.php?pet_id=<?=$pet_id?>"  >
+    <div class="animal_main_page" onclick="window.location.href = 'animal_profile.php?pet_id=<?=$pet_id?>'" >
         <div class="animal_box">
-            <img class= "animal_image_box" src="<?=get_pet_photo($pet_id)?>" width="200" height="200">
+            <img class= "animal_image_box" src="<?=get_pet_photo($pet_id)?>" width="200" height="200" alt="animal profile picture">
             <label class="animal_text_box">
                 <?=$name?>
             </label>
@@ -194,6 +195,6 @@ function draw_animal($pet_id, $name, $species, $size, $color, $location, $state,
                 <?=$location?>
             </label>
         </div>
-    </a>
+    </div>
     <?php
 }

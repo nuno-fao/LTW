@@ -6,13 +6,12 @@ session_start();
 if (!isset($_SESSION['csrf'])) {
     $_SESSION['csrf'] = generate_random_token();
 }
+draw_head("Main Page");
 echo '<script src="../js/utils.js" defer></script>';
 echo '<script src="../js/filter.js" defer></script>';
-draw_head("Main Page");
 $location = '<a href="main.php">main </a>';
 draw_header($location);
 draw_aside();
 draw_animal_profiles();
-echo '</div>';
 draw_footer();
 ?>

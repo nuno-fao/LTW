@@ -1,5 +1,6 @@
 <?php
 session_start();
+ini_set('session.cookie_httponly', 1);
 
 class edit_pass_error{
     public $safety_error = false;

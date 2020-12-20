@@ -8,13 +8,12 @@ if (!isset($_SESSION['csrf'])) {
 }
 
 if(!isset($_SESSION['user'])){
+    draw_head("Register");
     echo '<script src="../js/register.js" defer></script>';
     echo '<script src="../js/utils.js" defer></script>';
-    draw_head("Register");
     $location = '<a href="main.php">main </a> > <a href="register.php"> register</a>';
     draw_header($location);
     draw_register();
-    echo '</div>';
     draw_footer();
 }
 else{

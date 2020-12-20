@@ -11,9 +11,9 @@ if (!isset($_SESSION['csrf'])) {
 }
 
 if(isset($_SESSION['user']) && checkUser($_SESSION['user']) ) {
+    draw_head($_SESSION['user']." Edit Password");
     echo '<script src="../js/utils.js" defer></script>';
     echo '<script src="../js/edit_pass.js" defer></script>';
-    draw_head($_SESSION['user']." Edit Password");
     $location = '<a href="main.php">main </a> > <a href="user.php?user='.$_SESSION["user"].'"> user_profile</a> > <a href="edit_pass.php"> edit_pass</a>';
     draw_header($location);
     draw_edit_pass();
