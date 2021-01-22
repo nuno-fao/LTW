@@ -1,0 +1,52 @@
+body{
+    margin-left: 10em;
+    margin-right: 10em;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: verdana;
+}
+
+p {
+    font-family: Georgia;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+body > header {
+    background-color: #046DD5;
+    
+}
+
+#menu > ul{
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+#menu > ul li{
+    border-top: solid 0.4em black;
+}
+
+input, label {
+    display: none;
+}
+
+#related {
+    background-color: #2A2F33;
+    color: white;
+}
+
+
+article footer {
+    background-color: #F4655F;
+    color: white;
+}
+
+body>footer {
+    background-color: black;
+    color: white;
+}
